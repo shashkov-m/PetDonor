@@ -15,6 +15,8 @@
 		D237CD032754E3FC00022511 /* PetDonorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD022754E3FC00022511 /* PetDonorTests.swift */; };
 		D237CD0D2754E3FD00022511 /* PetDonorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD0C2754E3FD00022511 /* PetDonorUITests.swift */; };
 		D237CD0F2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */; };
+		D237CD1C275652EB00022511 /* ArticlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */; };
+		D237CD1E275654A100022511 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD1D275654A100022511 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		D237CD082754E3FD00022511 /* PetDonorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetDonorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237CD0C2754E3FD00022511 /* PetDonorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorUITests.swift; sourceTree = "<group>"; };
 		D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesTableViewController.swift; sourceTree = "<group>"; };
+		D237CD1D275654A100022511 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
 				D237CCEF2754E3FB00022511 /* ViewController.swift */,
+				D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */,
+				D237CD1D275654A100022511 /* TabBarController.swift */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
 				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
@@ -256,6 +262,8 @@
 			files = (
 				D237CCF02754E3FB00022511 /* ViewController.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
+				D237CD1C275652EB00022511 /* ArticlesTableViewController.swift in Sources */,
+				D237CD1E275654A100022511 /* TabBarController.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
