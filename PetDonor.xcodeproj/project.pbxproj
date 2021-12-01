@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEB2754E3FB00022511 /* AppDelegate.swift */; };
 		D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCED2754E3FB00022511 /* SceneDelegate.swift */; };
-		D237CCF02754E3FB00022511 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEF2754E3FB00022511 /* ViewController.swift */; };
+		D237CCF02754E3FB00022511 /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */; };
 		D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237CCF42754E3FC00022511 /* Assets.xcassets */; };
 		D237CCF82754E3FC00022511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */; };
 		D237CD032754E3FC00022511 /* PetDonorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD022754E3FC00022511 /* PetDonorTests.swift */; };
@@ -17,6 +17,11 @@
 		D237CD0F2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */; };
 		D237CD1C275652EB00022511 /* ArticlesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */; };
 		D237CD1E275654A100022511 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD1D275654A100022511 /* TabBarController.swift */; };
+		D237CD23275784DB00022511 /* ArticlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD21275784DB00022511 /* ArticlesTableViewCell.swift */; };
+		D237CD24275784DB00022511 /* ArticlesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD22275784DB00022511 /* ArticlesTableViewCell.xib */; };
+		D237CD28275796D000022511 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD27275796D000022511 /* ArticleViewController.swift */; };
+		D237CD2A2757C79400022511 /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD292757C79400022511 /* BoardTableViewCell.swift */; };
+		D237CD2C2757CE4700022511 /* BoardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2B2757CE4700022511 /* BoardTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +45,7 @@
 		D237CCE82754E3FB00022511 /* PetDonor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetDonor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237CCEB2754E3FB00022511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237CCED2754E3FB00022511 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D237CCEF2754E3FB00022511 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		D237CCF42754E3FC00022511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D237CCF72754E3FC00022511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D237CCF92754E3FC00022511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +56,11 @@
 		D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesTableViewController.swift; sourceTree = "<group>"; };
 		D237CD1D275654A100022511 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D237CD21275784DB00022511 /* ArticlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesTableViewCell.swift; sourceTree = "<group>"; };
+		D237CD22275784DB00022511 /* ArticlesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesTableViewCell.xib; sourceTree = "<group>"; };
+		D237CD27275796D000022511 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		D237CD292757C79400022511 /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
+		D237CD2B2757CE4700022511 /* BoardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,11 +113,9 @@
 			children = (
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
-				D237CCEF2754E3FB00022511 /* ViewController.swift */,
-				D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */,
-				D237CD1D275654A100022511 /* TabBarController.swift */,
+				D237CD26275784FF00022511 /* Views */,
+				D237CD25275784E500022511 /* Controllers */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
-				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
 			);
 			path = PetDonor;
@@ -128,6 +136,29 @@
 				D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */,
 			);
 			path = PetDonorUITests;
+			sourceTree = "<group>";
+		};
+		D237CD25275784E500022511 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D237CD1D275654A100022511 /* TabBarController.swift */,
+				D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */,
+				D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */,
+				D237CD27275796D000022511 /* ArticleViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D237CD26275784FF00022511 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
+				D237CD21275784DB00022511 /* ArticlesTableViewCell.swift */,
+				D237CD22275784DB00022511 /* ArticlesTableViewCell.xib */,
+				D237CD292757C79400022511 /* BoardTableViewCell.swift */,
+				D237CD2B2757CE4700022511 /* BoardTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D237CCF82754E3FC00022511 /* LaunchScreen.storyboard in Resources */,
+				D237CD24275784DB00022511 /* ArticlesTableViewCell.xib in Resources */,
+				D237CD2C2757CE4700022511 /* BoardTableViewCell.xib in Resources */,
 				D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,10 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D237CCF02754E3FB00022511 /* ViewController.swift in Sources */,
+				D237CCF02754E3FB00022511 /* BoardTableViewController.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
+				D237CD28275796D000022511 /* ArticleViewController.swift in Sources */,
 				D237CD1C275652EB00022511 /* ArticlesTableViewController.swift in Sources */,
 				D237CD1E275654A100022511 /* TabBarController.swift in Sources */,
+				D237CD23275784DB00022511 /* ArticlesTableViewCell.swift in Sources */,
+				D237CD2A2757C79400022511 /* BoardTableViewCell.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
