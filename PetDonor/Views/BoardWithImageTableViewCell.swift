@@ -1,5 +1,5 @@
 //
-//  BoardTableViewCell.swift
+//  BoardWithImageTableViewCell.swift
 //  PetDonor
 //
 //  Created by Shashkov Max on 01.12.2021.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BoardTableViewCell: UITableViewCell {
-  static let identifier = "BoardCell"
+class BoardWithImageTableViewCell: UITableViewCell {
+  static let identifier = "BoardWithImageTableViewCell"
   @IBOutlet weak var previewImage: UIImageView!
   @IBOutlet weak var summaryLabel: UILabel!
   @IBOutlet weak var bloodTypeLabel: UILabel!
@@ -17,11 +17,6 @@ class BoardTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     configure()
-  }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    // Configure the view for the selected state
   }
   
   private func configure () {
@@ -44,5 +39,13 @@ class BoardTableViewCell: UITableViewCell {
     bloodTypeLabel.tintColor = .gray
     bloodTypeLabel.alpha = 0.7
   }
+  
+//  override func prepareForReuse() {
+//    super.prepareForReuse()
+//    previewImage.image = nil
+//    summaryLabel.text = nil
+//    petTypeLabel.text = nil
+//    bloodTypeLabel.text = nil
+//  }
   
 }

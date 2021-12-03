@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BoardTableViewController.swift
 //  PetDonor
 //
 //  Created by Shashkov Max on 29.11.2021.
@@ -11,8 +11,9 @@ class BoardTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Board"
-    tableView.register(UINib (nibName: "BoardTableViewCell", bundle: nil), forCellReuseIdentifier: BoardTableViewCell.identifier)
+    title = "Доска"
+    tableView.register(UINib (nibName: BoardWithImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardWithImageTableViewCell.identifier)
+    tableView.register(UINib (nibName: BoardTextOnlyTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardTextOnlyTableViewCell.identifier)
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -24,9 +25,14 @@ class BoardTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.identifier, for: indexPath)
-    //cell.textLabel?.text = "privetb"
-    return cell
+    let imageCell = tableView.dequeueReusableCell(withIdentifier: BoardWithImageTableViewCell.identifier, for: indexPath)
+    let textCell = tableView.dequeueReusableCell(withIdentifier: BoardTextOnlyTableViewCell.identifier, for: indexPath)
+    switch indexPath.row {
+    case 0,2,4,6,7:
+      return imageCell
+    default:
+      return textCell
+    }
   }
   
 }

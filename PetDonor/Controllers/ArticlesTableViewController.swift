@@ -13,7 +13,8 @@ class ArticlesTableViewController: UITableViewController {
     super.viewDidLoad()
     title = "Статьи"
     //navigationController?.navigationBar.prefersLargeTitles = true
-    tableView.register(UINib (nibName: ArticlesTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: ArticlesTableViewCell.identifier)
+    tableView.register(UINib (nibName: ArticlesTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ArticlesTableViewCell.identifier)
+    searchBarSetup()
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,12 +27,25 @@ class ArticlesTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: ArticlesTableViewCell.identifier, for: indexPath) as! ArticlesTableViewCell
-    cell.label.text = "Some article here"
+    cell.articleLabel.text = "Тут какая-то статья и не много текста заголовка"
+    cell.articleImage.image = #imageLiteral(resourceName: "photo_2021-12-02 18.29.33")
+    cell.articleImage.contentMode = .scaleAspectFill
     return cell
   }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     let vc = ArticleViewController (article: "Some Article")
     show(vc, sender: self)
+  }
+}
+
+
+//search bar setup
+extension ArticlesTableViewController {
+  private func searchBarSetup () {
+    let searchController = UISearchController (searchResultsController: nil)
+    searchController.searchBar.placeholder = "Поиск"
+    searchController.searchBar.barStyle = .default
+    navigationItem.searchController = searchController
   }
 }

@@ -16,9 +16,9 @@ class TabBarController: UITabBarController {
     boardNC.tabBarItem = UITabBarItem (title: "Доска", image: UIImage(systemName: "face.smiling"), selectedImage: nil)
     articlesNC.tabBarItem = UITabBarItem (title: "Статьи", image: nil, selectedImage: nil)
     let items = [boardNC, articlesNC]
-    items.forEach {
-      $0.navigationBar.prefersLargeTitles = true
-    }
+//    items.forEach {
+//      $0.navigationBar.prefersLargeTitles = true
+//    }
     self.viewControllers = items
   }
   

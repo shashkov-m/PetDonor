@@ -8,9 +8,9 @@
 import UIKit
 
 class ArticlesTableViewCell: UITableViewCell {
-  static let identifier = "ArticlesCell"
-  static let nibName = "ArticlesTableViewCell"
-  @IBOutlet weak var label:UILabel!
+  static let identifier = "ArticlesTableViewCell"
+  @IBOutlet weak var articleLabel:UILabel!
+  @IBOutlet weak var articleImage: UIImageView!
   override func awakeFromNib() {
     super.awakeFromNib()
   }
@@ -20,10 +20,5 @@ class ArticlesTableViewCell: UITableViewCell {
     
     // Configure the view for the selected state
   }
-  
-  override func prepareForReuse() {
-    super.prepareForReuse()
-    label.text = nil
-  }
-  
+
 }
