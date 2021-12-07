@@ -24,6 +24,8 @@
 		D237CD2C2757CE4700022511 /* BoardWithImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2B2757CE4700022511 /* BoardWithImageTableViewCell.xib */; };
 		D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */; };
 		D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */; };
+		D237CD32275F982600022511 /* DonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD31275F982500022511 /* DonorViewController.swift */; };
+		D237CD35275F9E2000022511 /* PetStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD34275F9E2000022511 /* PetStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D237CD2B2757CE4700022511 /* BoardWithImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardWithImageTableViewCell.xib; sourceTree = "<group>"; };
 		D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTextOnlyTableViewCell.swift; sourceTree = "<group>"; };
 		D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardTextOnlyTableViewCell.xib; sourceTree = "<group>"; };
+		D237CD31275F982500022511 /* DonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorViewController.swift; sourceTree = "<group>"; };
+		D237CD34275F9E2000022511 /* PetStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		D237CCEA2754E3FB00022511 /* PetDonor */ = {
 			isa = PBXGroup;
 			children = (
+				D237CD33275F9E0800022511 /* Model */,
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
 				D237CD26275784FF00022511 /* Views */,
@@ -149,6 +154,7 @@
 				D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */,
 				D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */,
 				D237CD27275796D000022511 /* ArticleViewController.swift */,
+				D237CD31275F982500022511 /* DonorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +171,14 @@
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D237CD33275F9E0800022511 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D237CD34275F9E2000022511 /* PetStruct.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +323,8 @@
 				D237CD23275784DB00022511 /* ArticlesTableViewCell.swift in Sources */,
 				D237CD2A2757C79400022511 /* BoardWithImageTableViewCell.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
+				D237CD35275F9E2000022511 /* PetStruct.swift in Sources */,
+				D237CD32275F982600022511 /* DonorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

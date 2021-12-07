@@ -35,23 +35,13 @@ class BoardTableViewController: UITableViewController {
     }
   }
   
-}
-
-extension BoardTableViewController {
-  enum AnimalType:String {
-    case cat = "Кошка"
-    case dog = "Собака"
-  }
-  
-  enum DogBloodType {
-    case none
-  }
-  
-  enum CatBloodType {
-    case A
-    case B
-    case AB
-    case none
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let cell = tableView.cellForRow(at: indexPath) as? BoardWithImageTableViewCell {
+      print ("cell with image")
+    } else if let cell = tableView.cellForRow(at: indexPath) as? BoardTextOnlyTableViewCell {
+      print ("text only cell")
+    }
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
 }
