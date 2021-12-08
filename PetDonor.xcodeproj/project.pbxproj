@@ -26,6 +26,9 @@
 		D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */; };
 		D237CD32275F982600022511 /* DonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD31275F982500022511 /* DonorViewController.swift */; };
 		D237CD35275F9E2000022511 /* PetStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD34275F9E2000022511 /* PetStruct.swift */; };
+		D237CD372760D4FF00022511 /* NewDonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD362760D4FF00022511 /* NewDonorViewController.swift */; };
+		D237CD3F2760E14A00022511 /* NewDonorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD3E2760E14A00022511 /* NewDonorView.swift */; };
+		D237CD412760EB6B00022511 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD402760EB6B00022511 /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardTextOnlyTableViewCell.xib; sourceTree = "<group>"; };
 		D237CD31275F982500022511 /* DonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorViewController.swift; sourceTree = "<group>"; };
 		D237CD34275F9E2000022511 /* PetStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStruct.swift; sourceTree = "<group>"; };
+		D237CD362760D4FF00022511 /* NewDonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDonorViewController.swift; sourceTree = "<group>"; };
+		D237CD3E2760E14A00022511 /* NewDonorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDonorView.swift; sourceTree = "<group>"; };
+		D237CD402760EB6B00022511 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +125,9 @@
 		D237CCEA2754E3FB00022511 /* PetDonor */ = {
 			isa = PBXGroup;
 			children = (
-				D237CD33275F9E0800022511 /* Model */,
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
+				D237CD33275F9E0800022511 /* Model */,
 				D237CD26275784FF00022511 /* Views */,
 				D237CD25275784E500022511 /* Controllers */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
@@ -152,6 +158,7 @@
 			children = (
 				D237CD1D275654A100022511 /* TabBarController.swift */,
 				D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */,
+				D237CD362760D4FF00022511 /* NewDonorViewController.swift */,
 				D237CD1B275652EB00022511 /* ArticlesTableViewController.swift */,
 				D237CD27275796D000022511 /* ArticleViewController.swift */,
 				D237CD31275F982500022511 /* DonorViewController.swift */,
@@ -169,6 +176,8 @@
 				D237CD2B2757CE4700022511 /* BoardWithImageTableViewCell.xib */,
 				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
+				D237CD3E2760E14A00022511 /* NewDonorView.swift */,
+				D237CD402760EB6B00022511 /* View.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 				D237CD24275784DB00022511 /* ArticlesTableViewCell.xib in Resources */,
 				D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */,
 				D237CD2C2757CE4700022511 /* BoardWithImageTableViewCell.xib in Resources */,
+				D237CD412760EB6B00022511 /* View.xib in Resources */,
 				D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +334,8 @@
 				D237CD2A2757C79400022511 /* BoardWithImageTableViewCell.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
 				D237CD35275F9E2000022511 /* PetStruct.swift in Sources */,
+				D237CD3F2760E14A00022511 /* NewDonorView.swift in Sources */,
+				D237CD372760D4FF00022511 /* NewDonorViewController.swift in Sources */,
 				D237CD32275F982600022511 /* DonorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

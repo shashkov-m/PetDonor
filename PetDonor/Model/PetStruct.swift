@@ -7,28 +7,23 @@
 
 import Foundation
 
-protocol Pet {
-  var description:String { get set}
-}
-
-struct Cat:Pet {
-  var description: String
-  let bloodType: CatBloodType
-  
-  enum CatBloodType {
+struct Pet {
+  var petType:PetType?
+  var bloodType = ""
+  enum CatBloodType:String {
     case A
     case B
     case AB
     case none
   }
   
-}
-
-struct Dog:Pet {
-  var description: String
-  let bloodType: DogBloodType
-  
-  enum DogBloodType {
+  enum DogBloodType:String {
     case none
   }
+  
+  enum PetType {
+    case cat
+    case dog
+  }
+  
 }

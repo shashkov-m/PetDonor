@@ -8,12 +8,13 @@
 import UIKit
 
 class BoardTableViewController: UITableViewController {
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Доска"
     tableView.register(UINib (nibName: BoardWithImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardWithImageTableViewCell.identifier)
     tableView.register(UINib (nibName: BoardTextOnlyTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardTextOnlyTableViewCell.identifier)
+    let addButton = UIBarButtonItem (barButtonSystemItem: .add, target: nil, action: #selector(didAddButtonTaped))
+    self.navigationItem.setRightBarButton(addButton, animated: true)
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,6 +43,10 @@ class BoardTableViewController: UITableViewController {
       print ("text only cell")
     }
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+  @objc func didAddButtonTaped () {
+    
   }
   
 }
