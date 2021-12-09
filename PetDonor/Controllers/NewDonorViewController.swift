@@ -12,9 +12,10 @@ class NewDonorViewController: UIViewController {
   override func loadView() {
     view = donorView
   }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
+  }
+  
 }

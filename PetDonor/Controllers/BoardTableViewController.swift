@@ -13,7 +13,7 @@ class BoardTableViewController: UITableViewController {
     title = "Доска"
     tableView.register(UINib (nibName: BoardWithImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardWithImageTableViewCell.identifier)
     tableView.register(UINib (nibName: BoardTextOnlyTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardTextOnlyTableViewCell.identifier)
-    let addButton = UIBarButtonItem (barButtonSystemItem: .add, target: nil, action: #selector(didAddButtonTaped))
+    let addButton = UIBarButtonItem (barButtonSystemItem: .add, target: self, action: #selector(didAddButtonTaped))
     self.navigationItem.setRightBarButton(addButton, animated: true)
   }
   
@@ -46,7 +46,7 @@ class BoardTableViewController: UITableViewController {
   }
   
   @objc func didAddButtonTaped () {
-    
+    navigationController?.pushViewController(NewDonorViewController (), animated: true)
   }
   
 }
