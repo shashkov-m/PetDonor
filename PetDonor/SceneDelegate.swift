@@ -13,13 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let windowScene = (scene as? UIWindowScene) else { return }
-    let window = UIWindow(windowScene: windowScene)
-//    let navigationController = UINavigationController (rootViewController: TabBarController())
-//    navigationController.navigationBar.prefersLargeTitles = true
-    window.rootViewController = TabBarController()
-    window.makeKeyAndVisible()
-    self.window = window
+    guard let _ = (scene as? UIWindowScene) else { return }
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
