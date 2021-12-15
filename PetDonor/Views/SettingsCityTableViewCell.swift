@@ -10,6 +10,7 @@ import UIKit
 class SettingsCityTableViewCell: UITableViewCell {
   static let reuseIdentifier = "SettingsCityCell"
     
+  @IBOutlet weak var titleLabel: UILabel!
   override func awakeFromNib() {
     super.awakeFromNib()
 

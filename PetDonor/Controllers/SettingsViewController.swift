@@ -30,18 +30,37 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     case 1:
       return 3
     case 2:
-      return 5
+      return 7
     default:
       return 0
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath.section == 0 {
-      let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCityTableViewCell.reuseIdentifier, for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCityTableViewCell.reuseIdentifier, for: indexPath) as! SettingsCityTableViewCell
+    let section = indexPath.section
+    if section == 0 {
+    cell.titleLabel.text = "Москва"
+    } else if section == 1 {
+      cell.titleLabel.text = catBloodTypes [indexPath.row]
+      cell.accessoryType = .checkmark
+    } else if section == 2 {
+      cell.titleLabel.text = dogBloodTypes [indexPath.row]
+      cell.accessoryType = .checkmark
+    }
       return cell
-    } else {
-      return UITableViewCell ()
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 0:
+      return "Город или регион"
+    case 1:
+      return "Группы крови кошек"
+    case 2:
+      return "Группы крови собак"
+    default:
+      return nil
     }
   }
   

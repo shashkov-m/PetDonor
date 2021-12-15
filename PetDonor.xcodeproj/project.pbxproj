@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */; };
 		D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEB2754E3FB00022511 /* AppDelegate.swift */; };
 		D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCED2754E3FB00022511 /* SceneDelegate.swift */; };
 		D237CCF02754E3FB00022511 /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEF2754E3FB00022511 /* BoardTableViewController.swift */; };
@@ -34,6 +35,7 @@
 		D237CD482763C0A600022511 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD472763C0A600022511 /* SettingsViewController.swift */; };
 		D237CD4B2763C4A800022511 /* SettingsCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */; };
 		D237CD4E2763C9B700022511 /* SettingsCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */; };
+		D2AFBFC92767775D002A096E /* BloodTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AFBFC82767775D002A096E /* BloodTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPetTableViewController.swift; sourceTree = "<group>"; };
 		D237CCE82754E3FB00022511 /* PetDonor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetDonor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237CCEB2754E3FB00022511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237CCED2754E3FB00022511 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		D237CD472763C0A600022511 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCityTableViewCell.swift; sourceTree = "<group>"; };
 		D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCityTableViewCell.xib; sourceTree = "<group>"; };
+		D2AFBFC82767775D002A096E /* BloodTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2195EED2769F14B0082E63D /* New post */ = {
+			isa = PBXGroup;
+			children = (
+				D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */,
+			);
+			path = "New post";
+			sourceTree = "<group>";
+		};
 		D237CCDF2754E3FB00022511 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +179,7 @@
 		D237CD25275784E500022511 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2195EED2769F14B0082E63D /* New post */,
 				D237CD452763907400022511 /* BoardViewController.swift */,
 				D237CD472763C0A600022511 /* SettingsViewController.swift */,
 			);
@@ -189,6 +202,7 @@
 		D237CD33275F9E0800022511 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2AFBFC82767775D002A096E /* BloodTypes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,11 +364,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D237CCF02754E3FB00022511 /* BoardTableViewController.swift in Sources */,
+				D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
 				D237CD28275796D000022511 /* ArticleViewController.swift in Sources */,
 				D237CD1C275652EB00022511 /* ArticlesTableViewController.swift in Sources */,
 				D237CD1E275654A100022511 /* TabBarController.swift in Sources */,
 				D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */,
+				D2AFBFC92767775D002A096E /* BloodTypes.swift in Sources */,
 				D237CD23275784DB00022511 /* ArticlesTableViewCell.swift in Sources */,
 				D237CD4B2763C4A800022511 /* SettingsCityTableViewCell.swift in Sources */,
 				D237CD462763907400022511 /* BoardViewController.swift in Sources */,
