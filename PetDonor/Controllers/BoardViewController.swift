@@ -2,7 +2,7 @@
 //  BoardViewController.swift
 //  PetDonor
 //
-//  Created by 18261451 on 10.12.2021.
+//  Created by Max Shashkov on 10.12.2021.
 //
 
 import UIKit

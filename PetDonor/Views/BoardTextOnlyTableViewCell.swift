@@ -2,7 +2,7 @@
 //  BoardTextOnlyTableViewCell.swift
 //  PetDonor
 //
-//  Created by Shashkov Max on 03.12.2021.
+//  Created by Max Shashkov on 03.12.2021.
 //
 
 import UIKit

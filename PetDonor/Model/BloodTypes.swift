@@ -2,7 +2,7 @@
 //  BloodTypes.swift
 //  PetDonor
 //
-//  Created by 18261451 on 13.12.2021.
+//  Created by Max Shashkov on 13.12.2021.
 //
 
 import Foundation

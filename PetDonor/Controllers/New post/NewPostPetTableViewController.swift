@@ -2,7 +2,7 @@
 //  NewPostPetTableViewController.swift
 //  PetDonor
 //
-//  Created by 18261451 on 15.12.2021.
+//  Created by Max Shashkov on 15.12.2021.
 //
 
 import UIKit

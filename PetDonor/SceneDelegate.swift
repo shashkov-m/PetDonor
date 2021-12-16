@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  PetDonor
 //
-//  Created by Shashkov Max on 29.11.2021.
+//  Created by Max Shashkov on 29.11.2021.
 //
 
 import UIKit
