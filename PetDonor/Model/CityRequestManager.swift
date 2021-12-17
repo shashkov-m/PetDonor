@@ -19,17 +19,19 @@ struct CityRequestManager {
       URLQueryItem (name: "v", value: "5.131"),
       URLQueryItem (name: "access_token", value: accessToken),
       URLQueryItem (name: "country_id", value: "1"),
-      URLQueryItem (name: "count", value: "10")
+      URLQueryItem (name: "count", value: "7")
     ]
   }
-  func getCities () async throws {
+  func getCities () async throws -> [City] {
     guard let url = urlComponentsDefault.url else {throw NetworkErrors.urlCreationError}
     let (data, responce) = try await URLSession.shared.data(from: url)
     let decoder = JSONDecoder ()
-    let result = try decoder.decode(CityResponse.self, from: data)
-    print (result)
+    let cityResponse = try decoder.decode(CityResponse.self, from: data)
+    guard let response = cityResponse.response, let result = response.items else {throw NetworkErrors.emptyResponseError}
+    return result
   }
   enum NetworkErrors:String, Error {
     case urlCreationError = "Ошибка создания URL из URLComponents"
+    case emptyResponseError = "Отсутствуют значения в Response"
   }
 }

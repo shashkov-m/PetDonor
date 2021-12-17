@@ -10,20 +10,21 @@ import UIKit
 class CityPickerViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   let request = CityRequestManager ()
+  var cities = [City] ()
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
-    let url = request.urlComponentsDefault.url
     Task {
       do {
-        try await request.getCities()
+        cities = try await request.getCities()
+        tableView.reloadData()
+        print (cities)
       } catch {
         print (error.localizedDescription)
       }
     }
   }
-  
 }
 
 extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
@@ -32,11 +33,16 @@ extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
     return 1
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return cities.count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell ()
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
+    guard cities.count > 0 else { return cell}
+    var configuration = cell.defaultContentConfiguration()
+    let city = cities [indexPath.row]
+    configuration.text = city.title
+    configuration.secondaryText = city.area
+    cell.contentConfiguration = configuration
+    return cell
   }
-  
-  
 }
