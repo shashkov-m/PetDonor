@@ -13,9 +13,6 @@ class NewPostPetTableViewController: UITableViewController {
     super.viewDidLoad()
     tableView.separatorStyle = .none
   }
-  
-  // MARK: - Table view data source
-  
   override func numberOfSections(in tableView: UITableView) -> Int {
     // #warning Incomplete implementation, return the number of sections
     return 1
@@ -36,4 +33,10 @@ class NewPostPetTableViewController: UITableViewController {
     cell.contentConfiguration = configuration
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    performSegue(withIdentifier: "toCityPicker", sender: self)
+  }
+  
 }
