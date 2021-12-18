@@ -12,25 +12,20 @@ class CityPickerViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   let request = CityRequestManager ()
   var cities = [City] ()
-  let searchController = UISearchController (searchResultsController: nil)
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
+    searchBarConfigure()
     Task {
       do {
-        cities = try await request.getCities()
+        cities = try await request.getCities(q: nil)
         tableView.reloadData()
-        print (cities)
       } catch {
         print (error.localizedDescription)
       }
     }
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = "Введите город"
-    navigationItem.searchController = searchController
-    navigationItem.hidesSearchBarWhenScrolling = false
   }
 }
 
@@ -51,5 +46,25 @@ extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
     configuration.secondaryText = city.area
     cell.contentConfiguration = configuration
     return cell
+  }
+}
+
+extension CityPickerViewController:UISearchResultsUpdating {
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    guard let text = searchController.searchBar.text else { return }
+    Task {
+      cities = try await request.getCities(q: text)
+      tableView.reloadData()
+    }
+  }
+  
+  private func searchBarConfigure () {
+    let searchController = UISearchController (searchResultsController: nil)
+    searchController.searchResultsUpdater = self
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.placeholder = "Введите город"
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
   }
 }

@@ -9,7 +9,6 @@ import Foundation
 
 struct CityRequestManager {
   var urlComponentsDefault = URLComponents ()
-  var q:String?
   private let accessToken = "b5c5ccd9cdbbe8c7ad1290643e3994808f9b2fd283fb5718d33319c5e98db2d27479b25385caab2f7334c"
   init () {
     urlComponentsDefault.scheme = "https"
@@ -19,11 +18,16 @@ struct CityRequestManager {
       URLQueryItem (name: "v", value: "5.131"),
       URLQueryItem (name: "access_token", value: accessToken),
       URLQueryItem (name: "country_id", value: "1"),
-      URLQueryItem (name: "count", value: "7")
+      URLQueryItem (name: "count", value: "7"),
+      URLQueryItem (name: "need_all", value: "0")
     ]
   }
-  func getCities () async throws -> [City] {
-    guard let url = urlComponentsDefault.url else {throw NetworkErrors.urlCreationError}
+  func getCities (q:String?) async throws -> [City] {
+    var urlComponents = urlComponentsDefault
+    if q != nil {
+      urlComponents.queryItems?.append(URLQueryItem (name: "q", value: q))
+    }
+    guard let url = urlComponents.url else {throw NetworkErrors.urlCreationError}
     let (data, responce) = try await URLSession.shared.data(from: url)
     let decoder = JSONDecoder ()
     let cityResponse = try decoder.decode(CityResponse.self, from: data)
