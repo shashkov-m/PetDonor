@@ -8,9 +8,12 @@
 import UIKit
 
 class CityPickerViewController: UIViewController {
+  
   @IBOutlet weak var tableView: UITableView!
   let request = CityRequestManager ()
   var cities = [City] ()
+  let searchController = UISearchController (searchResultsController: nil)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
@@ -24,6 +27,10 @@ class CityPickerViewController: UIViewController {
         print (error.localizedDescription)
       }
     }
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.placeholder = "Введите город"
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
   }
 }
 
