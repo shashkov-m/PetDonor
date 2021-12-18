@@ -48,6 +48,11 @@ extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
     cell.contentConfiguration = configuration
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    performSegue(withIdentifier: "toPetDescribe", sender: self)
+  }
 }
 
 extension CityPickerViewController:UISearchResultsUpdating {
