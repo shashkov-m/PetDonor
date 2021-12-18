@@ -43,7 +43,8 @@ extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
     var configuration = cell.defaultContentConfiguration()
     let city = cities [indexPath.row]
     configuration.text = city.title
-    configuration.secondaryText = city.area
+    configuration.secondaryText = city.region
+    configuration.secondaryTextProperties.color = .systemGray
     cell.contentConfiguration = configuration
     return cell
   }
