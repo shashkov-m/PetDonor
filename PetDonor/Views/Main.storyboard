@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New-->
+        <!--Инфо-->
         <scene sceneID="dO8-i7-Kuq">
             <objects>
                 <viewController id="ZO5-EH-SOn" sceneMemberID="viewController">
@@ -19,20 +19,20 @@
                         <viewLayoutGuide key="safeArea" id="2Zx-C1-MkU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New" selectedImage="plus" catalog="system" id="eAj-4l-Fc2"/>
+                    <tabBarItem key="tabBarItem" title="Инфо" selectedImage="doc" catalog="system" id="eAj-4l-Fc2"/>
                     <navigationItem key="navigationItem" id="r2O-FP-D7b">
                         <barButtonItem key="rightBarButtonItem" title="Опубликовать" style="plain" id="OvK-9x-AdU"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Am1-Rh-6eq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="849"/>
+            <point key="canvasLocation" x="822" y="767"/>
         </scene>
-        <!--Item-->
+        <!--Поиск-->
         <scene sceneID="npQ-d3-0zi">
             <objects>
                 <navigationController id="1d3-lg-jZJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9lu-09-XlG"/>
+                    <tabBarItem key="tabBarItem" title="Поиск" selectedImage="magnifyingglass" catalog="system" id="9lu-09-XlG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vqP-Ja-55B">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -43,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujp-Gx-TAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914" y="-542"/>
+            <point key="canvasLocation" x="823" y="-542"/>
         </scene>
         <!--Доска-->
         <scene sceneID="LuP-06-Okq">
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oD-YP-Gay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747.826086956522" y="-542.41071428571422"/>
+            <point key="canvasLocation" x="1535" y="-542"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="9qj-UD-7Xg">
@@ -113,9 +113,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5H-LG-JLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480" y="-542"/>
+            <point key="canvasLocation" x="2248" y="-542"/>
         </scene>
-        <!--Item 2-->
+        <!--Объявления-->
         <scene sceneID="B7w-G0-DZe">
             <objects>
                 <viewController id="52o-lI-8wa" sceneMemberID="viewController">
@@ -129,18 +129,18 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Создать объявление"/>
                                 <connections>
-                                    <segue destination="63o-ka-RVz" kind="presentation" modalPresentationStyle="fullScreen" id="S6a-xP-3M8"/>
+                                    <segue destination="fCF-DS-QMT" kind="presentation" modalPresentationStyle="fullScreen" id="fvU-tK-n0V"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZq-ZI-YOv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="a0z-s0-7zs"/>
+                    <tabBarItem key="tabBarItem" title="Объявления" selectedImage="square.and.pencil" catalog="system" id="a0z-s0-7zs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGc-ps-HKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="127"/>
+            <point key="canvasLocation" x="822" y="110"/>
         </scene>
         <!--New Post Pet Table View Controller-->
         <scene sceneID="IZC-3i-E9l">
@@ -165,13 +165,16 @@
                             <outlet property="delegate" destination="63o-ka-RVz" id="vWb-IN-PyO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="JKw-Xr-d4h">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="w6j-LA-ZqE"/>
+                    </navigationItem>
                     <connections>
-                        <segue destination="pCA-rZ-oOU" kind="presentation" identifier="toCityPicker" modalPresentationStyle="fullScreen" id="92r-HR-qKN"/>
+                        <segue destination="pCA-rZ-oOU" kind="show" identifier="toCityPicker" id="92r-HR-qKN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uP-hW-H8M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="127"/>
+            <point key="canvasLocation" x="2248" y="110"/>
         </scene>
         <!--City Picker View Controller-->
         <scene sceneID="XF1-6f-8DS">
@@ -182,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZR-0q-kMf">
-                                <rect key="frame" x="0.0" y="103" width="414" height="759"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CityCell" id="xHi-Nw-I9s">
@@ -195,30 +198,41 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Sai-iO-ViM">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tPb-sd-3mS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tPb-sd-3mS" firstAttribute="trailing" secondItem="IZR-0q-kMf" secondAttribute="trailing" id="60H-Lj-mPU"/>
                             <constraint firstItem="tPb-sd-3mS" firstAttribute="bottom" secondItem="IZR-0q-kMf" secondAttribute="bottom" id="91I-5w-Urd"/>
-                            <constraint firstItem="Sai-iO-ViM" firstAttribute="trailing" secondItem="tPb-sd-3mS" secondAttribute="trailing" id="KSN-rV-5bf"/>
                             <constraint firstItem="IZR-0q-kMf" firstAttribute="leading" secondItem="tPb-sd-3mS" secondAttribute="leading" id="Urn-ri-HAE"/>
-                            <constraint firstItem="Sai-iO-ViM" firstAttribute="top" secondItem="tPb-sd-3mS" secondAttribute="top" id="efK-4L-ao7"/>
-                            <constraint firstItem="IZR-0q-kMf" firstAttribute="top" secondItem="Sai-iO-ViM" secondAttribute="bottom" constant="8" id="prE-9b-KMB"/>
-                            <constraint firstItem="Sai-iO-ViM" firstAttribute="leading" secondItem="tPb-sd-3mS" secondAttribute="leading" id="shF-Xd-5c3"/>
+                            <constraint firstItem="IZR-0q-kMf" firstAttribute="top" secondItem="tPb-sd-3mS" secondAttribute="top" id="eH3-BT-1sC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Y9p-RZ-qUE"/>
                     <connections>
                         <outlet property="tableView" destination="IZR-0q-kMf" id="2bq-ez-ejj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9T-ls-LQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439" y="127"/>
+            <point key="canvasLocation" x="2981" y="110"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BJF-aU-Jo1">
+            <objects>
+                <navigationController id="fCF-DS-QMT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fOF-mk-Pu3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NdS-PL-Lbv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="63o-ka-RVz" kind="relationship" relationship="rootViewController" id="ngb-o4-eoV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBi-lA-67s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="110"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="R49-Bx-zyb">
@@ -331,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aH-Vp-YdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3141" y="127"/>
+            <point key="canvasLocation" x="3680" y="110"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Sg-hV-6BM">
@@ -354,7 +368,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="doc" catalog="system" width="115" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
