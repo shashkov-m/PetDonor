@@ -120,25 +120,35 @@
         <!--Объявления-->
         <scene sceneID="B7w-G0-DZe">
             <objects>
-                <viewController id="52o-lI-8wa" sceneMemberID="viewController">
+                <viewController id="52o-lI-8wa" customClass="UserPostsViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q6b-46-Z7M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-9S-6OE">
-                                <rect key="frame" x="126" y="595" width="164" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-9S-6OE">
+                                <rect key="frame" x="100" y="144" width="164" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="CgF-1N-up5"/>
+                                    <constraint firstAttribute="height" constant="31" id="JdE-wd-qE3"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Создать объявление"/>
                                 <connections>
-                                    <segue destination="fCF-DS-QMT" kind="presentation" modalPresentationStyle="fullScreen" id="fvU-tK-n0V"/>
+                                    <action selector="createNewButtonTapped:" destination="52o-lI-8wa" eventType="touchUpInside" id="OFb-D7-JZ2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZq-ZI-YOv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ixe-9S-6OE" firstAttribute="leading" secondItem="fZq-ZI-YOv" secondAttribute="leading" constant="100" id="RNY-oy-ZZ6"/>
+                            <constraint firstItem="ixe-9S-6OE" firstAttribute="top" secondItem="fZq-ZI-YOv" secondAttribute="top" constant="100" id="gbW-L7-3MN"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" selectedImage="square.and.pencil" id="a0z-s0-7zs"/>
+                    <connections>
+                        <segue destination="fCF-DS-QMT" kind="presentation" identifier="createNewPetSegue" modalPresentationStyle="fullScreen" id="KPw-j9-WZV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGc-ps-HKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9T-ls-LQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2981" y="110"/>
+            <point key="canvasLocation" x="2967" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BJF-aU-Jo1">
@@ -240,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="1535" y="110"/>
         </scene>
-        <!--View Controller-->
+        <!--New Post Pet Description View Controller-->
         <scene sceneID="R49-Bx-zyb">
             <objects>
-                <viewController id="rTN-sq-c85" sceneMemberID="viewController">
+                <viewController id="rTN-sq-c85" customClass="NewPostPetDescriptionViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xpC-Rv-clr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

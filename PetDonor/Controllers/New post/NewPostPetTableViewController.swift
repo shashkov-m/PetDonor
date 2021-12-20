@@ -8,7 +8,8 @@
 import UIKit
 
 class NewPostPetTableViewController: UITableViewController {
-  
+  var pet:Pet?
+  let petType = ["Кошка","Собака"]
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.separatorStyle = .none
@@ -27,7 +28,6 @@ class NewPostPetTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "NewPostPetCell", for: indexPath)
     var configuration = cell.defaultContentConfiguration()
     let petImage = [UIImage (named: "CatIcon"), UIImage (named: "DogIcon")]
-    let petType = ["Кошка","Собака"]
     configuration.image = petImage [indexPath.row]
     configuration.text = petType [indexPath.row]
     cell.contentConfiguration = configuration
@@ -35,8 +35,15 @@ class NewPostPetTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pet?.petType = petType [indexPath.row]
+    print (pet)
     tableView.deselectRow(at: indexPath, animated: true)
     performSegue(withIdentifier: "toCityPicker", sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let VC = segue.destination as? CityPickerViewController else { return }
+    VC.pet = pet
   }
   
 }

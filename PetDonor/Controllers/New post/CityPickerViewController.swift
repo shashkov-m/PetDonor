@@ -8,7 +8,7 @@
 import UIKit
 
 class CityPickerViewController: UIViewController {
-  
+  var pet:Pet?
   @IBOutlet weak var tableView: UITableView!
   let request = CityRequestManager ()
   var cities = [City] ()
@@ -50,8 +50,14 @@ extension CityPickerViewController:UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pet?.city = cities [indexPath.row]
     tableView.deselectRow(at: indexPath, animated: true)
     performSegue(withIdentifier: "toPetDescribe", sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let VC = segue.destination as? NewPostPetDescriptionViewController else { return }
+    VC.pet = pet
   }
 }
 
