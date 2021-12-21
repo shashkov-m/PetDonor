@@ -10,6 +10,21 @@ import UIKit
 class SettingsViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
+  let catBloodTypes = [
+    "A",
+    "B",
+    "AB"
+  ]
+  let dogBloodTypes = [
+    "DEA 1.1",
+    "DEA 1.2",
+    "DEA 3",
+    "DEA 4",
+    "DEA 5",
+    "DEA 6",
+    "DEA 7"
+  ]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
