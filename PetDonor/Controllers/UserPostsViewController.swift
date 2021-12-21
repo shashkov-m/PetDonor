@@ -36,4 +36,7 @@ class UserPostsViewController: UIViewController {
     }
   }
   
+  @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+    
+  }
 }
