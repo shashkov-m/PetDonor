@@ -17,10 +17,12 @@ class SignInViewController: UIViewController {
   }
   override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
+    view.addGestureRecognizer(tap)
     }
-    
+  @objc private func hideKeyboard () {
+    view.endEditing(true)
+  }
 
     /*
     // MARK: - Navigation

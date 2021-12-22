@@ -50,6 +50,20 @@ class UserViewController:UIViewController {
     stack.bottomAnchor.constraint(equalTo: authView.safeAreaLayoutGuide.bottomAnchor, constant: -40).isActive = true
     stack.leadingAnchor.constraint(equalTo: authView.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
     stack.trailingAnchor.constraint(equalTo: authView.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+    
+    let backgroundImage = UIImageView ()
+    print (traitCollection.userInterfaceStyle.rawValue)
+    if traitCollection.userInterfaceStyle == .dark {
+      backgroundImage.image = UIImage (named: "catBackgroundWhite")
+    } else {
+      backgroundImage.image = UIImage (named: "catBackgroundBlack")
+    }
+    backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+    authView.addSubview(backgroundImage)
+    backgroundImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    backgroundImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+    backgroundImage.centerYAnchor.constraint(equalTo: authView.centerYAnchor).isActive = true
+    backgroundImage.centerXAnchor.constraint(equalTo: authView.centerXAnchor).isActive = true
   }
   
   private func userDetailsViewConfigure () {
@@ -63,4 +77,5 @@ class UserViewController:UIViewController {
   @objc private func signUpButtonTapped () {
     performSegue(withIdentifier: signUpSegueIdentifier, sender: self)
   }
+  
 }
