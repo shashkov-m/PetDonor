@@ -18,18 +18,17 @@ class SignUpViewController: UIViewController {
         let alert = UIAlertController (title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction (title: "OK", style: .default, handler: nil))
         self.present (alert, animated: true, completion: nil)
-      } else if let user = result?.user {
-        print (user.displayName)
-        fatalError ("TODO")
+      } else if result != nil {
+        self.dismiss(animated: true, completion: nil)
       }
     }
   }
   
   override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
-    }
+  }
   @objc private func hideKeyboard () {
     view.endEditing(true)
   }

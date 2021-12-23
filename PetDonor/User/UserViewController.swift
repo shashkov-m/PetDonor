@@ -6,27 +6,34 @@
 //
 
 import UIKit
+import Firebase
+import grpc
 
 class UserViewController:UIViewController {
-  
-  var isAuthorized:Bool = false
+  var handle: AuthStateDidChangeListenerHandle?
+  let authView = UIView ()
   let signInSegueIdentifier = "signInSegue"
   let signUpSegueIdentifier = "signUpSegue"
+  let isAuth = true
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if isAuthorized != true {
-      authUserViewConfigure()
-    } else {
-      userDetailsViewConfigure()
+    handle = Auth.auth().addStateDidChangeListener {[weak self] (auth, user) in
+      guard let self = self else {return}
+      if user != nil {
+        self.userLoggedInViewConfigure()
+      } else {
+        self.authUserViewConfigure()
+      }
     }
+    
   }
   
   private func authUserViewConfigure () {
-    let authView = UIView ()
     authView.backgroundColor = .systemBackground
     view.addSubview(authView)
     authView.frame = view.bounds
@@ -66,8 +73,25 @@ class UserViewController:UIViewController {
     backgroundImage.centerXAnchor.constraint(equalTo: authView.centerXAnchor).isActive = true
   }
   
-  private func userDetailsViewConfigure () {
-    fatalError ("TODO")
+  private func userLoggedInViewConfigure () {
+    if authView.isDescendant(of: view) {
+      print ("removed from superview")
+      authView.removeFromSuperview()
+    }
+    let userView = UIView ()
+    userView.frame = view.bounds
+    view.addSubview(userView)
+    let action = UIAction () { action in
+      let auth = Auth.auth()
+      do {
+        try auth.signOut()
+      } catch let error {
+        print (error)
+      }
+      
+    }
+    let logOutButton = UIButton (configuration: .filled(), primaryAction: action)
+    
   }
   
   @objc private func signInButtonTapped () {
@@ -77,5 +101,8 @@ class UserViewController:UIViewController {
   @objc private func signUpButtonTapped () {
     performSegue(withIdentifier: signUpSegueIdentifier, sender: self)
   }
-  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    Auth.auth().removeStateDidChangeListener(handle!)
+  }
 }
