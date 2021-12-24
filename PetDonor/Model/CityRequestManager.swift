@@ -22,6 +22,7 @@ struct CityRequestManager {
       URLQueryItem (name: "need_all", value: "0")
     ]
   }
+  @available (iOS 15, *)
   func getCities (q:String?) async throws -> [City] {
     var urlComponents = urlComponentsDefault
     if q != nil {

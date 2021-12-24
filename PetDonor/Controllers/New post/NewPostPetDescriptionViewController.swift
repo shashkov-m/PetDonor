@@ -8,14 +8,25 @@
 import UIKit
 
 class NewPostPetDescriptionViewController: UIViewController {
+  @IBOutlet weak var scrollView: UIScrollView!
   var pet:Pet?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      print (pet)
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
+    view.addGestureRecognizer(tap)
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+  }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    print (pet)
+  @objc func hideKeyboard () {
+    view.endEditing(true)
+  }
+  
+  
+  
+  
+  deinit {
+//    NotificationCenter.default.removeObserver(self)
   }
 }
