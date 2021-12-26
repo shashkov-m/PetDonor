@@ -13,14 +13,17 @@ class PasswordRestoreViewController: UIViewController {
   @IBAction func restorePasswordButton(_ sender: Any) {
     guard let email = emailTextField.text else { return }
     Auth.auth().sendPasswordReset(withEmail: email) {error in
-      let alert = UIAlertController ()
-      alert.addAction(UIAlertAction (title: "OK", style: .default, handler: nil))
+      let alert = UIAlertController (title: nil, message: nil, preferredStyle: .alert)
       if let error = error {
         alert.title = "Ошибка"
         alert.message = error.localizedDescription
+        alert.addAction(UIAlertAction (title: "OK", style: .default, handler: nil))
       } else {
         alert.title = ""
         alert.message = "Инструкции по восстановлению пароля отправлены на \(email)"
+        alert.addAction(UIAlertAction (title: "OK", style: .default) { (_) in
+          self.dismiss(animated: true, completion: nil)
+        })
       }
       self.present (alert, animated: true, completion: nil)
     }
@@ -30,8 +33,17 @@ class PasswordRestoreViewController: UIViewController {
     super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
+    emailTextField.delegate = self
   }
   @objc private func hideKeyboard () {
     view.endEditing(true)
+  }
+}
+
+extension PasswordRestoreViewController:UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    restorePasswordButton(self)
+    return true
   }
 }

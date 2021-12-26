@@ -23,7 +23,7 @@ class UserPostsViewController: UIViewController {
     guard let controller = segue.destination as? UINavigationController, let VC = controller.viewControllers.first as? NewPostPetTableViewController else { return }
     let pet = Pet (city: nil, ownerId: 1, postId: 1,
                    description: nil, contactInfo: nil,
-                   bloodType: nil, postType: nil, petType: nil)
+                   bloodType: nil, postType: nil, petType: nil, isVisible: true)
     print (pet)
     VC.pet = pet
   }
