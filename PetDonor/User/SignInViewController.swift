@@ -29,19 +29,22 @@ class SignInViewController: UIViewController {
     super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
+    emailTextField.delegate = self
+    passwordTextField.delegate = self
   }
   @objc private func hideKeyboard () {
     view.endEditing(true)
   }
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
+}
+extension SignInViewController:UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == emailTextField {
+      textField.resignFirstResponder()
+      passwordTextField.becomeFirstResponder()
+    } else if textField == passwordTextField {
+      textField.resignFirstResponder()
+      enterButton(self)
+    }
+    return true
+  }
 }

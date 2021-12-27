@@ -28,9 +28,23 @@ class SignUpViewController: UIViewController {
     super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
+    emailTextField.delegate = self
+    passwordTextField.delegate = self
   }
   @objc private func hideKeyboard () {
     view.endEditing(true)
   }
-  
+}
+
+extension SignUpViewController:UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == emailTextField {
+      textField.resignFirstResponder()
+      passwordTextField.becomeFirstResponder()
+    } else if textField == passwordTextField {
+      textField.resignFirstResponder()
+      signUpButton(self)
+    }
+    return true
+  }
 }

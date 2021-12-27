@@ -17,6 +17,7 @@ struct Pet {
   var bloodType:String?
   var postType:PostType?
   var petType:String?
+  var isVisible:Bool
   
   let catBloodTypes = [
     "A",
