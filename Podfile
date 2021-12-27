@@ -9,6 +9,7 @@ target 'PetDonor' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+pod 'IQKeyboardManagerSwift'
   target 'PetDonorTests' do
     inherit! :search_paths
     # Pods for testing

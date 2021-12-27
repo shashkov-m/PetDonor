@@ -9,24 +9,26 @@ import UIKit
 
 class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var petDescriptionTextView: UITextView!
+  @IBOutlet weak var petContactsTextView: UITextView!
+  
   var pet:Pet?
   override func viewDidLoad() {
     super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
-//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    
+    toolBarConfiguration ()
   }
-  
   @objc func hideKeyboard () {
     view.endEditing(true)
   }
-  
-  
-  
-  
-  deinit {
-//    NotificationCenter.default.removeObserver(self)
+  private func toolBarConfiguration () {
+    let toolbar = UIToolbar (frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+    let flexibleSpace = UIBarButtonItem (barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let done = UIBarButtonItem (title: "Done", style: .done, target: self, action: #selector(hideKeyboard))
+    toolbar.items = [flexibleSpace, done]
+    toolbar.sizeToFit()
+    petDescriptionTextView.inputAccessoryView = toolbar
+    petContactsTextView.inputAccessoryView = toolbar
   }
 }

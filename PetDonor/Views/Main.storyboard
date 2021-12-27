@@ -155,7 +155,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="qwerty?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgL-o0-AYF">
                                         <rect key="frame" x="0.0" y="135" width="354" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bh-Ov-L6z">
                                         <rect key="frame" x="0.0" y="189" width="354" height="31"/>
@@ -214,7 +214,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zOl-Yz-1eU">
                                         <rect key="frame" x="0.0" y="40.5" width="354" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="send" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="send" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUX-la-2MD">
                                         <rect key="frame" x="0.0" y="94.5" width="354" height="31"/>
@@ -481,7 +481,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-fk-79X">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="616"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjF-fo-it3">
                                                 <rect key="frame" x="20" y="219" width="374" height="20.5"/>
@@ -558,7 +558,7 @@
                                             <constraint firstAttribute="trailing" secondItem="KYS-Ax-Ib3" secondAttribute="trailing" constant="20" id="3HN-Zg-PCs"/>
                                             <constraint firstItem="AjF-fo-it3" firstAttribute="top" secondItem="LBU-NI-hZN" secondAttribute="bottom" constant="20" id="5aZ-t1-TXl"/>
                                             <constraint firstItem="0u8-sD-IFf" firstAttribute="top" secondItem="AjF-fo-it3" secondAttribute="bottom" constant="10" id="7ce-0h-1Xa"/>
-                                            <constraint firstAttribute="bottom" secondItem="GNI-Ko-WhO" secondAttribute="bottom" constant="20" id="7nQ-Nl-VzV"/>
+                                            <constraint firstAttribute="bottom" secondItem="GNI-Ko-WhO" secondAttribute="bottom" constant="10" id="7nQ-Nl-VzV"/>
                                             <constraint firstItem="AjF-fo-it3" firstAttribute="leading" secondItem="SvI-fk-79X" secondAttribute="leading" constant="20" id="AML-57-7cZ"/>
                                             <constraint firstAttribute="trailing" secondItem="AjF-fo-it3" secondAttribute="trailing" constant="20" id="DTK-9r-cy5"/>
                                             <constraint firstItem="GNI-Ko-WhO" firstAttribute="top" secondItem="KYS-Ax-Ib3" secondAttribute="bottom" constant="10" id="Nuu-wJ-Euq"/>
@@ -596,6 +596,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="hP4-tW-BYj"/>
                     <connections>
+                        <outlet property="petContactsTextView" destination="GNI-Ko-WhO" id="g92-4J-I1E"/>
+                        <outlet property="petDescriptionTextView" destination="0u8-sD-IFf" id="Z8w-Qv-Rds"/>
                         <outlet property="scrollView" destination="CtB-NF-8x1" id="59a-Op-m3x"/>
                     </connections>
                 </viewController>
