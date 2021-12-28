@@ -11,15 +11,35 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var petDescriptionTextView: UITextView!
   @IBOutlet weak var petContactsTextView: UITextView!
-  
+  @IBOutlet weak var petSegmentedControll: UISegmentedControl!
+  @IBOutlet weak var petBloodTypeMenu: UIButton!
+  @IBOutlet weak var petIcon: UIImageView!
   var pet:Pet?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
     toolBarConfiguration ()
+    petIconConfigure()
+    bloodTypeMenuConfigure()
+    petDescriptionTextView.layer.cornerRadius = 10.0
   }
-  @objc func hideKeyboard () {
+  
+  @IBAction private func sendDataButton(_ sender: Any) {
+    guard var pet = pet else { return }
+    let donorType = petSegmentedControll.titleForSegment(at: petSegmentedControll.selectedSegmentIndex)
+    let petDescription = petDescriptionTextView.text
+    let contactsInfo = petContactsTextView.text
+    let bloodType = petBloodTypeMenu.menu?.selectedElements.first?.title
+    pet.postType = donorType
+    pet.description = petDescription
+    pet.contactInfo = contactsInfo
+    pet.bloodType = bloodType
+    fatalError ("TODO")
+  }
+  
+  @objc private func hideKeyboard () {
     view.endEditing(true)
   }
   private func toolBarConfiguration () {
@@ -31,4 +51,28 @@ class NewPostPetDescriptionViewController: UIViewController {
     petDescriptionTextView.inputAccessoryView = toolbar
     petContactsTextView.inputAccessoryView = toolbar
   }
+  
+  private func bloodTypeMenuConfigure () {
+    var actions = [UIAction] ()
+    let bloodTypes = pet?.petType == "Кошка" ? catBloodTypes : dogBloodTypes
+    for i in bloodTypes {
+      let action = UIAction (title: i, handler: { (_) in })
+      actions.append(action)
+      let menu = UIMenu (title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
+      petBloodTypeMenu.showsMenuAsPrimaryAction = true
+      petBloodTypeMenu.changesSelectionAsPrimaryAction = true
+      petBloodTypeMenu.menu = menu
+    }
+  }
+  
+  private func petIconConfigure () {
+    guard let pet = pet else { return }
+    if pet.petType == "Кошка" {
+      petIcon.image = UIImage (named: "catIcon")
+    } else {
+      petIcon.image = UIImage (named: "dogIcon")
+    }
+    petIcon.layer.cornerRadius = 25.0
+  }
+  
 }

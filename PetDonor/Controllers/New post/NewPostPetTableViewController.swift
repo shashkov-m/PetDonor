@@ -27,7 +27,7 @@ class NewPostPetTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "NewPostPetCell", for: indexPath)
     var configuration = cell.defaultContentConfiguration()
-    let petImage = [UIImage (named: "CatIcon"), UIImage (named: "DogIcon")]
+    let petImage = [UIImage (named: "catIcon"), UIImage (named: "dogIcon")]
     configuration.image = petImage [indexPath.row]
     configuration.text = petType [indexPath.row]
     cell.contentConfiguration = configuration
@@ -36,7 +36,7 @@ class NewPostPetTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     pet?.petType = petType [indexPath.row]
-    print (pet)
+    print (petType [indexPath.row])
     tableView.deselectRow(at: indexPath, animated: true)
     performSegue(withIdentifier: "toCityPicker", sender: self)
   }
