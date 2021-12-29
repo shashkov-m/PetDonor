@@ -23,7 +23,12 @@ class NewPostPetDescriptionViewController: UIViewController {
     toolBarConfiguration ()
     petIconConfigure()
     bloodTypeMenuConfigure()
-    petDescriptionTextView.layer.cornerRadius = 10.0
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let cornerRadius:CGFloat = 10.0
+    petDescriptionTextView.layer.cornerRadius = cornerRadius
+    petContactsTextView.layer.cornerRadius = cornerRadius
   }
   
   @IBAction private func sendDataButton(_ sender: Any) {

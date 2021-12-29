@@ -27,9 +27,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Am1-Rh-6eq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="767"/>
+            <point key="canvasLocation" x="-1271" y="579"/>
         </scene>
-        <!--Профиль-->
+        <!--Объявления-->
         <scene sceneID="wse-35-5Dw">
             <objects>
                 <viewController id="TDg-aa-DJa" customClass="UserViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,15 +39,16 @@
                         <viewLayoutGuide key="safeArea" id="YAK-hY-wcA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Профиль" image="person" catalog="system" id="5pG-d0-TmA"/>
+                    <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" id="5pG-d0-TmA"/>
                     <connections>
                         <segue destination="CrI-Jg-gGI" kind="show" identifier="signUpSegue" id="CUa-Z7-8Gx"/>
                         <segue destination="9OA-FB-hsy" kind="presentation" identifier="signInSegue" id="JCw-mI-RbJ"/>
+                        <segue destination="fCF-DS-QMT" kind="presentation" identifier="createNewPetSegue" modalPresentationStyle="fullScreen" id="qgb-Xs-3CI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOX-1X-N9v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="1426"/>
+            <point key="canvasLocation" x="775" y="-206"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Y5D-jD-Lcu">
@@ -121,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kE-fV-9lY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569.5652173913045" y="1200.6696428571429"/>
+            <point key="canvasLocation" x="1487" y="266"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="qMw-Gc-2ad">
@@ -191,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgj-Rh-Dnj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569.5652173913045" y="1843.5267857142856"/>
+            <point key="canvasLocation" x="1487" y="920"/>
         </scene>
         <!--Password Restore View Controller-->
         <scene sceneID="E0l-RW-KCv">
@@ -241,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aUb-my-rbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="1844"/>
+            <point key="canvasLocation" x="2154" y="919"/>
         </scene>
         <!--Поиск-->
         <scene sceneID="npQ-d3-0zi">
@@ -258,7 +259,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujp-Gx-TAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="-542"/>
+            <point key="canvasLocation" x="822" y="-1043"/>
         </scene>
         <!--Доска-->
         <scene sceneID="LuP-06-Okq">
@@ -295,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oD-YP-Gay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="-542"/>
+            <point key="canvasLocation" x="1487" y="-1043"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="9qj-UD-7Xg">
@@ -328,44 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5H-LG-JLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="-542"/>
-        </scene>
-        <!--Объявления-->
-        <scene sceneID="B7w-G0-DZe">
-            <objects>
-                <viewController id="52o-lI-8wa" customClass="UserPostsViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q6b-46-Z7M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-9S-6OE">
-                                <rect key="frame" x="100" y="144" width="164" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="CgF-1N-up5"/>
-                                    <constraint firstAttribute="height" constant="31" id="JdE-wd-qE3"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Создать объявление"/>
-                                <connections>
-                                    <action selector="createNewButtonTapped:" destination="52o-lI-8wa" eventType="touchUpInside" id="OFb-D7-JZ2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="fZq-ZI-YOv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ixe-9S-6OE" firstAttribute="leading" secondItem="fZq-ZI-YOv" secondAttribute="leading" constant="100" id="RNY-oy-ZZ6"/>
-                            <constraint firstItem="ixe-9S-6OE" firstAttribute="top" secondItem="fZq-ZI-YOv" secondAttribute="top" constant="100" id="gbW-L7-3MN"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" selectedImage="square.and.pencil" id="a0z-s0-7zs"/>
-                    <connections>
-                        <segue destination="fCF-DS-QMT" kind="presentation" identifier="createNewPetSegue" modalPresentationStyle="fullScreen" id="KPw-j9-WZV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GGc-ps-HKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="822" y="110"/>
+            <point key="canvasLocation" x="2155" y="-1043"/>
         </scene>
         <!--New Post Pet Table View Controller-->
         <scene sceneID="IZC-3i-E9l">
@@ -405,7 +369,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uP-hW-H8M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="gJo-g3-Gcl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="110"/>
+            <point key="canvasLocation" x="2154" y="-392"/>
         </scene>
         <!--City Picker View Controller-->
         <scene sceneID="XF1-6f-8DS">
@@ -449,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9T-ls-LQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967" y="110"/>
+            <point key="canvasLocation" x="2820" y="-392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BJF-aU-Jo1">
@@ -466,7 +430,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBi-lA-67s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="110"/>
+            <point key="canvasLocation" x="1487" y="-392"/>
         </scene>
         <!--New Post Pet Description View Controller-->
         <scene sceneID="R49-Bx-zyb">
@@ -619,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aH-Vp-YdZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3679.7101449275365" y="109.82142857142857"/>
+            <point key="canvasLocation" x="3475" y="-392"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Sg-hV-6BM">
@@ -632,9 +596,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="1d3-lg-jZJ" kind="relationship" relationship="viewControllers" id="Zok-FO-wyF"/>
-                        <segue destination="52o-lI-8wa" kind="relationship" relationship="viewControllers" id="amy-ex-Ck7"/>
-                        <segue destination="ZO5-EH-SOn" kind="relationship" relationship="viewControllers" id="EP2-zx-F5g"/>
                         <segue destination="TDg-aa-DJa" kind="relationship" relationship="viewControllers" id="jO5-m8-7ej"/>
+                        <segue destination="ZO5-EH-SOn" kind="relationship" relationship="viewControllers" id="EP2-zx-F5g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBx-gL-W9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -645,7 +608,6 @@
     <resources>
         <image name="doc" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

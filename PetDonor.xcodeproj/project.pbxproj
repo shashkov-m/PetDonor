@@ -17,7 +17,6 @@
 		5067D868276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
 		5067D869276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
 		50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */; };
-		50AE0BE42770A495002060EE /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE32770A495002060EE /* UserPostsViewController.swift */; };
 		50AE0BE62770A9B5002060EE /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE52770A9B5002060EE /* Pet.swift */; };
 		50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */; };
 		50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */; };
@@ -70,7 +69,6 @@
 		5054B80727722FF200929B51 /* PasswordRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRestoreViewController.swift; sourceTree = "<group>"; };
 		5067D866276B989300BDFD32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPetDescriptionViewController.swift; sourceTree = "<group>"; };
-		50AE0BE32770A495002060EE /* UserPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
 		50AE0BE52770A9B5002060EE /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestManager.swift; sourceTree = "<group>"; };
 		50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 		D2195EED2769F14B0082E63D /* New post */ = {
 			isa = PBXGroup;
 			children = (
-				50AE0BE32770A495002060EE /* UserPostsViewController.swift */,
 				D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */,
 				50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */,
 				50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */,
@@ -523,7 +520,6 @@
 				50CC60332775D20900DF1B87 /* CollectionFlowLayout.swift in Sources */,
 				50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */,
 				5054B80427722FC300929B51 /* SignInViewController.swift in Sources */,
-				50AE0BE42770A495002060EE /* UserPostsViewController.swift in Sources */,
 				5054B80627722FCD00929B51 /* SignUpViewController.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
 				50AE0BE62770A9B5002060EE /* Pet.swift in Sources */,

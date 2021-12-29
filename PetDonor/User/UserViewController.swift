@@ -1,5 +1,5 @@
 //
-//  Auth.swift
+//  UserViewController.swift
 //  PetDonor
 //
 //  Created by Max Shashkov on 21.12.2021.
@@ -9,12 +9,12 @@ import UIKit
 import Firebase
 
 class UserViewController:UIViewController {
-  let tableView = UITableView ()
-  var handle: AuthStateDidChangeListenerHandle?
-  let authView = UIView ()
-  let signInSegueIdentifier = "signInSegue"
-  let signUpSegueIdentifier = "signUpSegue"
-  let isAuth = true
+  private let newPetSegue = "createNewPetSegue"
+  private let tableView = UITableView ()
+  private var handle: AuthStateDidChangeListenerHandle?
+  private let authView = UIView ()
+  private let signInSegueIdentifier = "signInSegue"
+  private let signUpSegueIdentifier = "signUpSegue"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -115,8 +115,6 @@ class UserViewController:UIViewController {
     createNewButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
     let logOutButton = UIButton (configuration: .filled(), primaryAction: action)
-    
-    
   }
   
   @objc private func signInButtonTapped () {
@@ -129,6 +127,18 @@ class UserViewController:UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     Auth.auth().removeStateDidChangeListener(handle!)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let controller = segue.destination as? UINavigationController, let VC = controller.viewControllers.first as? NewPostPetTableViewController else { return }
+    let pet = Pet (city: nil, ownerId: 1, postId: 1,
+                   description: nil, contactInfo: nil,
+                   bloodType: nil, postType: nil, petType: nil, isVisible: true)
+    print (pet)
+    VC.pet = pet
+  }
+  
+  @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
   }
 }
 
