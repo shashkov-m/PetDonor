@@ -37,26 +37,32 @@ class UserViewController:UIViewController {
   }
   
   private func userViewConfigure () {
+    for view in view.subviews {
+      view.removeFromSuperview()
+    }
     userView.frame = view.bounds
     tableViewConfigure()
     view.addSubview(userView)
     userView.createNewButton.addTarget(self, action: #selector(createNewButtonDidTapped), for: .touchUpInside)
-//    if authView.isDescendant(of: view) {
-//      print ("removed from superview")
-//      authView.removeFromSuperview()
-//    }
-//    let action = UIAction () { action in
-//      let auth = Auth.auth()
-//      do {
-//        try auth.signOut()
-//      } catch let error {
-//        print (error)
-//      }
-//    }
-//    createNewButton.addAction(action, for: .touchUpInside)
+    let navigationItem = UINavigationItem ()
+    let logOutButton = UIAction (title: "Выйти") { _ in
+      let auth = Auth.auth()
+      do {
+        try auth.signOut()
+      } catch let error {
+        print (error)
+      }
+    }
+    let menu = UIMenu (title: "", options: .displayInline, children: [logOutButton])
+    let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
+    navigationItem.rightBarButtonItem = moreItem
+    userView.navigationBar.setItems([navigationItem], animated: false)
   }
   
   private func authViewConfigure () {
+    for view in view.subviews {
+      view.removeFromSuperview()
+    }
     let authView = AuthView ()
     authView.frame = view.bounds
     view.addSubview(authView)
