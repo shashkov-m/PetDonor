@@ -19,7 +19,7 @@ struct Response:Decodable {
 struct City:Decodable {
   var id:Int?
   var title:String?
-  var area:String?
+  //var area:String?
   var region:String?
-  var important:Int?
+  //var important:Int?
 }

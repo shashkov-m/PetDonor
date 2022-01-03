@@ -27,7 +27,7 @@ enum PostType:Int {
   case donor = 1
 }
 
-enum PetType:String {
+enum PetType:String,CaseIterable {
   case cat = "Кошка"
   case dog = "Собака"
 }

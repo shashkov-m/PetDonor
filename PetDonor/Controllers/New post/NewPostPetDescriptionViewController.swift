@@ -15,6 +15,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var petBloodTypeMenu: UIButton!
   @IBOutlet weak var petIcon: UIImageView!
   var pet:Pet?
+  let db = DB ()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,7 +42,8 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.description = petDescription
     pet.contactInfo = contactsInfo
     pet.bloodType = bloodType
-    fatalError ("TODO")
+    print (pet)
+    db.addPet(pet: pet)
   }
   
   @objc private func hideKeyboard () {
@@ -59,7 +61,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   
   private func bloodTypeMenuConfigure () {
     var actions = [UIAction] ()
-    let bloodTypes = pet?.petType == "Кошка" ? catBloodTypes : dogBloodTypes
+    let bloodTypes = pet?.petType == .cat ? catBloodTypes : dogBloodTypes
     for i in bloodTypes {
       let action = UIAction (title: i, handler: { (_) in })
       actions.append(action)
@@ -72,7 +74,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   
   private func petIconConfigure () {
     guard let pet = pet else { return }
-    if pet.petType == "Кошка" {
+    if pet.petType == .cat {
       petIcon.image = UIImage (named: "catIcon")
     } else {
       petIcon.image = UIImage (named: "dogIcon")
