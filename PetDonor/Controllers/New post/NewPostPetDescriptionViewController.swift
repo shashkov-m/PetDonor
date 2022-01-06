@@ -15,7 +15,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var petBloodTypeMenu: UIButton!
   @IBOutlet weak var petIcon: UIImageView!
   var pet:Pet?
-  let db = DB ()
+  let db = Database.share
   
   override func viewDidLoad() {
     super.viewDidLoad()

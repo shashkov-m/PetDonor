@@ -16,4 +16,6 @@ struct Pet {
   var postType:String?
   var petType:PetType?
   var isVisible:Bool
+  let userID:String
+  var dateCreate:Date
   }

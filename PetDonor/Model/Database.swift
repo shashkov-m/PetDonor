@@ -8,34 +8,43 @@
 import Foundation
 import Firebase
 
-struct DB {
-  let db = Firestore.firestore()
-  let user = Auth.auth().currentUser
-  private let userCollection = "users"
-  private let petCollection = "pets"
+final class Database {
+  static let share = Database ()
+  private let db = Firestore.firestore()
+  private let user = Auth.auth().currentUser
+  //private let petCollection = "pets"
   private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent)
+  private let petCollection:CollectionReference
+  private init () {
+    petCollection = db.collection("pets")
+  }
+  
   func addPet (pet:Pet) {
-    guard let userId = user?.uid else { return }
-    let now = Date ()
-    let dateFormatter = DateFormatter ()
-    dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-    let stringDate = dateFormatter.string(from: now)
     let petObject:[String : Any] = [
-      "Pet type" : pet.petType?.rawValue ?? "",
-      "Blood type" : pet.bloodType ?? "",
-      "Post type" : pet.postType ?? "",
-      "Description" : pet.description ?? "",
-      "Contact info" : pet.contactInfo ?? "",
-      "City id" : pet.city?.id ?? "",
-      "City:" : pet.city?.title ?? "",
-      "isVisible" : pet.isVisible
+      PetKeys.petType.rawValue : pet.petType?.rawValue ?? "",
+      PetKeys.bloodType.rawValue : pet.bloodType ?? "",
+      PetKeys.postType.rawValue : pet.postType ?? "",
+      PetKeys.description.rawValue : pet.description ?? "",
+      PetKeys.contactInfo.rawValue : pet.contactInfo ?? "",
+      PetKeys.cityID.rawValue : pet.city?.id ?? 0,
+      PetKeys.city.rawValue : pet.city?.title ?? "",
+      PetKeys.dateCreate.rawValue : pet.dateCreate,
+      PetKeys.isVisible.rawValue : pet.isVisible,
+      PetKeys.userID.rawValue : pet.userID
     ]
+    let ref = petCollection
     queue.async {
-      db.collection(userCollection).document(userId).collection(petCollection).document(stringDate).setData (petObject) { error in
+      ref.document().setData (petObject) { error in
         if let error = error {
           print (error.localizedDescription)
         }
       }
     }
+  }
+  @available (iOS 15, *)
+  func getPetList () async throws -> QuerySnapshot {
+    let query = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).limit(to: 3).order (by: PetKeys.dateCreate.rawValue,descending: true)
+    let result = try await query.getDocuments()
+    return result
   }
 }
