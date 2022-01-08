@@ -82,10 +82,14 @@ class UserViewController:UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let controller = segue.destination as? UINavigationController, let VC = controller.viewControllers.first as? NewPostPetTableViewController else { return }
-    let pet = Pet (city: nil, ownerId: 1, postId: 1,
-                   description: nil, contactInfo: nil,
-                   bloodType: nil, postType: nil, petType: nil, isVisible: true)
+    guard let controller = segue.destination as? UINavigationController,
+          let VC = controller.viewControllers.first as? NewPostPetTableViewController,
+          let user = Auth.auth().currentUser
+    else {
+      return
+      
+    }
+    let pet = Pet (isVisible: true, userID: user.uid)
     print (pet)
     VC.pet = pet
   }

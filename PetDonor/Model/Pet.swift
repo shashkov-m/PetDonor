@@ -10,13 +10,12 @@ import Foundation
 struct Pet {
   
   var city:City?
-  let ownerId:Int
-  let postId:Int
   var description:String?
   var contactInfo:String?
   var bloodType:String?
   var postType:String?
-  var petType:String?
+  var petType:PetType?
   var isVisible:Bool
-  
+  let userID:String
+  var dateCreate:Date?
   }

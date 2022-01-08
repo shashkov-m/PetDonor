@@ -9,7 +9,7 @@ import UIKit
 
 class NewPostPetTableViewController: UITableViewController {
   var pet:Pet?
-  let petType = ["Кошка","Собака"]
+//  let petType = ["Кошка","Собака"]
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.separatorStyle = .none
@@ -29,14 +29,13 @@ class NewPostPetTableViewController: UITableViewController {
     var configuration = cell.defaultContentConfiguration()
     let petImage = [UIImage (named: "catIcon"), UIImage (named: "dogIcon")]
     configuration.image = petImage [indexPath.row]
-    configuration.text = petType [indexPath.row]
+    configuration.text = PetType.allCases [indexPath.row].rawValue
     cell.contentConfiguration = configuration
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    pet?.petType = petType [indexPath.row]
-    print (petType [indexPath.row])
+    pet?.petType = PetType.allCases [indexPath.row]
     tableView.deselectRow(at: indexPath, animated: true)
     performSegue(withIdentifier: "toCityPicker", sender: self)
   }
