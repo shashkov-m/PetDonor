@@ -17,5 +17,5 @@ struct Pet {
   var petType:PetType?
   var isVisible:Bool
   let userID:String
-  var dateCreate:Date
+  var dateCreate:Date?
   }

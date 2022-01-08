@@ -38,11 +38,12 @@ class NewPostPetDescriptionViewController: UIViewController {
     let petDescription = petDescriptionTextView.text
     let contactsInfo = petContactsTextView.text
     let bloodType = petBloodTypeMenu.menu?.selectedElements.first?.title
+    let now = Date ()
     pet.postType = donorType
     pet.description = petDescription
     pet.contactInfo = contactsInfo
     pet.bloodType = bloodType
-    print (pet)
+    pet.dateCreate = now
     db.addPet(pet: pet)
   }
   

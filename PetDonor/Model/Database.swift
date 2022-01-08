@@ -12,11 +12,14 @@ final class Database {
   static let share = Database ()
   private let db = Firestore.firestore()
   private let user = Auth.auth().currentUser
-  //private let petCollection = "pets"
   private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent)
   private let petCollection:CollectionReference
+  private let petLimittedQuery:Query
+  var limit = 3
+  
   private init () {
     petCollection = db.collection("pets")
+    petLimittedQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
   }
   
   func addPet (pet:Pet) {
@@ -28,7 +31,7 @@ final class Database {
       PetKeys.contactInfo.rawValue : pet.contactInfo ?? "",
       PetKeys.cityID.rawValue : pet.city?.id ?? 0,
       PetKeys.city.rawValue : pet.city?.title ?? "",
-      PetKeys.dateCreate.rawValue : pet.dateCreate,
+      PetKeys.dateCreate.rawValue : pet.dateCreate ?? Date.now,
       PetKeys.isVisible.rawValue : pet.isVisible,
       PetKeys.userID.rawValue : pet.userID
     ]
@@ -43,7 +46,13 @@ final class Database {
   }
   @available (iOS 15, *)
   func getPetList () async throws -> QuerySnapshot {
-    let query = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).limit(to: 3).order (by: PetKeys.dateCreate.rawValue,descending: true)
+    let result = try await petLimittedQuery.getDocuments()
+    return result
+  }
+  
+  @available (iOS 15, *)
+  func getNextPetsPart (from snapshot:QueryDocumentSnapshot) async throws -> QuerySnapshot {
+    let query = petLimittedQuery.start(afterDocument: snapshot)
     let result = try await query.getDocuments()
     return result
   }

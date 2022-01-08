@@ -161,6 +161,7 @@
 			children = (
 				5054B8012771F47400929B51 /* UserViewController.swift */,
 				500B7B5F277D16F300F4736B /* UserView.swift */,
+				D2195EED2769F14B0082E63D /* New post */,
 				500B7B5E277D145100F4736B /* Auth */,
 			);
 			path = User;
@@ -250,7 +251,6 @@
 		D237CD25275784E500022511 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D2195EED2769F14B0082E63D /* New post */,
 				D237CD452763907400022511 /* BoardViewController.swift */,
 				D237CD472763C0A600022511 /* SettingsViewController.swift */,
 			);

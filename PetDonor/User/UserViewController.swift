@@ -89,8 +89,7 @@ class UserViewController:UIViewController {
       return
       
     }
-    let now = Date ()
-    let pet = Pet (isVisible: true, userID: user.uid, dateCreate: now)
+    let pet = Pet (isVisible: true, userID: user.uid)
     print (pet)
     VC.pet = pet
   }
