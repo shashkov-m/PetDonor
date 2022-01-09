@@ -21,8 +21,11 @@ final class Database {
     petCollection = db.collection("pets")
     petLimittedQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
   }
+  enum Errors:Error {
+    case s
+  }
   
-  func addPet (pet:Pet) {
+  func addPet (pet:Pet, completion: @escaping (Error?) -> ()) {
     let petObject:[String : Any] = [
       PetKeys.petType.rawValue : pet.petType?.rawValue ?? "",
       PetKeys.bloodType.rawValue : pet.bloodType ?? "",
@@ -39,7 +42,7 @@ final class Database {
     queue.async {
       ref.document().setData (petObject) { error in
         if let error = error {
-          print (error.localizedDescription)
+          completion (error)
         }
       }
     }
@@ -53,6 +56,13 @@ final class Database {
   @available (iOS 15, *)
   func getNextPetsPart (from snapshot:QueryDocumentSnapshot) async throws -> QuerySnapshot {
     let query = petLimittedQuery.start(afterDocument: snapshot)
+    let result = try await query.getDocuments()
+    return result
+  }
+  
+  @available (iOS 15, *)
+  func updatePetList (from snapshot:QueryDocumentSnapshot) async throws ->QuerySnapshot {
+    let query = petLimittedQuery.end(beforeDocument: snapshot)
     let result = try await query.getDocuments()
     return result
   }

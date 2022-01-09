@@ -44,7 +44,21 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.contactInfo = contactsInfo
     pet.bloodType = bloodType
     pet.dateCreate = now
-    db.addPet(pet: pet)
+    db.addPet(pet: pet) { error in
+      if let error = error {
+        let alert = UIAlertController (title: "", message: error.localizedDescription, preferredStyle: .alert)
+        let retryAction = UIAlertAction (title: "Повторить", style: .default) { _ in
+          print ("retry printed")
+          self.sendDataButton(self)
+        }
+        let exitAction = UIAlertAction (title: "Отменить", style: .cancel, handler: nil)
+        alert.addAction(exitAction)
+        alert.addAction(retryAction)
+        self.present(alert, animated: true, completion: nil)
+      } else {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+      }
+    }
   }
   
   @objc private func hideKeyboard () {
@@ -82,5 +96,4 @@ class NewPostPetDescriptionViewController: UIViewController {
     }
     petIcon.layer.cornerRadius = 25.0
   }
-  
 }
