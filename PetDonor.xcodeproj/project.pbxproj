@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		365EB36E5DE257CCA67BB57E /* Pods_PetDonorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C1E4FBEA15CEA1D8626564 /* Pods_PetDonorTests.framework */; };
+		5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50077379278DFAA5000A6FD1 /* PetCardViewController.swift */; };
 		500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5A277B6C5300F4736B /* PetInfo.swift */; };
 		500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5C277D0A4A00F4736B /* AuthView.swift */; };
 		500B7B60277D16F300F4736B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5F277D16F300F4736B /* UserView.swift */; };
@@ -65,6 +66,7 @@
 		3CB11C1E5B9E2D13C0AA834C /* Pods-PetDonor-PetDonorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetDonor-PetDonorUITests.debug.xcconfig"; path = "Target Support Files/Pods-PetDonor-PetDonorUITests/Pods-PetDonor-PetDonorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		416D12317E2372066D53C729 /* Pods_PetDonor_PetDonorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetDonor_PetDonorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4317484A7133E2D3CFA99776 /* Pods-PetDonor-PetDonorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetDonor-PetDonorUITests.release.xcconfig"; path = "Target Support Files/Pods-PetDonor-PetDonorUITests/Pods-PetDonor-PetDonorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		50077379278DFAA5000A6FD1 /* PetCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardViewController.swift; sourceTree = "<group>"; };
 		500B7B5A277B6C5300F4736B /* PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfo.swift; sourceTree = "<group>"; };
 		500B7B5C277D0A4A00F4736B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		500B7B5F277D16F300F4736B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		50077378278DF968000A6FD1 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */,
+				D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */,
+				D237CD472763C0A600022511 /* SettingsViewController.swift */,
+			);
+			path = FilterView;
+			sourceTree = "<group>";
+		};
 		500B7B5E277D145100F4736B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +235,7 @@
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
 				D237CD33275F9E0800022511 /* Model */,
 				D237CD26275784FF00022511 /* Views */,
-				D237CD25275784E500022511 /* Controllers */,
+				D237CD25275784E500022511 /* Main Board */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
 				5067D866276B989300BDFD32 /* GoogleService-Info.plist */,
@@ -248,13 +260,16 @@
 			path = PetDonorUITests;
 			sourceTree = "<group>";
 		};
-		D237CD25275784E500022511 /* Controllers */ = {
+		D237CD25275784E500022511 /* Main Board */ = {
 			isa = PBXGroup;
 			children = (
 				D237CD452763907400022511 /* BoardViewController.swift */,
-				D237CD472763C0A600022511 /* SettingsViewController.swift */,
+				50077379278DFAA5000A6FD1 /* PetCardViewController.swift */,
+				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
+				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
+				50077378278DF968000A6FD1 /* FilterView */,
 			);
-			path = Controllers;
+			path = "Main Board";
 			sourceTree = "<group>";
 		};
 		D237CD26275784FF00022511 /* Views */ = {
@@ -262,10 +277,6 @@
 			children = (
 				D237CD422763775600022511 /* Main.storyboard */,
 				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
-				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
-				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
-				D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */,
-				D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */,
 				D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
 				D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */,

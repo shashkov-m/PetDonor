@@ -25,7 +25,7 @@ final class Database {
     case s
   }
   
-  func addPet (pet:Pet, completion: @escaping (Error?) -> ()) {
+  func addPet (pet:Pet, completion: @escaping (Result <Pet,Error>) -> ()) {
     let petObject:[String : Any] = [
       PetKeys.petType.rawValue : pet.petType?.rawValue ?? "",
       PetKeys.bloodType.rawValue : pet.bloodType ?? "",
@@ -42,7 +42,9 @@ final class Database {
     queue.async {
       ref.document().setData (petObject) { error in
         if let error = error {
-          completion (error)
+          completion (.failure(error))
+        } else {
+          completion (.success (pet))
         }
       }
     }
@@ -56,13 +58,6 @@ final class Database {
   @available (iOS 15, *)
   func getNextPetsPart (from snapshot:QueryDocumentSnapshot) async throws -> QuerySnapshot {
     let query = petLimittedQuery.start(afterDocument: snapshot)
-    let result = try await query.getDocuments()
-    return result
-  }
-  
-  @available (iOS 15, *)
-  func updatePetList (from snapshot:QueryDocumentSnapshot) async throws ->QuerySnapshot {
-    let query = petLimittedQuery.end(beforeDocument: snapshot)
     let result = try await query.getDocuments()
     return result
   }

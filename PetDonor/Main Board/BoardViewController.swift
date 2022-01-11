@@ -13,12 +13,9 @@ class BoardViewController: UIViewController {
   private var pets = [Pet] ()
   private var isFirtsQuery = false
   private var lastSnapshot:QueryDocumentSnapshot?
-  private var firstSnapshot:QueryDocumentSnapshot?
-  private var isQueryRunning = false {
-    willSet {
-      print ("isQueryRunning will set called. new value is ",newValue)
-    }
-  }
+  private var isQueryRunning = false
+  private let toPetCardSegueIdentifier = "toPetCard"
+  private var pet:Pet?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,7 +38,6 @@ class BoardViewController: UIViewController {
           pets.append(pet)
         }
         tableView.reloadData()
-        firstSnapshot = snapshot.documents.first
         lastSnapshot = snapshot.documents.last
       } catch {
         print ("err\(error.localizedDescription)")
@@ -55,21 +51,20 @@ class BoardViewController: UIViewController {
     
   }
   @objc private func updatePetList () {
-    guard let refreshControl = tableView.refreshControl, let fromSnapshot = firstSnapshot else { return }
+    guard let refreshControl = tableView.refreshControl else { return }
     Task {
       do {
-        var index = 0
-        let snapshot = try await db.updatePetList(from: fromSnapshot)
+        let snapshot = try await db.getPetList()
         guard snapshot.count > 0
         else {
           refreshControl.endRefreshing()
           return
         }
         let petArray = convertSnapshotToPet(snapshot: snapshot)
-        firstSnapshot = snapshot.documents.first
+        lastSnapshot = snapshot.documents.last
+        pets.removeAll()
         for pet in petArray {
-          pets.insert(pet, at: index)
-          index += 1
+          pets.append(pet)
         }
       } catch {
         print (error.localizedDescription)
@@ -96,6 +91,12 @@ class BoardViewController: UIViewController {
     }
     return array
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == toPetCardSegueIdentifier, let destinationVC = segue.destination as? PetCardViewController, let pet = pet {
+      destinationVC.pet = pet
+    }
+  }
 }
 extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
   
@@ -116,8 +117,9 @@ extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pet = pets [indexPath.row]
     tableView.deselectRow(at: indexPath, animated: true)
-    print (pets)
+    performSegue(withIdentifier: toPetCardSegueIdentifier, sender: self)
   }
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     if indexPath.row == pets.count - 2 {

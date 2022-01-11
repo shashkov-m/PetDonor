@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pet {
+struct Pet {  
   
   var city:City?
   var description:String?

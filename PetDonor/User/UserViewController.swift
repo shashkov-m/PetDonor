@@ -87,10 +87,8 @@ class UserViewController:UIViewController {
           let user = Auth.auth().currentUser
     else {
       return
-      
     }
     let pet = Pet (isVisible: true, userID: user.uid)
-    print (pet)
     VC.pet = pet
   }
   

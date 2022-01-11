@@ -292,11 +292,146 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Bjy-M7-jsQ" id="Kq9-Eu-OWb"/>
+                        <segue destination="nIP-U3-1Wx" kind="show" identifier="toPetCard" id="aOL-HF-eJD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oD-YP-Gay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1487" y="-1043"/>
+        </scene>
+        <!--Pet Card View Controller-->
+        <scene sceneID="VfN-5Z-3zF">
+            <objects>
+                <viewController id="nIP-U3-1Wx" customClass="PetCardViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNl-M7-FyK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mk3-NP-KJk">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIb-hc-ld8">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="431"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контакты" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZf-fX-9bO">
+                                                <rect key="frame" x="20" y="330" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация о питомце" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-Bh-Y0D">
+                                                <rect key="frame" x="20" y="249" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GII-vP-lBb">
+                                                <rect key="frame" x="87" y="60.5" width="240" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="exD-H5-AJx"/>
+                                                    <constraint firstAttribute="width" constant="240" id="mz0-ZY-h0N"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата публикации" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDX-vB-BFj">
+                                                <rect key="frame" x="20" y="370.5" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Город" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29P-wT-FMH">
+                                                <rect key="frame" x="20" y="208.5" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2CP-Fh-BxP">
+                                                <rect key="frame" x="20" y="20" width="271.5" height="20.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Питомец" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZp-h2-Nl9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Группа крови" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hI-pR-MMK">
+                                                        <rect key="frame" x="92" y="0.0" width="107.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Донор" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5l-p5-Pmj">
+                                                        <rect key="frame" x="219.5" y="0.0" width="52" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контактная информация:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leM-GF-Qd0">
+                                                <rect key="frame" x="20" y="289.5" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="FDX-vB-BFj" secondAttribute="trailing" constant="20" id="6A2-eb-eL3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ihv-Bh-Y0D" secondAttribute="trailing" constant="20" id="DEt-W9-L3W"/>
+                                            <constraint firstAttribute="trailing" secondItem="leM-GF-Qd0" secondAttribute="trailing" constant="20" id="IdO-Fy-aJp"/>
+                                            <constraint firstItem="leM-GF-Qd0" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="Jo4-fB-XUy"/>
+                                            <constraint firstItem="29P-wT-FMH" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="Kil-2e-pHQ"/>
+                                            <constraint firstItem="leM-GF-Qd0" firstAttribute="top" secondItem="Ihv-Bh-Y0D" secondAttribute="bottom" constant="20" id="NjV-q8-B93"/>
+                                            <constraint firstItem="GII-vP-lBb" firstAttribute="top" secondItem="2CP-Fh-BxP" secondAttribute="bottom" constant="20" id="PQn-Ca-FME"/>
+                                            <constraint firstItem="jZf-fX-9bO" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="QFw-uI-the"/>
+                                            <constraint firstAttribute="trailing" secondItem="jZf-fX-9bO" secondAttribute="trailing" constant="20" id="Un0-95-6kN"/>
+                                            <constraint firstItem="GII-vP-lBb" firstAttribute="centerX" secondItem="uIb-hc-ld8" secondAttribute="centerX" id="XgB-Ch-RbB"/>
+                                            <constraint firstItem="jZf-fX-9bO" firstAttribute="top" secondItem="leM-GF-Qd0" secondAttribute="bottom" constant="20" id="YgD-To-zwo"/>
+                                            <constraint firstItem="Ihv-Bh-Y0D" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="g1d-jF-QhN"/>
+                                            <constraint firstItem="FDX-vB-BFj" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="gzi-nN-yWH"/>
+                                            <constraint firstAttribute="bottom" secondItem="FDX-vB-BFj" secondAttribute="bottom" constant="40" id="htZ-UX-iRr"/>
+                                            <constraint firstAttribute="trailing" secondItem="29P-wT-FMH" secondAttribute="trailing" constant="20" id="j9M-VT-2AC"/>
+                                            <constraint firstItem="FDX-vB-BFj" firstAttribute="top" secondItem="jZf-fX-9bO" secondAttribute="bottom" constant="20" id="mTl-A3-WtY"/>
+                                            <constraint firstItem="2CP-Fh-BxP" firstAttribute="top" secondItem="uIb-hc-ld8" secondAttribute="top" constant="20" id="oLs-06-lF0"/>
+                                            <constraint firstItem="29P-wT-FMH" firstAttribute="top" secondItem="GII-vP-lBb" secondAttribute="bottom" constant="20" id="ure-nS-tH9"/>
+                                            <constraint firstItem="2CP-Fh-BxP" firstAttribute="leading" secondItem="uIb-hc-ld8" secondAttribute="leading" constant="20" id="utM-7B-yDj"/>
+                                            <constraint firstItem="Ihv-Bh-Y0D" firstAttribute="top" secondItem="29P-wT-FMH" secondAttribute="bottom" constant="20" id="zN5-Br-gNO"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uIb-hc-ld8" secondAttribute="bottom" id="4aK-M7-9bL"/>
+                                    <constraint firstAttribute="trailing" secondItem="uIb-hc-ld8" secondAttribute="trailing" id="87N-7A-DN9"/>
+                                    <constraint firstItem="uIb-hc-ld8" firstAttribute="width" secondItem="mk3-NP-KJk" secondAttribute="width" id="8mF-Js-h4p"/>
+                                    <constraint firstItem="uIb-hc-ld8" firstAttribute="top" secondItem="mk3-NP-KJk" secondAttribute="top" id="JX0-dw-jl6"/>
+                                    <constraint firstItem="uIb-hc-ld8" firstAttribute="leading" secondItem="mk3-NP-KJk" secondAttribute="leading" id="p0S-Cs-ytG"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Os-aZ-H7k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Os-aZ-H7k" firstAttribute="bottom" secondItem="mk3-NP-KJk" secondAttribute="bottom" id="2Su-Yp-O59"/>
+                            <constraint firstItem="mk3-NP-KJk" firstAttribute="trailing" secondItem="4Os-aZ-H7k" secondAttribute="trailing" id="5CW-fi-xbs"/>
+                            <constraint firstItem="mk3-NP-KJk" firstAttribute="leading" secondItem="4Os-aZ-H7k" secondAttribute="leading" id="ENm-tZ-twb"/>
+                            <constraint firstItem="mk3-NP-KJk" firstAttribute="top" secondItem="4Os-aZ-H7k" secondAttribute="top" id="hka-4g-s9e"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="e4Q-H4-FdK"/>
+                    <connections>
+                        <outlet property="bloodTypeLabel" destination="3hI-pR-MMK" id="xB4-aa-4Cq"/>
+                        <outlet property="cityLabel" destination="29P-wT-FMH" id="zdU-aS-KGI"/>
+                        <outlet property="contactInfoLabel" destination="jZf-fX-9bO" id="7It-K6-jHV"/>
+                        <outlet property="dateCreateLabel" destination="FDX-vB-BFj" id="o1g-Jb-PBS"/>
+                        <outlet property="petImageView" destination="GII-vP-lBb" id="EMf-CO-Viv"/>
+                        <outlet property="petInfoLabel" destination="Ihv-Bh-Y0D" id="UWf-pO-84b"/>
+                        <outlet property="petTypeLabel" destination="kZp-h2-Nl9" id="mOP-fJ-m1t"/>
+                        <outlet property="postTypeLabel" destination="h5l-p5-Pmj" id="lGC-ys-abx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6CY-E2-LjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2228.985507246377" y="-1043.3035714285713"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="9qj-UD-7Xg">
@@ -329,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5H-LG-JLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155" y="-1043"/>
+            <point key="canvasLocation" x="2229" y="-1681"/>
         </scene>
         <!--New Post Pet Table View Controller-->
         <scene sceneID="IZC-3i-E9l">
