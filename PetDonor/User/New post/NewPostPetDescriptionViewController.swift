@@ -7,21 +7,24 @@
 import UIKit
 
 class NewPostPetDescriptionViewController: UIViewController {
-  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var petDescriptionTextView: UITextView!
   @IBOutlet weak var petContactsTextView: UITextView!
   @IBOutlet weak var petSegmentedControll: UISegmentedControl!
   @IBOutlet weak var petBloodTypeMenu: UIButton!
-  @IBOutlet weak var petIcon: UIImageView!
+  @IBOutlet weak var ageTextField: UITextField!
+  @IBOutlet weak var rewardTextField: UITextField!
+  @IBOutlet weak var rewardSegmentedControl: UISegmentedControl!
+  
   var pet:Pet?
   let db = Database.share
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    rewardSegmentedControl.addTarget(self, action: #selector(segmentedControlDidChange(_:)), for: .valueChanged)
+    rewardTextField.delegate = self
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
     toolBarConfiguration ()
-    petIconConfigure()
     bloodTypeMenuConfigure()
   }
   override func viewWillAppear(_ animated: Bool) {
@@ -86,14 +89,22 @@ class NewPostPetDescriptionViewController: UIViewController {
       petBloodTypeMenu.menu = menu
     }
   }
-  
-  private func petIconConfigure () {
-    guard let pet = pet else { return }
-    if pet.petType == .cat {
-      petIcon.image = UIImage (named: "catIcon")
-    } else {
-      petIcon.image = UIImage (named: "dogIcon")
-    }
-    petIcon.layer.cornerRadius = 25.0
+  @objc private func segmentedControlDidChange (_ segmentedControl:UISegmentedControl) {
+    guard segmentedControl.isEnabledForSegment(at: 0) || segmentedControl.isEnabledForSegment(at: 1) else { return }
+    rewardTextField.text?.removeAll()
+    view.endEditing(true)
   }
+}
+
+extension NewPostPetDescriptionViewController:UITextFieldDelegate {
+  func textFieldDidChangeSelection(_ textField: UITextField) {
+    if let text = textField.text, text.count > 5 {
+      textField.text?.removeLast()
+    }
+  }
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    guard rewardSegmentedControl.isEnabledForSegment(at: 0) || rewardSegmentedControl.isEnabledForSegment(at: 1) else { return }
+    rewardSegmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+  }
+  
 }

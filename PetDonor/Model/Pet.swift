@@ -18,4 +18,6 @@ struct Pet {
   var isVisible:Bool
   let userID:String
   var dateCreate:Date?
+  var reward:Int?
+  var age:Date?
   }

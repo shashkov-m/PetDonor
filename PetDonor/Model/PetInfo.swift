@@ -8,11 +8,13 @@
 import Foundation
 
 let catBloodTypes = [
+  "Неизвестно",
   "A",
   "B",
   "AB"
 ]
 let dogBloodTypes = [
+  "Неизвестно",
   "DEA 1.1",
   "DEA 1.2",
   "DEA 3",
