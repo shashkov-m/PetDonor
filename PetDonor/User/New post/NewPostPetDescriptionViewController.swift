@@ -46,6 +46,15 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.contactInfo = contactsInfo
     pet.bloodType = bloodType
     pet.dateCreate = now
+    pet.reward = {
+      if let currentSum = rewardTextField.text {
+        return currentSum
+      } else {
+        let index = rewardSegmentedControl.selectedSegmentIndex
+        let string = rewardSegmentedControl.titleForSegment(at: index)
+        return string
+      }
+    } ()
     db.addPet(pet: pet) { result in
       switch result {
       case .failure(let error):

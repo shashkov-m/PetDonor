@@ -17,6 +17,8 @@ class PetCardViewController: UIViewController {
   @IBOutlet weak var petInfoLabel: UILabel!
   @IBOutlet weak var contactInfoLabel: UILabel!
   @IBOutlet weak var dateCreateLabel: UILabel!
+  @IBOutlet weak var rewardLabel: UILabel!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()

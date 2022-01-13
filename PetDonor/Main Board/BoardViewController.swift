@@ -33,7 +33,7 @@ class BoardViewController: UIViewController {
         guard isFirtsQuery != true else { return }
         isFirtsQuery = true
         let snapshot = try await db.getPetList()
-        let petsArray = convertSnapshotToPet(snapshot: snapshot)
+        let petsArray = db.convertSnapshotToPet(snapshot: snapshot)
         for pet in petsArray {
           pets.append(pet)
         }
@@ -60,7 +60,7 @@ class BoardViewController: UIViewController {
           refreshControl.endRefreshing()
           return
         }
-        let petArray = convertSnapshotToPet(snapshot: snapshot)
+        let petArray = db.convertSnapshotToPet(snapshot: snapshot)
         lastSnapshot = snapshot.documents.last
         pets.removeAll()
         for pet in petArray {
@@ -73,25 +73,6 @@ class BoardViewController: UIViewController {
       refreshControl.endRefreshing()
     }
   }
-  private func convertSnapshotToPet (snapshot:QuerySnapshot) -> [Pet] {
-    var array = [Pet] ()
-    for document in snapshot.documents {
-      let doc = document.data()
-      if let petType = doc[PetKeys.petType.rawValue] as? String, let bloodType = doc[PetKeys.bloodType.rawValue] as? String,
-         let postType = doc[PetKeys.postType.rawValue] as? String, let description = doc[PetKeys.description.rawValue] as? String,
-         let contactInfo = doc[PetKeys.contactInfo.rawValue] as? String, let cityID = doc[PetKeys.cityID.rawValue] as? Int,
-         let cityTitle = doc[PetKeys.city.rawValue] as? String, let dateCreate = doc[PetKeys.dateCreate.rawValue] as? Timestamp,
-         let isVisible = doc[PetKeys.isVisible.rawValue] as? Bool, let userID = doc[PetKeys.userID.rawValue] as? String
-      {
-        let city = City (id: cityID, title: cityTitle)
-        let date = dateCreate.dateValue()
-        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date)
-        array.append(pet)
-      }
-    }
-    return array
-  }
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == toPetCardSegueIdentifier, let destinationVC = segue.destination as? PetCardViewController, let pet = pet {
       destinationVC.pet = pet
@@ -131,7 +112,7 @@ extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
       Task {
         do {
           let snapshot = try await db.getNextPetsPart(from: fromLastSnapshot)
-          let petsArray = convertSnapshotToPet(snapshot: snapshot)
+          let petsArray = db.convertSnapshotToPet(snapshot: snapshot)
           for pet in petsArray {
             pets.append(pet)
           }

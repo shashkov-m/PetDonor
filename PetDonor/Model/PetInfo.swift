@@ -45,4 +45,5 @@ enum PetKeys:String {
   case dateCreate
   case isVisible
   case userID
+  case reward
 }
