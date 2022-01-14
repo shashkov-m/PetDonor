@@ -5,7 +5,6 @@
 //  Created by Max Shashkov on 20.12.2021.
 //
 import UIKit
-import AnyFormatKit
 class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var petDescriptionTextView: UITextView!
   @IBOutlet weak var petContactsTextView: UITextView!
@@ -117,7 +116,6 @@ extension NewPostPetDescriptionViewController:UITextFieldDelegate {
   }
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if let text = textField.text {
-      let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
     }
     return true
   }
