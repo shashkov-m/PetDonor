@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pet {
+struct Pet {  
   
   var city:City?
   var description:String?
@@ -18,4 +18,6 @@ struct Pet {
   var isVisible:Bool
   let userID:String
   var dateCreate:Date?
+  var reward:String?
+  var age:String?
   }
