@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N62-eA-ZJk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N62-eA-ZJk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -723,6 +723,7 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rx2-R0-13e" secondAttribute="trailing" constant="20" id="AAM-ha-240"/>
                                             <constraint firstItem="AjF-fo-it3" firstAttribute="leading" secondItem="SvI-fk-79X" secondAttribute="leading" constant="20" id="AML-57-7cZ"/>
                                             <constraint firstAttribute="trailing" secondItem="AjF-fo-it3" secondAttribute="trailing" constant="20" id="DTK-9r-cy5"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aR5-0Z-COr" secondAttribute="trailing" constant="20" id="EyM-Gh-RFG"/>
                                             <constraint firstItem="GNI-Ko-WhO" firstAttribute="top" secondItem="KYS-Ax-Ib3" secondAttribute="bottom" constant="10" id="Nuu-wJ-Euq"/>
                                             <constraint firstItem="pnC-YI-YwK" firstAttribute="leading" secondItem="SvI-fk-79X" secondAttribute="leading" constant="30" id="PEi-Mx-kIx"/>
                                             <constraint firstItem="KYS-Ax-Ib3" firstAttribute="leading" secondItem="SvI-fk-79X" secondAttribute="leading" constant="20" id="SW7-CU-Nfs"/>

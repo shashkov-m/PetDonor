@@ -21,6 +21,7 @@ class NewPostPetDescriptionViewController: UIViewController {
     super.viewDidLoad()
     rewardSegmentedControl.addTarget(self, action: #selector(segmentedControlDidChange(_:)), for: .valueChanged)
     rewardTextField.delegate = self
+    ageTextField.delegate = self
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
     toolBarConfiguration ()
@@ -46,12 +47,27 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.bloodType = bloodType
     pet.dateCreate = now
     pet.reward = {
-      if let currentSum = rewardTextField.text {
+      if let currentSum = rewardTextField.text, currentSum.count > 0, Int (currentSum) != nil {
         return currentSum
-      } else {
+      } else if rewardSegmentedControl.selectedSegmentIndex > 0 {
         let index = rewardSegmentedControl.selectedSegmentIndex
         let string = rewardSegmentedControl.titleForSegment(at: index)
         return string
+      } else {
+        return "Не указано"
+      }
+    } ()
+    pet.age = {
+      if let text = ageTextField.text {
+        let formatter = DateFormatter ()
+        formatter.dateFormat = "dd.MM.yyyy"
+        guard let birthDate = formatter.date(from: text), birthDate <= Date.now else { return "Не указано"}
+        return text
+        //let calendar = Calendar.current
+        //let components = calendar.dateComponents([.year, .month], from: birthDate, to: Date ())
+        
+      } else {
+        return "Не указано"
       }
     } ()
     db.addPet(pet: pet) { result in
@@ -106,18 +122,44 @@ class NewPostPetDescriptionViewController: UIViewController {
 
 extension NewPostPetDescriptionViewController:UITextFieldDelegate {
   func textFieldDidChangeSelection(_ textField: UITextField) {
-    if let text = textField.text, text.count > 5 {
-      textField.text?.removeLast()
+    if textField == rewardTextField {
+      guard let text = textField.text, text.count < 6, Int(text) != nil else {
+        textField.deleteBackward()
+        return
+      }
+    } else if textField == ageTextField {
+      guard let text = textField.text, text.count < 11 else {
+        textField.deleteBackward()
+        return
+      }
     }
   }
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    guard rewardSegmentedControl.isEnabledForSegment(at: 0) || rewardSegmentedControl.isEnabledForSegment(at: 1) else { return }
-    rewardSegmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+    if textField == rewardTextField {
+      guard rewardSegmentedControl.isEnabledForSegment(at: 0) || rewardSegmentedControl.isEnabledForSegment(at: 1) else { return }
+      rewardSegmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+    } else if textField == ageTextField {
+      guard ageTextField.textColor == .red else { return }
+      ageTextField.textColor = .label
+    }
   }
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    if let text = textField.text {
+    if textField == ageTextField {
+      if let text = textField.text, string != "", text.count == 2 || text.count == 5 {
+        textField.text?.append(".")
+      }
     }
     return true
   }
-  
+  func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    if textField == ageTextField, let string = textField.text, string.count > 0 {
+      let formatter = DateFormatter ()
+      formatter.dateFormat = "dd.MM.yyyy"
+      guard let date = formatter.date(from: string), date <= Date.now else {
+        ageTextField.textColor = .red
+        shakeAnimation(view: ageTextField)
+        return
+      }
+    }
+  }
 }

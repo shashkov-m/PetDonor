@@ -19,5 +19,5 @@ struct Pet {
   let userID:String
   var dateCreate:Date?
   var reward:String?
-  var age:Date?
+  var age:String?
   }

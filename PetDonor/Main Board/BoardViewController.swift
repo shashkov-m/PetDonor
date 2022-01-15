@@ -33,7 +33,9 @@ class BoardViewController: UIViewController {
         guard isFirtsQuery != true else { return }
         isFirtsQuery = true
         let snapshot = try await db.getPetList()
+        print (snapshot.documents.count)
         let petsArray = db.convertSnapshotToPet(snapshot: snapshot)
+        print (petsArray)
         for pet in petsArray {
           pets.append(pet)
         }
