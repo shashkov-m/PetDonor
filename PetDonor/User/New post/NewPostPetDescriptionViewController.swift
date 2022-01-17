@@ -5,7 +5,9 @@
 //  Created by Max Shashkov on 20.12.2021.
 //
 import UIKit
+import PhotosUI
 class NewPostPetDescriptionViewController: UIViewController {
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var petDescriptionTextView: UITextView!
   @IBOutlet weak var petContactsTextView: UITextView!
   @IBOutlet weak var petSegmentedControll: UISegmentedControl!
@@ -13,19 +15,23 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var ageTextField: UITextField!
   @IBOutlet weak var rewardTextField: UITextField!
   @IBOutlet weak var rewardSegmentedControl: UISegmentedControl!
+  @IBOutlet weak var petImageView: UIImageView!
+  private lazy var formatter = DateFormatter ()
   
   var pet:Pet?
   let db = Database.share
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    rewardSegmentedControl.addTarget(self, action: #selector(segmentedControlDidChange(_:)), for: .valueChanged)
     rewardTextField.delegate = self
     ageTextField.delegate = self
+    toolBarConfiguration ()
+    bloodTypeMenuConfigure ()
+    formatter.dateFormat = "dd.MM.yyyy"
+    rewardSegmentedControl.addTarget(self, action: #selector(segmentedControlDidChange(_:)), for: .valueChanged)
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
-    toolBarConfiguration ()
-    bloodTypeMenuConfigure()
+    scrollView.keyboardDismissMode = .interactive
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -58,14 +64,10 @@ class NewPostPetDescriptionViewController: UIViewController {
       }
     } ()
     pet.age = {
-      if let text = ageTextField.text {
-        let formatter = DateFormatter ()
-        formatter.dateFormat = "dd.MM.yyyy"
-        guard let birthDate = formatter.date(from: text), birthDate <= Date.now else { return "Не указано"}
+      if let text = ageTextField.text, let birthDate = formatter.date(from: text), birthDate <= Date.now {
         return text
         //let calendar = Calendar.current
         //let components = calendar.dateComponents([.year, .month], from: birthDate, to: Date ())
-        
       } else {
         return "Не указано"
       }
@@ -118,8 +120,40 @@ class NewPostPetDescriptionViewController: UIViewController {
     rewardTextField.text?.removeAll()
     view.endEditing(true)
   }
+  //MARK: PHPhotoPicker
+  @IBAction func uploadImageButtonAction(_ sender: Any) {
+    var configuration = PHPickerConfiguration ()
+    configuration.filter = .images
+    let picker = PHPickerViewController (configuration: configuration)
+    picker.delegate = self
+    present (picker, animated: true)
+  }
 }
 
+extension NewPostPetDescriptionViewController: PHPickerViewControllerDelegate {
+  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    dismiss(animated: true)
+    if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+      itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+        DispatchQueue.main.async {
+          guard let self = self else { return }
+          if let error = error {
+            let alert = UIAlertController (title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+            let action = UIAlertAction (title: "OK", style: .cancel)
+            alert.addAction(action)
+            self.present(alert, animated: true)
+          } else {
+            guard let image = image as? UIImage else { return }
+            self.petImageView.image = image
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+//MARK: UITextFieldDelegate
 extension NewPostPetDescriptionViewController:UITextFieldDelegate {
   func textFieldDidChangeSelection(_ textField: UITextField) {
     if textField == rewardTextField {
@@ -152,13 +186,14 @@ extension NewPostPetDescriptionViewController:UITextFieldDelegate {
     return true
   }
   func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-    if textField == ageTextField, let string = textField.text, string.count > 0 {
-      let formatter = DateFormatter ()
-      formatter.dateFormat = "dd.MM.yyyy"
-      guard let date = formatter.date(from: string), date <= Date.now else {
-        ageTextField.textColor = .red
-        shakeAnimation(view: ageTextField)
-        return
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      if textField == self.ageTextField, let string = textField.text, string.count > 0 {
+        guard let date = self.formatter.date(from: string), date <= Date.now else {
+          self.ageTextField.textColor = .red
+          shakeAnimation(view: self.ageTextField)
+          return
+        }
       }
     }
   }
