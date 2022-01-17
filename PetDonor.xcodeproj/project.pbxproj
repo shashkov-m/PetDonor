@@ -170,6 +170,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		5027999A2795DDCA0052FB99 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				502799982792E3D50052FB99 /* Animations.swift */,
+				50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */,
+			);
+			path = Customization;
+			sourceTree = "<group>";
+		};
 		5054B8002771F46900929B51 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +240,7 @@
 		D237CCEA2754E3FB00022511 /* PetDonor */ = {
 			isa = PBXGroup;
 			children = (
-				50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */,
+				5027999A2795DDCA0052FB99 /* Customization */,
 				5054B8002771F46900929B51 /* User */,
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
@@ -291,7 +300,6 @@
 				50AE0BE52770A9B5002060EE /* Pet.swift */,
 				500B7B5A277B6C5300F4736B /* PetInfo.swift */,
 				50FCA6F92783266300ED6107 /* Database.swift */,
-				502799982792E3D50052FB99 /* Animations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

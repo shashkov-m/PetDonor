@@ -27,7 +27,7 @@ class NewPostPetTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "NewPostPetCell", for: indexPath)
     var configuration = cell.defaultContentConfiguration()
-    let petImage = [UIImage (named: "CatIcon"), UIImage (named: "DogIcon")]
+    let petImage = [UIImage (named: "catIcon"), UIImage (named: "dogIcon")]
     configuration.image = petImage [indexPath.row]
     configuration.text = PetType.allCases [indexPath.row].rawValue
     cell.contentConfiguration = configuration
