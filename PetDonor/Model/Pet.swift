@@ -20,4 +20,5 @@ struct Pet {
   var dateCreate:Date?
   var reward:String?
   var age:String?
+  var image:Data?
   }

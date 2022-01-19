@@ -11,6 +11,7 @@ import Firebase
 final class Database {
   static let share = Database ()
   private let db = Firestore.firestore()
+  private let storage = Storage.storage()
   private let user = Auth.auth().currentUser
   private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent)
   private let petCollection:CollectionReference
