@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import UIKit
 
 final class Database {
   static let share = Database ()
@@ -63,6 +64,11 @@ final class Database {
     let result = try await query.getDocuments()
     return result
   }
+  
+  func uploadImage (image:UIImage) {
+    let storageRef = storage.reference(withPath: "petImages")
+  }
+  
   func convertSnapshotToPet (snapshot:QuerySnapshot) -> [Pet] {
     var array = [Pet] ()
     for document in snapshot.documents {
