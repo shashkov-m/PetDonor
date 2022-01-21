@@ -46,4 +46,6 @@ enum PetKeys:String {
   case isVisible
   case userID
   case reward
+  case imageUrl
+  case age
 }

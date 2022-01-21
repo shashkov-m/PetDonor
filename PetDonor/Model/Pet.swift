@@ -4,7 +4,6 @@
 //
 //  Created by Max Shashkov on 20.12.2021.
 //
-
 import Foundation
 
 struct Pet {  
@@ -20,4 +19,5 @@ struct Pet {
   var dateCreate:Date?
   var reward:String?
   var age:String?
+  var imageUrl:String?
   }
