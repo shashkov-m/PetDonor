@@ -4,7 +4,7 @@
 //
 //  Created by Max Shashkov on 20.12.2021.
 //
-import UIKit
+import Foundation
 
 struct Pet {  
   
@@ -19,5 +19,5 @@ struct Pet {
   var dateCreate:Date?
   var reward:String?
   var age:String?
-  var image:UIImage?
+  var imageUrl:String?
   }

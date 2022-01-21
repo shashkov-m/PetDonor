@@ -73,7 +73,8 @@ class NewPostPetDescriptionViewController: UIViewController {
         return "Не указано"
       }
     } ()
-    db.addPet(pet: pet) { result in
+    let image = petImageView.image
+    db.addPet(pet: pet, image: image) { result in
       switch result {
       case .failure(let error):
         let alert = UIAlertController (title: "", message: error.localizedDescription, preferredStyle: .alert)
