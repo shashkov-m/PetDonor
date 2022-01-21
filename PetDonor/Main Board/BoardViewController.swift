@@ -105,7 +105,7 @@ extension BoardViewController: UITableViewDelegate, UITableViewDataSource {
     performSegue(withIdentifier: toPetCardSegueIdentifier, sender: self)
   }
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    if indexPath.row == pets.count - 2 {
+    if pets.count > 3, indexPath.row == pets.count - 2 {
       guard let fromLastSnapshot = lastSnapshot, isQueryRunning != true else {
         print ("ELSE CASE HAPPEN", isQueryRunning)
         return }

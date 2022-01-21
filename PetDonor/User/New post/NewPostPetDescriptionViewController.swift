@@ -32,6 +32,7 @@ class NewPostPetDescriptionViewController: UIViewController {
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
     scrollView.keyboardDismissMode = .interactive
+    petImageConfigure (petType: pet?.petType)
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -72,7 +73,8 @@ class NewPostPetDescriptionViewController: UIViewController {
         return "Не указано"
       }
     } ()
-    db.addPet(pet: pet) { result in
+    let image = petImageView.image
+    db.addPet(pet: pet, image: image) { result in
       switch result {
       case .failure(let error):
         let alert = UIAlertController (title: "", message: error.localizedDescription, preferredStyle: .alert)
@@ -113,6 +115,21 @@ class NewPostPetDescriptionViewController: UIViewController {
       petBloodTypeMenu.showsMenuAsPrimaryAction = true
       petBloodTypeMenu.changesSelectionAsPrimaryAction = true
       petBloodTypeMenu.menu = menu
+    }
+  }
+  
+  private func petImageConfigure (petType:PetType?) {
+    petImageView.contentMode = .scaleAspectFill
+    switch petType {
+    case .dog:
+      let image = UIImage (named: "dogPlaceholder")
+      petImageView.image = image
+    case .cat:
+      let image = UIImage (named: "catPlaceholder")
+      petImageView.image = image
+    default:
+      let image = UIImage (named: "catPlaceholder")
+      petImageView.image = image
     }
   }
   @objc private func segmentedControlDidChange (_ segmentedControl:UISegmentedControl) {
