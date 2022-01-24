@@ -11,6 +11,9 @@
 		500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5A277B6C5300F4736B /* PetInfo.swift */; };
 		500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5C277D0A4A00F4736B /* AuthView.swift */; };
 		500B7B60277D16F300F4736B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5F277D16F300F4736B /* UserView.swift */; };
+		500C4B81279EF5CE0011D4FA /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C4B7F279EF5CE0011D4FA /* PostTableViewCell.swift */; };
+		500C4B82279EF5CE0011D4FA /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 500C4B80279EF5CE0011D4FA /* PostTableViewCell.xib */; };
+		500C4B84279F2ADC0011D4FA /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */; };
 		502799992792E3D50052FB99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502799982792E3D50052FB99 /* Animations.swift */; };
 		5054B8022771F47400929B51 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054B8012771F47400929B51 /* UserViewController.swift */; };
 		5054B80427722FC300929B51 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054B80327722FC300929B51 /* SignInViewController.swift */; };
@@ -70,6 +73,9 @@
 		500B7B5A277B6C5300F4736B /* PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfo.swift; sourceTree = "<group>"; };
 		500B7B5C277D0A4A00F4736B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		500B7B5F277D16F300F4736B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		500C4B7F279EF5CE0011D4FA /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		500C4B80279EF5CE0011D4FA /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		502799982792E3D50052FB99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		5054B8012771F47400929B51 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		5054B80327722FC300929B51 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 			children = (
 				502799982792E3D50052FB99 /* Animations.swift */,
 				50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */,
+				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
 			);
 			path = Customization;
 			sourceTree = "<group>";
@@ -169,6 +176,8 @@
 			children = (
 				5054B8012771F47400929B51 /* UserViewController.swift */,
 				500B7B5F277D16F300F4736B /* UserView.swift */,
+				500C4B7F279EF5CE0011D4FA /* PostTableViewCell.swift */,
+				500C4B80279EF5CE0011D4FA /* PostTableViewCell.xib */,
 				D2195EED2769F14B0082E63D /* New post */,
 				500B7B5E277D145100F4736B /* Auth */,
 			);
@@ -393,6 +402,7 @@
 				5067D867276B989300BDFD32 /* GoogleService-Info.plist in Resources */,
 				D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */,
 				D237CD4E2763C9B700022511 /* SettingsCityTableViewCell.xib in Resources */,
+				500C4B82279EF5CE0011D4FA /* PostTableViewCell.xib in Resources */,
 				D237CD432763775600022511 /* Main.storyboard in Resources */,
 				D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */,
 			);
@@ -432,6 +442,7 @@
 				500B7B60277D16F300F4736B /* UserView.swift in Sources */,
 				50BE8E65276CD76E0099DBC7 /* City.swift in Sources */,
 				500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */,
+				500C4B81279EF5CE0011D4FA /* PostTableViewCell.swift in Sources */,
 				50CC60332775D20900DF1B87 /* CollectionFlowLayout.swift in Sources */,
 				50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */,
 				50FCA6FA2783266300ED6107 /* Database.swift in Sources */,
@@ -439,6 +450,7 @@
 				5054B80627722FCD00929B51 /* SignUpViewController.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
 				50AE0BE62770A9B5002060EE /* Pet.swift in Sources */,
+				500C4B84279F2ADC0011D4FA /* AlertBuilder.swift in Sources */,
 				5054B8022771F47400929B51 /* UserViewController.swift in Sources */,
 				50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */,
 				50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */,

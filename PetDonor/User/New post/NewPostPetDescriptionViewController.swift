@@ -17,6 +17,11 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var rewardSegmentedControl: UISegmentedControl!
   @IBOutlet weak var petImageView: UIImageView!
   private lazy var formatter = DateFormatter ()
+  private var petImage: UIImage? {
+    didSet {
+      petImageView.image = petImage
+    }
+  }
   
   var pet:Pet?
   let db = Database.share
@@ -73,8 +78,7 @@ class NewPostPetDescriptionViewController: UIViewController {
         return "Не указано"
       }
     } ()
-    let image = petImageView.image
-    db.addPet(pet: pet, image: image) { result in
+    db.addPet(pet: pet, image: petImage) { result in
       switch result {
       case .failure(let error):
         let alert = UIAlertController (title: "", message: error.localizedDescription, preferredStyle: .alert)
@@ -161,7 +165,7 @@ extension NewPostPetDescriptionViewController: PHPickerViewControllerDelegate {
             self.present(alert, animated: true)
           } else {
             guard let image = image as? UIImage else { return }
-            self.petImageView.image = image
+            self.petImage = image
           }
         }
       }

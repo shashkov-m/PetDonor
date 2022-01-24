@@ -14,7 +14,7 @@ final class Database {
   private let db = Firestore.firestore()
   private let storage = Storage.storage()
   private let user = Auth.auth().currentUser
-  private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent)
+  private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent )
   private let petCollection:CollectionReference
   private let petLimittedQuery:Query
   private let storageImagesPath = "petImages"
@@ -35,7 +35,7 @@ final class Database {
       let imagePath = "\(storageImagesPath)/\(pet.userID)/\(pet.dateCreate ?? Date.now).jpg"
       let storageRef = storage.reference(withPath: "\(imagePath)")
       pet.imageUrl = imagePath
-      queue.async {
+      queue.async () {
         storageRef.putData(data, metadata: nil)
       }
     }
@@ -64,6 +64,7 @@ final class Database {
       }
     }
   }
+  
   @available (iOS 15, *)
   func getPetList () async throws -> QuerySnapshot {
     let result = try await petLimittedQuery.getDocuments()
@@ -75,6 +76,13 @@ final class Database {
     let query = petLimittedQuery.start(afterDocument: snapshot)
     let result = try await query.getDocuments()
     return result
+  }
+  
+  @available (iOS 15, *)
+  func getUserPets (for user:User) async throws -> [Pet] {
+    let query = petCollection.whereField(PetKeys.userID.rawValue, isEqualTo: user.uid).limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
+    let result = try await query.getDocuments()
+    return convertSnapshotToPet(snapshot: result)
   }
   
   func convertSnapshotToPet (snapshot:QuerySnapshot) -> [Pet] {
