@@ -12,6 +12,8 @@ class BoardViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var postTypeSegmentedControl: UISegmentedControl!
   private var pets = [Pet] ()
+  private var recipients = [Pet] ()
+  private var donors = [Pet] ()
   private var isFirtsQuery = false
   private var lastSnapshot:QueryDocumentSnapshot?
   private var isQueryRunning = false
@@ -35,6 +37,7 @@ class BoardViewController: UIViewController {
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    print (postTypeSegmentedControl.selectedSegmentIndex)
     print ("isFirtsQuery was called value equal ",isFirtsQuery)
     Task {
       do {
