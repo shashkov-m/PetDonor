@@ -27,6 +27,8 @@
 		5067D867276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
 		5067D868276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
 		5067D869276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
+		5084126927A2D016000154DC /* MainBoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084126827A2D016000154DC /* MainBoardHeaderView.swift */; };
+		5084126C27A2D063000154DC /* MainBoardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084126B27A2D063000154DC /* MainBoardFooterView.swift */; };
 		50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */; };
 		50AE0BE62770A9B5002060EE /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE52770A9B5002060EE /* Pet.swift */; };
 		50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */; };
@@ -82,6 +84,8 @@
 		5054B80527722FCD00929B51 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5054B80727722FF200929B51 /* PasswordRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRestoreViewController.swift; sourceTree = "<group>"; };
 		5067D866276B989300BDFD32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5084126827A2D016000154DC /* MainBoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardHeaderView.swift; sourceTree = "<group>"; };
+		5084126B27A2D063000154DC /* MainBoardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardFooterView.swift; sourceTree = "<group>"; };
 		50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPetDescriptionViewController.swift; sourceTree = "<group>"; };
 		50AE0BE52770A9B5002060EE /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestManager.swift; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		5084126A27A2D021000154DC /* MainBoardCellView */ = {
+			isa = PBXGroup;
+			children = (
+				5084126827A2D016000154DC /* MainBoardHeaderView.swift */,
+				5084126B27A2D063000154DC /* MainBoardFooterView.swift */,
+			);
+			path = MainBoardCellView;
+			sourceTree = "<group>";
+		};
 		D2195EED2769F14B0082E63D /* New post */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +266,7 @@
 		D237CD25275784E500022511 /* Main Board */ = {
 			isa = PBXGroup;
 			children = (
+				5084126A27A2D021000154DC /* MainBoardCellView */,
 				D237CD452763907400022511 /* BoardViewController.swift */,
 				50077379278DFAA5000A6FD1 /* PetCardViewController.swift */,
 				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
@@ -433,7 +447,9 @@
 			files = (
 				5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */,
 				D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */,
+				5084126C27A2D063000154DC /* MainBoardFooterView.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
+				5084126927A2D016000154DC /* MainBoardHeaderView.swift in Sources */,
 				D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */,
 				D237CD4B2763C4A800022511 /* SettingsCityTableViewCell.swift in Sources */,
 				500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */,
