@@ -69,11 +69,11 @@ final class Database {
     }
   }
   
-  @available (iOS 15, *)
-  func getPetList () async throws -> QuerySnapshot {
-    let result = try await petLimittedQuery.getDocuments()
-    return result
-  }
+//  @available (iOS 15, *)
+//  func getPetList () async throws -> QuerySnapshot {
+//    let result = try await petLimittedQuery.getDocuments()
+//    return result
+//  }
   
   @available (iOS 15, *)
   func getDonorsList () async throws -> QuerySnapshot {
