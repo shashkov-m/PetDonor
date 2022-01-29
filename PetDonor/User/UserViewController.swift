@@ -14,6 +14,10 @@ class UserViewController:UIViewController {
   private let signInSegueIdentifier = "signInSegue"
   private let signUpSegueIdentifier = "signUpSegue"
   private let userView = UserView ()
+  private var pets = [Pet] ()
+  private let db = Database.share
+  private var user:User?
+  private let maxPetsCount = 3
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,10 +25,11 @@ class UserViewController:UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+    handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, currentUser) in
       guard let self = self else {return}
-      if user != nil {
-        self.userViewConfigure()
+      if let currentUser = currentUser {
+        self.userViewConfigure(user: currentUser)
+        self.user = currentUser
       } else {
         self.authViewConfigure()
       }
@@ -36,7 +41,16 @@ class UserViewController:UIViewController {
     Auth.auth().removeStateDidChangeListener(handle!)
   }
   
-  private func userViewConfigure () {
+  private func userViewConfigure (user: User) {
+    Task {
+      do {
+        pets = try await db.getUserPets(for: user)
+        userView.tableView.reloadData()
+      } catch let error {
+        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription,
+                           preferredStyle: .alert,action: UIAlertAction (title: "OK", style: .cancel))
+      }
+    }
     for view in view.subviews {
       view.removeFromSuperview()
     }
@@ -77,14 +91,19 @@ class UserViewController:UIViewController {
   @objc private func signUpButtonDidTapped () {
     performSegue(withIdentifier: signUpSegueIdentifier, sender: self)
   }
-  @objc private func createNewButtonDidTapped () {
-    performSegue(withIdentifier: newPetSegue, sender: self)
-  }
   
+  @objc private func createNewButtonDidTapped () {
+    if pets.count < maxPetsCount {
+      performSegue(withIdentifier: newPetSegue, sender: self)
+    } else {
+      AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel))
+    }
+  }
+    
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let controller = segue.destination as? UINavigationController,
           let VC = controller.viewControllers.first as? NewPostPetTableViewController,
-          let user = Auth.auth().currentUser
+          let user = user
     else {
       return
     }
@@ -96,29 +115,31 @@ class UserViewController:UIViewController {
   }
 }
 
-
+//MARK: UITableViewDelegate
 extension UserViewController:UITableViewDataSource, UITableViewDelegate {
   private func tableViewConfigure () {
     userView.tableView.dataSource = self
     userView.tableView.delegate = self
     userView.tableView.separatorStyle = .none
-    userView.tableView.register (UITableViewCell.self, forCellReuseIdentifier: "userPetTableViewCell")
+    userView.tableView.register(UINib (nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return pets.count
   }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "userPetTableViewCell", for: indexPath)
-    var configuration = cell.defaultContentConfiguration()
-    configuration.image = UIImage (named: "catBackgroundBlack")
-    configuration.imageProperties.maximumSize = CGSize (width: 200.0, height: 200.0)
-    configuration.text = "some text here"
-    configuration.secondaryText = "secondary text here"
-    cell.contentConfiguration = configuration
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { fatalError ("TODO") }
+    let pet = pets [indexPath.row]
+    cell.bloodTypeLabel.text = pet.bloodType
+    cell.rewardLabel.text = pet.reward
+    cell.postTypeLabel.text = pet.postType
+    cell.descriptionLabel.text = pet.description
+    cell.petTypeLabel.text = pet.petType?.rawValue
+    cell.cityLabel.text = pet.city?.title
+    cell.petImageView.image = UIImage (named: "catPlaceholder")
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

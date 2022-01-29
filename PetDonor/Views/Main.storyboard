@@ -270,17 +270,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bjy-M7-jsQ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QVR-Ly-ErW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Реципиенты"/>
+                                    <segment title="Доноры"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qxU-3V-CxC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="QVR-Ly-ErW" firstAttribute="top" secondItem="qxU-3V-CxC" secondAttribute="top" id="Ah3-F7-i6Z"/>
                             <constraint firstItem="Bjy-M7-jsQ" firstAttribute="leading" secondItem="qxU-3V-CxC" secondAttribute="leading" id="JAq-ge-vdl"/>
                             <constraint firstItem="qxU-3V-CxC" firstAttribute="trailing" secondItem="Bjy-M7-jsQ" secondAttribute="trailing" id="N4Q-EU-dqx"/>
-                            <constraint firstItem="Bjy-M7-jsQ" firstAttribute="top" secondItem="qxU-3V-CxC" secondAttribute="top" id="lRY-lf-i0L"/>
+                            <constraint firstItem="qxU-3V-CxC" firstAttribute="trailing" secondItem="QVR-Ly-ErW" secondAttribute="trailing" id="TvC-6U-zQo"/>
+                            <constraint firstItem="Bjy-M7-jsQ" firstAttribute="top" secondItem="QVR-Ly-ErW" secondAttribute="bottom" id="WKh-Mp-LLn"/>
                             <constraint firstItem="qxU-3V-CxC" firstAttribute="bottom" secondItem="Bjy-M7-jsQ" secondAttribute="bottom" id="otR-iu-ORl"/>
+                            <constraint firstItem="QVR-Ly-ErW" firstAttribute="leading" secondItem="qxU-3V-CxC" secondAttribute="leading" id="sep-kY-19Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Доска" id="IFP-vh-fzt">
@@ -291,13 +301,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="postTypeSegmentedControl" destination="QVR-Ly-ErW" id="1yS-ZD-WPg"/>
                         <outlet property="tableView" destination="Bjy-M7-jsQ" id="Kq9-Eu-OWb"/>
                         <segue destination="nIP-U3-1Wx" kind="show" identifier="toPetCard" id="aOL-HF-eJD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oD-YP-Gay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487" y="-1043"/>
+            <point key="canvasLocation" x="1486.9565217391305" y="-1043.3035714285713"/>
         </scene>
         <!--Pet Card View Controller-->
         <scene sceneID="VfN-5Z-3zF">
