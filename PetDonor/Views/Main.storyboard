@@ -264,7 +264,7 @@
         <!--Доска-->
         <scene sceneID="LuP-06-Okq">
             <objects>
-                <viewController id="kee-1b-Ghg" customClass="BoardViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kee-1b-Ghg" customClass="MainBoardViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ySD-Wy-1Im">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,7 +296,7 @@
                     <navigationItem key="navigationItem" title="Доска" id="IFP-vh-fzt">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="organize" id="7ve-Fi-Pcf">
                             <connections>
-                                <segue destination="42l-sE-egf" kind="show" id="ng5-OL-0tv"/>
+                                <action selector="filterViewButtonAction:" destination="kee-1b-Ghg" id="kWg-3M-IaT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -304,6 +304,7 @@
                         <outlet property="postTypeSegmentedControl" destination="QVR-Ly-ErW" id="1yS-ZD-WPg"/>
                         <outlet property="tableView" destination="Bjy-M7-jsQ" id="Kq9-Eu-OWb"/>
                         <segue destination="nIP-U3-1Wx" kind="show" identifier="toPetCard" id="aOL-HF-eJD"/>
+                        <segue destination="42l-sE-egf" kind="show" identifier="toFiltersList" id="dn1-gJ-qyp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oD-YP-Gay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -455,10 +456,10 @@
             </objects>
             <point key="canvasLocation" x="2228.985507246377" y="-1043.3035714285713"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Main Board Filters View Controller-->
         <scene sceneID="9qj-UD-7Xg">
             <objects>
-                <viewController id="42l-sE-egf" customClass="SettingsViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="42l-sE-egf" customClass="MainBoardFiltersViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bI2-mW-1WC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

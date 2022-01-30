@@ -47,8 +47,8 @@
 		D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */; };
 		D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */; };
 		D237CD432763775600022511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237CD422763775600022511 /* Main.storyboard */; };
-		D237CD462763907400022511 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD452763907400022511 /* BoardViewController.swift */; };
-		D237CD482763C0A600022511 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD472763C0A600022511 /* SettingsViewController.swift */; };
+		D237CD462763907400022511 /* MainBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD452763907400022511 /* MainBoardViewController.swift */; };
+		D237CD482763C0A600022511 /* MainBoardFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD472763C0A600022511 /* MainBoardFiltersViewController.swift */; };
 		D237CD4B2763C4A800022511 /* SettingsCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */; };
 		D237CD4E2763C9B700022511 /* SettingsCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -108,8 +108,8 @@
 		D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTextOnlyTableViewCell.swift; sourceTree = "<group>"; };
 		D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardTextOnlyTableViewCell.xib; sourceTree = "<group>"; };
 		D237CD422763775600022511 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D237CD452763907400022511 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
-		D237CD472763C0A600022511 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D237CD452763907400022511 /* MainBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardViewController.swift; sourceTree = "<group>"; };
+		D237CD472763C0A600022511 /* MainBoardFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardFiltersViewController.swift; sourceTree = "<group>"; };
 		D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCityTableViewCell.swift; sourceTree = "<group>"; };
 		D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCityTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,7 +149,7 @@
 			children = (
 				D237CD4D2763C9B700022511 /* SettingsCityTableViewCell.xib */,
 				D237CD492763C4A800022511 /* SettingsCityTableViewCell.swift */,
-				D237CD472763C0A600022511 /* SettingsViewController.swift */,
+				D237CD472763C0A600022511 /* MainBoardFiltersViewController.swift */,
 			);
 			path = FilterView;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5084126A27A2D021000154DC /* MainBoardCellView */,
-				D237CD452763907400022511 /* BoardViewController.swift */,
+				D237CD452763907400022511 /* MainBoardViewController.swift */,
 				50077379278DFAA5000A6FD1 /* PetCardViewController.swift */,
 				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
@@ -453,8 +453,8 @@
 				D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */,
 				D237CD4B2763C4A800022511 /* SettingsCityTableViewCell.swift in Sources */,
 				500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */,
-				D237CD462763907400022511 /* BoardViewController.swift in Sources */,
-				D237CD482763C0A600022511 /* SettingsViewController.swift in Sources */,
+				D237CD462763907400022511 /* MainBoardViewController.swift in Sources */,
+				D237CD482763C0A600022511 /* MainBoardFiltersViewController.swift in Sources */,
 				500B7B60277D16F300F4736B /* UserView.swift in Sources */,
 				50BE8E65276CD76E0099DBC7 /* City.swift in Sources */,
 				500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */,

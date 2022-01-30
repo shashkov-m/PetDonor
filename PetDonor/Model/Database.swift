@@ -15,18 +15,14 @@ final class Database {
   private let storage = Storage.storage()
   private let user = Auth.auth().currentUser
   private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent )
-  private let petCollection:CollectionReference
-  private let petLimittedQuery:Query
-  private let donorLimittedQuery:Query
-  private let recipientLimittedQuery:Query
+  let petCollection:CollectionReference
+  let petVisibleOnlyQuery:Query
   private let storageImagesPath = "petImages"
   var limit = 3
   
   private init () {
     petCollection = db.collection("pets")
-    petLimittedQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
-    donorLimittedQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).whereField(PetKeys.postType.rawValue, isEqualTo: "Донор").limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
-    recipientLimittedQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true).whereField(PetKeys.postType.rawValue, isEqualTo: "Реципиент").limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
+    petVisibleOnlyQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true)
   }
   enum Errors:Error {
     case imageUploadError
@@ -69,36 +65,36 @@ final class Database {
     }
   }
   
-//  @available (iOS 15, *)
-//  func getPetList () async throws -> QuerySnapshot {
-//    let result = try await petLimittedQuery.getDocuments()
-//    return result
-//  }
+  //  @available (iOS 15, *)
+  //  func getPetList () async throws -> QuerySnapshot {
+  //    let result = try await petLimittedQuery.getDocuments()
+  //    return result
+  //  }
   
   @available (iOS 15, *)
-  func getDonorsList () async throws -> QuerySnapshot {
-    let result = try await donorLimittedQuery.getDocuments()
-    return result
-  }
-  
-  @available (iOS 15, *)
-  func getRecipientsList () async throws -> QuerySnapshot {
-    let result = try await recipientLimittedQuery.getDocuments()
-    return result
-  }
-  
-  @available (iOS 15, *)
-  func getNextPetsPart (from snapshot:QueryDocumentSnapshot, for postType: PostType) async throws -> QuerySnapshot {
-  switch postType {
-    case .donor:
-      let query = donorLimittedQuery.start(afterDocument: snapshot)
-      let result = try await query.getDocuments()
-      return result
-    case .recipient:
-      let query = recipientLimittedQuery.start(afterDocument: snapshot)
-      let result = try await query.getDocuments()
-      return result
+  func getNextPetsPart (from snapshot:QueryDocumentSnapshot, filterOrNil: [String:Any]?) async throws -> QuerySnapshot {
+    let query = petVisibleOnlyQuery
+    if let filter = filterOrNil {
+      filter.forEach { field in
+        query.whereField(field.key, isEqualTo: field.value)
+      }
     }
+    query.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
+    query.start(afterDocument: snapshot)
+    let result = try await query.getDocuments()
+    return result
+  }
+  @available (iOS 15, *)
+  func getPetsWithFilter (filter: [String:Any]) async throws -> QuerySnapshot {
+    let query = petVisibleOnlyQuery
+    filter.forEach { field in
+      print (field)
+      query.whereField(field.key, isEqualTo: field.value)
+    }
+    query.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
+    print (query)
+    let result = try await query.getDocuments()
+    return result
   }
   
   @available (iOS 15, *)

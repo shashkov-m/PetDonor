@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  MainBoardFiltersViewController.swift
 //  PetDonor
 //
 //  Created by Max Shashkov on 10.12.2021.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class MainBoardFiltersViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
-  
+  var filter:[String:Any]?
+  let mainBoard = MainBoardViewController ()
   let catBloodTypes = [
     "A",
     "B",
@@ -27,12 +28,14 @@ class SettingsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    mainBoard.delegate = self
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(UINib (nibName: "SettingsCityTableViewCell", bundle: nil), forCellReuseIdentifier: SettingsCityTableViewCell.reuseIdentifier)
+    print (filter)
   }
 }
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainBoardFiltersViewController: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     3
@@ -78,5 +81,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
       return nil
     }
   }
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    filter?.updateValue("lalala", forKey: PetKeys.reward.rawValue)
+    print (filter)
+  }
+}
+//MARK: MainBoardDelegate
+extension MainBoardFiltersViewController:MainBoardViewControllerDelegate {
+  func updateFilter() -> [String : Any] {
+    guard let filter = filter else { fatalError ("TODO") }
+    return filter
+  }
 }

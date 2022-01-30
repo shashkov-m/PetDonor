@@ -24,9 +24,9 @@ let dogBloodTypes = [
   "DEA 7"
 ]
 
-enum PostType:Int {
-  case recipient = 0
-  case donor = 1
+enum PostType:String {
+  case recipient = "Реципиент"
+  case donor = "Донор"
 }
 
 enum PetType:String,CaseIterable {
