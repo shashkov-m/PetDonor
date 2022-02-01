@@ -73,26 +73,23 @@ final class Database {
   
   @available (iOS 15, *)
   func getNextPetsPart (from snapshot:QueryDocumentSnapshot, filterOrNil: [String:Any]?) async throws -> QuerySnapshot {
-    let query = petVisibleOnlyQuery
+    var tmpQuery = petVisibleOnlyQuery
     if let filter = filterOrNil {
       filter.forEach { field in
-        query.whereField(field.key, isEqualTo: field.value)
+        tmpQuery = tmpQuery.whereField(field.key, isEqualTo: field.value)
       }
     }
-    query.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
-    query.start(afterDocument: snapshot)
+    let query = tmpQuery.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true).start(afterDocument: snapshot)
     let result = try await query.getDocuments()
     return result
   }
   @available (iOS 15, *)
   func getPetsWithFilter (filter: [String:Any]) async throws -> QuerySnapshot {
-    let query = petVisibleOnlyQuery
+    var tmpQuery = petVisibleOnlyQuery
     filter.forEach { field in
-      print (field)
-      query.whereField(field.key, isEqualTo: field.value)
+      tmpQuery = tmpQuery.whereField(field.key, isEqualTo: field.value)
     }
-    query.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
-    print (query)
+    let query = tmpQuery.limit(to: limit).order(by: PetKeys.dateCreate.rawValue, descending: true)
     let result = try await query.getDocuments()
     return result
   }
@@ -108,16 +105,30 @@ final class Database {
     var array = [Pet] ()
     for document in snapshot.documents {
       let doc = document.data()
-      if let petType = doc[PetKeys.petType.rawValue] as? String, let bloodType = doc[PetKeys.bloodType.rawValue] as? String,
-         let postType = doc[PetKeys.postType.rawValue] as? String, let description = doc[PetKeys.description.rawValue] as? String,
-         let contactInfo = doc[PetKeys.contactInfo.rawValue] as? String, let cityID = doc[PetKeys.cityID.rawValue] as? Int,
-         let cityTitle = doc[PetKeys.city.rawValue] as? String, let dateCreate = doc[PetKeys.dateCreate.rawValue] as? Timestamp,
-         let isVisible = doc[PetKeys.isVisible.rawValue] as? Bool, let userID = doc[PetKeys.userID.rawValue] as? String,
-         let reward = doc[PetKeys.reward.rawValue] as? String
+      if let petType = doc[PetKeys.petType.rawValue] as? String,
+         let bloodType = doc[PetKeys.bloodType.rawValue] as? String,
+         let postType = doc[PetKeys.postType.rawValue] as? String,
+         let description = doc[PetKeys.description.rawValue] as? String,
+         let contactInfo = doc[PetKeys.contactInfo.rawValue] as? String,
+         let cityID = doc[PetKeys.cityID.rawValue] as? Int,
+         let cityTitle = doc[PetKeys.city.rawValue] as? String,
+         let dateCreate = doc[PetKeys.dateCreate.rawValue] as? Timestamp,
+         let isVisible = doc[PetKeys.isVisible.rawValue] as? Bool,
+         let userID = doc[PetKeys.userID.rawValue] as? String,
+         let reward = doc[PetKeys.reward.rawValue] as? String,
+         let imageUrl = doc [PetKeys.imageUrl.rawValue] as? String,
+         let birthDate = doc [PetKeys.age.rawValue] as? String
       {
         let city = City (id: cityID, title: cityTitle)
         let date = dateCreate.dateValue()
-        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward)
+        var age = birthDate
+        let calendar = Calendar.current
+        let formatter = DateFormatter ()
+        if let tmpAge = formatter.date(from: birthDate) {
+          let components = calendar.dateComponents([.year, .month], from: tmpAge, to: Date ())
+          age = "\(components.month ?? 0) месяцев"
+        }
+        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward, age: age, imageUrl: imageUrl)
         array.append(pet)
       }
     }

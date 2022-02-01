@@ -72,8 +72,6 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.age = {
       if let text = ageTextField.text, let birthDate = formatter.date(from: text), birthDate <= Date.now {
         return text
-        //let calendar = Calendar.current
-        //let components = calendar.dateComponents([.year, .month], from: birthDate, to: Date ())
       } else {
         return "Не указано"
       }
