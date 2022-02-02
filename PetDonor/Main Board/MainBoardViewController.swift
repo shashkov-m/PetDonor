@@ -9,11 +9,10 @@ import UIKit
 import Firebase
 
 protocol MainBoardViewControllerDelegate:AnyObject {
-  func updateFilter () -> [String:Any]
+  func updateFilter (filter: [String:Any])
 }
 
 class MainBoardViewController: UIViewController {
-  weak var delegate:MainBoardViewControllerDelegate?
   private let db = Database.share
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var postTypeSegmentedControl: UISegmentedControl!
@@ -23,7 +22,6 @@ class MainBoardViewController: UIViewController {
   private let toFiltersListSegueIdentifier = "toFiltersList"
   private var pet:Pet?
   private let dateFormatter = DateFormatter ()
-  
   private var pets = [Pet] () {
     didSet {
       print ("Board pets array is up to date")
@@ -99,10 +97,9 @@ class MainBoardViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == toPetCardSegueIdentifier, let destinationVC = segue.destination as? PetCardViewController, let pet = pet {
       destinationVC.pet = pet
-    } else if segue.identifier == toFiltersListSegueIdentifier, let destinationVC = segue.destination as? MainBoardFiltersViewController {
-      guard let delegate = delegate else { return }
+    } else if segue.identifier == toFiltersListSegueIdentifier, let destinationVC = segue.destination as? FiltersViewController {
       destinationVC.filter = filter
-      filter = delegate.updateFilter()
+      destinationVC.delegate = self
     }
   }
 }
@@ -149,4 +146,13 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
       }
     }
   }
+}
+
+extension MainBoardViewController:MainBoardViewControllerDelegate {
+  func updateFilter(filter: [String : Any]) {
+    print ("delegate was called")
+    self.filter = filter
+  }
+  
+  
 }
