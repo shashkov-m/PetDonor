@@ -25,15 +25,14 @@ class MainBoardViewController: UIViewController {
   private var pets = [Pet] () {
     didSet {
       print ("Board pets array is up to date")
-      print (pets)
-      tableView.reloadData()
+      guard tableView.window != nil else { return }
+      tableView.reloadSections(IndexSet (integer: 0), with: .fade)
     }
   }
   
   var filter:[String : Any] = [PetKeys.postType.rawValue : PostType.recipient.rawValue] {
     didSet {
-      print ("filter have been updated")
-      print (filter)
+      guard view.window != nil else { return }
       reloadPetList (filter: filter)
     }
   }
@@ -49,6 +48,11 @@ class MainBoardViewController: UIViewController {
     dateFormatter.locale = Locale (identifier: "ru_RU")
     dateFormatter.dateStyle = .medium
     dateFormatter.timeStyle = .none
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    print ("Will appear")
     reloadPetList(filter: filter)
   }
   
@@ -102,6 +106,7 @@ class MainBoardViewController: UIViewController {
       destinationVC.delegate = self
     }
   }
+  
 }
 //MARK: UITableViewDelegate
 extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
@@ -150,7 +155,6 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainBoardViewController:MainBoardViewControllerDelegate {
   func updateFilter(filter: [String : Any]) {
-    print ("delegate was called")
     self.filter = filter
   }
   
