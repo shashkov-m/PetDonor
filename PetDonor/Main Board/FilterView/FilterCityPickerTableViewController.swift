@@ -48,7 +48,7 @@ class FilterCityPickerTableViewController: UITableViewController {
     if let city = cities [indexPath.row].title {
       delegate?.updateSelectedCity(city: city)
     }
-    dismiss(animated: true, completion: nil)
+    navigationController?.popViewController(animated: true)
   }
 }
 extension FilterCityPickerTableViewController:UISearchResultsUpdating {

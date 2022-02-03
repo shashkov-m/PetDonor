@@ -81,6 +81,11 @@ class FiltersViewController: UIViewController {
     tableView.allowsMultipleSelection = true
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+  }
+  
   private func restoreState (filter: [String:Any]) {
     guard filter.count > 0 else { return }
     let petTypeString = filter [PetKeys.petType.rawValue] as? String
@@ -92,6 +97,11 @@ class FiltersViewController: UIViewController {
     }
     if let bloodType = filter [PetKeys.bloodType.rawValue] as? String {
       selectedBloodType = bloodType
+    }
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let cityVC = segue.destination as? FilterCityPickerTableViewController {
+      cityVC.delegate = self
     }
   }
 }

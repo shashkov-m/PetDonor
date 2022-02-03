@@ -512,10 +512,10 @@
             </objects>
             <point key="canvasLocation" x="2229" y="-1696"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Filter City Picker Table View Controller-->
         <scene sceneID="0NN-bV-vSl">
             <objects>
-                <tableViewController id="raB-C4-9pM" sceneMemberID="viewController">
+                <tableViewController id="raB-C4-9pM" customClass="FilterCityPickerTableViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Rb6-tF-92c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
