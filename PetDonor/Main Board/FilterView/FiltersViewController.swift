@@ -8,6 +8,10 @@
 import UIKit
 import SwiftUI
 
+protocol FiltersViewControllerDelegate:AnyObject {
+  func updateSelectedCity (city:String)
+}
+
 class FiltersViewController: UIViewController {
   let catBloodTypes = ["A","B","AB"]
   let dogBloodTypes = ["DEA 1.1","DEA 1.2","DEA 3","DEA 4","DEA 5","DEA 6","DEA 7"]
@@ -25,13 +29,12 @@ class FiltersViewController: UIViewController {
   private let toCityPickerSegueIdentifier = "toCityFilterPicker"
   var filter = [String:Any] () {
     didSet {
-      print ("filter is = ",filter)
       delegate?.updateFilter(filter: filter)
     }
   }
   var selectedCity:String? {
-    didSet {
-      guard let selectedCity = selectedCity else {
+    willSet {
+      guard let selectedCity = newValue else {
         filter.removeValue(forKey: PetKeys.city.rawValue)
         return
       }
@@ -54,17 +57,19 @@ class FiltersViewController: UIViewController {
       } else if newValue == .dog {
         bloodTypesArray = dogBloodTypes
       } else {
-        filter.removeValue(forKey: PetKeys.bloodType.rawValue)
         bloodTypesArray = ["Сначала уточните вид животного"]
       }
-    }
-    didSet {
-      tableView.reloadSections(IndexSet (integer: bloodTypeSection), with: .right)
-      guard let selectedPetType = selectedPetType?.rawValue else {
+      guard let selectedPetType = newValue?.rawValue else {
         filter.removeValue(forKey: PetKeys.petType.rawValue)
         return
       }
       filter.updateValue(selectedPetType, forKey: PetKeys.petType.rawValue)
+    }
+    didSet {
+      tableView.reloadSections(IndexSet (integer: bloodTypeSection), with: .right)
+      if oldValue != nil {
+        selectedBloodType = nil
+      }
     }
   }
   
@@ -82,9 +87,12 @@ class FiltersViewController: UIViewController {
     if let petTypeString = petTypeString, let petType = PetType.init(rawValue: petTypeString) {
       selectedPetType = petType
     }
-    
-        let city = filter [PetKeys.city.rawValue] as? String
-    let bloodType = filter [PetKeys.bloodType.rawValue] as? String
+    if let city = filter [PetKeys.city.rawValue] as? String {
+      selectedCity = city
+    }
+    if let bloodType = filter [PetKeys.bloodType.rawValue] as? String {
+      selectedBloodType = bloodType
+    }
   }
 }
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,13 +107,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       return PetType.allCases.count
     case bloodTypeSection:
       return bloodTypesArray.count
-//      if selectedPetType == .cat {
-//        return catBloodTypes.count
-//      } else if selectedPetType == .dog {
-//        return dogBloodTypes.count
-//      } else {
-//        return 1
-//      }
     default:
       return 0
     }
@@ -135,6 +136,10 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       cell.accessoryType = .none
       configuration.text = bloodTypesArray [indexPath.row]
       cell.contentConfiguration = configuration
+      if let selectedBloodType = selectedBloodType, let index = bloodTypesArray.firstIndex(of: selectedBloodType), index == indexPath.row {
+        cell.accessoryType = .checkmark
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+      }
       return cell
     } else {
       fatalError ("TODO")
@@ -161,6 +166,7 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     switch section {
     case citySection:
       tableView.deselectRow(at: indexPath, animated: true)
+      performSegue(withIdentifier: toCityPickerSegueIdentifier, sender: self)
     case petTypeSection:
       let firstIndex = IndexPath (row: 0, section: section)
       let secondIndex = IndexPath (row: 1, section: section)
@@ -195,14 +201,11 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     let section = indexPath.section
-    // let row = indexPath.row
     switch section {
     case citySection:
       break
     case petTypeSection:
-      //if selectedPetType == PetType.allCases [row] {
       selectedPetType = nil
-      // }
       tableView.cellForRow(at: indexPath)?.accessoryType = .none
     case bloodTypeSection:
       tableView.cellForRow(at: indexPath)?.accessoryType = .none
@@ -210,5 +213,11 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     default:
       break
     }
+  }
+}
+//MARK: CityDelegate
+extension FiltersViewController:FiltersViewControllerDelegate {
+  func updateSelectedCity(city: String) {
+    selectedCity = city
   }
 }
