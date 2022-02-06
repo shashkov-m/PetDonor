@@ -497,9 +497,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MXg-mv-BBf">
-                        <barButtonItem key="rightBarButtonItem" title="Применить" style="plain" id="Ndx-f2-9Bk">
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" style="plain" id="Ndx-f2-9Bk">
                             <connections>
-                                <action selector="testT:" destination="42l-sE-egf" id="TYg-6f-Tbz"/>
+                                <action selector="resetFilter:" destination="42l-sE-egf" id="sbG-dO-a3B"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

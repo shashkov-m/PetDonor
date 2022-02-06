@@ -21,10 +21,6 @@ class FiltersViewController: UIViewController {
   let bloodTypeSection = 2
   weak var delegate:MainBoardViewControllerDelegate?
   @IBOutlet weak var tableView: UITableView!
-  @IBAction func testT(_ sender: Any) {
-    tableView.reloadSections(IndexSet (integer: bloodTypeSection), with: .fade)
-    print (bloodTypesArray)
-  }
 
   private let toCityPickerSegueIdentifier = "toCityFilterPicker"
   var filter = [String:Any] () {
@@ -104,6 +100,14 @@ class FiltersViewController: UIViewController {
       cityVC.delegate = self
     }
   }
+  
+  @IBAction func resetFilter(_ sender: Any) {
+    selectedCity = nil
+    selectedPetType = nil
+    selectedBloodType = nil
+    tableView.reloadData()
+  }
+  
 }
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,7 +139,9 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       var configuration = cell.defaultContentConfiguration()
       configuration.text = PetType.allCases[indexPath.row].rawValue
       cell.contentConfiguration = configuration
+      cell.accessoryType = .none
       if let selectedPetType = selectedPetType, let index = PetType.allCases.firstIndex(of: selectedPetType), index == indexPath.row {
+        print (selectedPetType, index)
         cell.accessoryType = .checkmark
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
       }
@@ -191,7 +197,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       }
       selectedPetType = PetType.allCases [row]
       tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-      break
     case bloodTypeSection:
       guard bloodTypesArray.count > 1 else { break }
       if let cell = tableView.cellForRow(at: indexPath) {
