@@ -294,7 +294,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Доска" id="IFP-vh-fzt">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="organize" id="7ve-Fi-Pcf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" style="plain" id="7ve-Fi-Pcf">
                             <connections>
                                 <action selector="filterViewButtonAction:" destination="kee-1b-Ghg" id="kWg-3M-IaT"/>
                             </connections>
@@ -971,6 +971,7 @@
         <image name="catPlaceholder" width="604" height="604"/>
         <image name="doc" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
