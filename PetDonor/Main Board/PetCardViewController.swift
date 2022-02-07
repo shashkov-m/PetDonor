@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseStorageUI
 
 class PetCardViewController: UIViewController {
   var pet:Pet?
+  let db = Database.share
   let formatter = DateFormatter ()
   @IBOutlet weak var petTypeLabel: UILabel!
   @IBOutlet weak var bloodTypeLabel: UILabel!
@@ -20,7 +22,6 @@ class PetCardViewController: UIViewController {
   @IBOutlet weak var dateCreateLabel: UILabel!
   @IBOutlet weak var rewardLabel: UILabel!
   @IBOutlet weak var ageLabel: UILabel!
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,6 +41,12 @@ class PetCardViewController: UIViewController {
     cityLabel.text = pet.city?.title
     descriptionLabel.text = pet.description
     contactInfoLabel.text = pet.contactInfo
+    rewardLabel.text = pet.reward
     ageLabel.text = pet.age
+    if let ref = pet.imageUrl {
+      let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
+      let reference = db.getImageReference(from: ref)
+      petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+    }
   }
 }

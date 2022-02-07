@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50077379278DFAA5000A6FD1 /* PetCardViewController.swift */; };
+		500A2E0827B128D3005C45A3 /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = 500A2E0727B128D3005C45A3 /* FirebaseStorageUI */; };
 		500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5A277B6C5300F4736B /* PetInfo.swift */; };
 		500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5C277D0A4A00F4736B /* AuthView.swift */; };
 		500B7B60277D16F300F4736B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5F277D16F300F4736B /* UserView.swift */; };
@@ -121,6 +122,7 @@
 				5063A2F627988E7A00EC65C0 /* FirebaseFirestore in Frameworks */,
 				5063A2F427988E7A00EC65C0 /* FirebaseAuth in Frameworks */,
 				5063A2F827988E7A00EC65C0 /* FirebaseStorage in Frameworks */,
+				500A2E0827B128D3005C45A3 /* FirebaseStorageUI in Frameworks */,
 				5063A2FB279890C000EC65C0 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +318,7 @@
 				5063A2F527988E7A00EC65C0 /* FirebaseFirestore */,
 				5063A2F727988E7A00EC65C0 /* FirebaseStorage */,
 				5063A2FA279890C000EC65C0 /* IQKeyboardManagerSwift */,
+				500A2E0727B128D3005C45A3 /* FirebaseStorageUI */,
 			);
 			productName = PetDonor;
 			productReference = D237CCE82754E3FB00022511 /* PetDonor.app */;
@@ -392,6 +395,7 @@
 			packageReferences = (
 				5063A2F027988E7A00EC65C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5063A2F9279890C000EC65C0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
 			);
 			productRefGroup = D237CCE92754E3FB00022511 /* Products */;
 			projectDirPath = "";
@@ -825,6 +829,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/FirebaseUI-iOS";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5063A2F027988E7A00EC65C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -844,6 +856,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		500A2E0727B128D3005C45A3 /* FirebaseStorageUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseStorageUI;
+		};
 		5063A2F127988E7A00EC65C0 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5063A2F027988E7A00EC65C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -121,7 +121,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   }
   
   private func petImageConfigure (petType:PetType?) {
-    petImageView.contentMode = .scaleAspectFill
+    petImageView.contentMode = .scaleAspectFit
     switch petType {
     case .dog:
       let image = UIImage (named: "dogPlaceholder")

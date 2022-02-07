@@ -157,4 +157,8 @@ final class Database {
     let result = "\(year ?? 0) \(ruYears), \(month ?? 0) \(ruMonths)"
     return result
   }
+  func getImageReference (from string:String) -> StorageReference {
+    let storageRef = storage.reference()
+    return storageRef.child(string)
+  }
 }
