@@ -18,7 +18,7 @@ final class Database {
   let petCollection:CollectionReference
   let petVisibleOnlyQuery:Query
   private let storageImagesPath = "petImages"
-  var limit = 3
+  var limit = 5
   
   private init () {
     petCollection = db.collection("pets")
