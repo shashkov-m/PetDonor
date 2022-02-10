@@ -82,6 +82,7 @@ class MainBoardViewController: UIViewController {
         let snapshot = try await db.getPetsWithFilter(filter: filter)
         pets = db.convertSnapshotToPet(snapshot: snapshot)
         lastSnapshot = snapshot.documents.last
+        print ("88888",lastSnapshot)
       }
     }
     isQueryRunning = false
@@ -135,13 +136,18 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    print ("11111",lastSnapshot,isQueryRunning)
     guard let snapshot = lastSnapshot, !isQueryRunning else { return }
-    if pets.count > 3, indexPath.row == pets.count - 2 {
+    print ("2222")
+    print ("pets count = ",pets.count)
+    if pets.count > 4, indexPath.row == pets.count - 2 {
+      print ("33333")
       isQueryRunning = true
       Task {
         do {
           let snapshot = try await db.getNextPetsPart(from: snapshot, filterOrNil: filter)
           let petsArray = db.convertSnapshotToPet(snapshot: snapshot)
+          print (petsArray)
           for pet in petsArray {
             pets.append(pet)
           }

@@ -18,7 +18,7 @@ final class Database {
   let petCollection:CollectionReference
   let petVisibleOnlyQuery:Query
   private let storageImagesPath = "petImages"
-  var limit = 3
+  var limit = 5
   
   private init () {
     petCollection = db.collection("pets")
@@ -124,14 +124,41 @@ final class Database {
         var age = birthDate
         let calendar = Calendar.current
         let formatter = DateFormatter ()
+        formatter.dateFormat = "dd.MM.yyyy"
         if let tmpAge = formatter.date(from: birthDate) {
           let components = calendar.dateComponents([.year, .month], from: tmpAge, to: Date ())
-          age = "\(components.month ?? 0) месяцев"
+          age = ruDatePlural(year: components.year, month: components.month)
         }
         let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward, age: age, imageUrl: imageUrl)
         array.append(pet)
       }
     }
     return array
+  }
+  func ruDatePlural (year:Int?, month:Int?) -> String {
+    var ruYears = "год"
+    var ruMonths = "месяц"
+    switch year {
+    case 1:
+      break
+    case 2,3,4:
+      ruYears += "а"
+    default:
+      ruYears = "лет"
+    }
+    switch month {
+    case 1:
+      break
+    case 2,3,4:
+      ruMonths += "а"
+    default:
+      ruMonths += "ев"
+    }
+    let result = "\(year ?? 0) \(ruYears), \(month ?? 0) \(ruMonths)"
+    return result
+  }
+  func getImageReference (from string:String) -> StorageReference {
+    let storageRef = storage.reference()
+    return storageRef.child(string)
   }
 }
