@@ -529,7 +529,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e4Q-H4-FdK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="94C-up-0du"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="94C-up-0du">
+                            <connections>
+                                <action selector="shareButton:" destination="nIP-U3-1Wx" id="xeW-Lc-sAi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ageLabel" destination="dz0-8V-w48" id="1cL-HO-YOc"/>

@@ -49,4 +49,10 @@ class PetCardViewController: UIViewController {
       petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
     }
   }
+  
+  @IBAction func shareButton(_ sender: Any) {
+    let text:[Any] = [pet?.petType?.rawValue, pet?.postType, pet?.city?.title, pet?.contactInfo]
+    let ac = UIActivityViewController (activityItems: text, applicationActivities: nil)
+    present (ac, animated: true, completion: nil )
+  }
 }
