@@ -31,7 +31,7 @@ class PetCardViewController: UIViewController {
   private func viewConfigure () {
     guard let pet = pet else { return }
     if let dateCreate = pet.dateCreate {
-      formatter.dateFormat = "dd.MM.yyyy hh:mm"
+      formatter.dateFormat = "dd.MM.yyyy"
       let date = formatter.string(from: dateCreate)
       dateCreateLabel.text = date
     }
