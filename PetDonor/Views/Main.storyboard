@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-1271" y="579"/>
         </scene>
-        <!--Объявления-->
+        <!--Мои публикации-->
         <scene sceneID="wse-35-5Dw">
             <objects>
                 <viewController id="TDg-aa-DJa" customClass="UserViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" id="5pG-d0-TmA"/>
-                    <navigationItem key="navigationItem" id="o7h-Rt-xXw"/>
+                    <navigationItem key="navigationItem" title="Мои публикации" id="o7h-Rt-xXw"/>
                     <connections>
                         <segue destination="CrI-Jg-gGI" kind="presentation" identifier="signUpSegue" id="CUa-Z7-8Gx"/>
                         <segue destination="9OA-FB-hsy" kind="presentation" identifier="signInSegue" id="JCw-mI-RbJ"/>
@@ -560,13 +560,7 @@
                             <constraint firstItem="mk3-NP-KJk" firstAttribute="top" secondItem="4Os-aZ-H7k" secondAttribute="top" id="hka-4g-s9e"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e4Q-H4-FdK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="94C-up-0du">
-                            <connections>
-                                <action selector="shareButton:" destination="nIP-U3-1Wx" id="xeW-Lc-sAi"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="e4Q-H4-FdK"/>
                     <connections>
                         <outlet property="ageLabel" destination="dz0-8V-w48" id="1cL-HO-YOc"/>
                         <outlet property="bloodTypeLabel" destination="qz0-HP-Swn" id="JYc-jv-Hdy"/>
@@ -1030,7 +1024,6 @@
         <image name="doc" catalog="system" width="115" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
