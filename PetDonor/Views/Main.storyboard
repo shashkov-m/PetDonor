@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-1271" y="579"/>
         </scene>
-        <!--Мои объявления-->
+        <!--Мои публикации-->
         <scene sceneID="wse-35-5Dw">
             <objects>
                 <viewController id="TDg-aa-DJa" customClass="UserViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" id="5pG-d0-TmA"/>
-                    <navigationItem key="navigationItem" title="Мои объявления" id="o7h-Rt-xXw"/>
+                    <navigationItem key="navigationItem" title="Мои публикации" id="o7h-Rt-xXw"/>
                     <connections>
                         <segue destination="CrI-Jg-gGI" kind="presentation" identifier="signUpSegue" id="CUa-Z7-8Gx"/>
                         <segue destination="9OA-FB-hsy" kind="presentation" identifier="signInSegue" id="JCw-mI-RbJ"/>
