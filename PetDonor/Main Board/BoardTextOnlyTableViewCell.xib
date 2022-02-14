@@ -16,50 +16,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-9Q-3m5">
-                        <rect key="frame" x="22" y="105.5" width="228" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-vb-cYE">
+                        <rect key="frame" x="6" y="6" width="308" height="104.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-9Q-3m5">
+                        <rect key="frame" x="6" y="116.5" width="237.5" height="20.5"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-ce-pqk">
+                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXp-jC-EF1">
-                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="20.5"/>
+                                <rect key="frame" x="93.5" y="0.0" width="63.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blood type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-ce-pqk">
-                                <rect key="frame" x="69.5" y="0.0" width="82" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG6-hP-QsX">
-                                <rect key="frame" x="157.5" y="0.0" width="70.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="City label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG6-hP-QsX">
+                                <rect key="frame" x="167" y="0.0" width="70.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRm-vb-cYE">
-                        <rect key="frame" x="6" y="6" width="308" height="93.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="NfR-9Q-3m5" secondAttribute="trailing" constant="6" id="3UI-HA-Vrc"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="NfR-9Q-3m5" secondAttribute="bottom" constant="6" id="7Z6-sf-BKH"/>
                     <constraint firstItem="yRm-vb-cYE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="FoH-wx-xBj"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NfR-9Q-3m5" secondAttribute="trailing" constant="6" id="WeL-no-vTh"/>
+                    <constraint firstItem="NfR-9Q-3m5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="WgK-sr-Dt5"/>
+                    <constraint firstAttribute="bottom" secondItem="NfR-9Q-3m5" secondAttribute="bottom" constant="6" id="XdH-Fj-zMt"/>
                     <constraint firstItem="yRm-vb-cYE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="bXJ-61-1YR"/>
-                    <constraint firstItem="NfR-9Q-3m5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="6" id="kxa-Wa-W2L"/>
                     <constraint firstItem="NfR-9Q-3m5" firstAttribute="top" secondItem="yRm-vb-cYE" secondAttribute="bottom" constant="6" id="luT-Cp-pl8"/>
                     <constraint firstAttribute="trailing" secondItem="yRm-vb-cYE" secondAttribute="trailing" constant="6" id="rtx-ZV-90G"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bloodTypeLabel" destination="nBV-ce-pqk" id="vod-O9-32d"/>
+                <outlet property="cityLabel" destination="WG6-hP-QsX" id="g6D-IL-blE"/>
+                <outlet property="dateCreateLabel" destination="nBV-ce-pqk" id="AOF-pl-TVS"/>
                 <outlet property="petTypeLabel" destination="NXp-jC-EF1" id="Y8e-5C-klp"/>
+                <outlet property="stackView" destination="NfR-9Q-3m5" id="R3f-zE-ece"/>
                 <outlet property="summaryLabel" destination="yRm-vb-cYE" id="I5i-04-tXK"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="211.94196428571428"/>

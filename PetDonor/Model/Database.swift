@@ -18,7 +18,7 @@ final class Database {
   let petCollection:CollectionReference
   let petVisibleOnlyQuery:Query
   private let storageImagesPath = "petImages"
-  var limit = 5
+  var limit = 10
   
   private init () {
     petCollection = db.collection("pets")
@@ -123,9 +123,7 @@ final class Database {
         let date = dateCreate.dateValue()
         var age = birthDate
         let calendar = Calendar.current
-        let formatter = DateFormatter ()
-        formatter.dateFormat = "dd.MM.yyyy"
-        if let tmpAge = formatter.date(from: birthDate) {
+        if let tmpAge = petDateFormatter.date(from: birthDate) {
           let components = calendar.dateComponents([.year, .month], from: tmpAge, to: Date ())
           age = ruDatePlural(year: components.year, month: components.month)
         }

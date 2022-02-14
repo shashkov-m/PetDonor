@@ -21,7 +21,6 @@ class MainBoardViewController: UIViewController {
   private let toPetCardSegueIdentifier = "toPetCard"
   private let toFiltersListSegueIdentifier = "toFiltersList"
   private var pet:Pet?
-  private let dateFormatter = DateFormatter ()
   private var pets = [Pet] () {
     didSet {
       print ("Board pets array is up to date")
@@ -41,13 +40,12 @@ class MainBoardViewController: UIViewController {
     super.viewDidLoad()
     tableView.register (UINib (nibName: BoardTextOnlyTableViewCell.identifier, bundle: nil),
                         forCellReuseIdentifier: BoardTextOnlyTableViewCell.identifier)
+    tableView.register (UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil),
+                        forCellReuseIdentifier: BoardImageTableViewCell.identifier)
     tableView.delegate = self
     tableView.dataSource = self
     postTypeSegmentedControlConfigure ()
     refreshControlConfigure ()
-    dateFormatter.locale = Locale (identifier: "ru_RU")
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .none
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -81,11 +79,10 @@ class MainBoardViewController: UIViewController {
       do {
         let snapshot = try await db.getPetsWithFilter(filter: filter)
         pets = db.convertSnapshotToPet(snapshot: snapshot)
+        isQueryRunning = false
         lastSnapshot = snapshot.documents.last
-        print ("88888",lastSnapshot)
       }
     }
-    isQueryRunning = false
   }
   
   @objc private func updatePetList () {
@@ -121,12 +118,31 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: BoardTextOnlyTableViewCell.identifier, for: indexPath) as! BoardTextOnlyTableViewCell
     let pet = pets [indexPath.row]
-    cell.petTypeLabel.text = pet.petType?.rawValue
-    cell.bloodTypeLabel.text = pet.bloodType
-    cell.summaryLabel.text = pet.description
-    return cell
+    if let ref = pet.imageUrl, ref.count > 0 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: BoardImageTableViewCell.identifier, for: indexPath) as! BoardImageTableViewCell
+      let reference = db.getImageReference(from: ref)
+      let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
+      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      cell.petTypeLabel.text = pet.petType?.rawValue
+      cell.summaryLabel.text = pet.description
+      cell.cityLabel.text = pet.city?.title
+      if let dateCreate = pet.dateCreate {
+        let date = petDateFormatter.string(from: dateCreate)
+        cell.dateCreateLabel.text = date
+      }
+      return cell
+    } else {
+      let cell = tableView.dequeueReusableCell(withIdentifier: BoardTextOnlyTableViewCell.identifier, for: indexPath) as! BoardTextOnlyTableViewCell
+      cell.petTypeLabel.text = pet.petType?.rawValue
+      cell.summaryLabel.text = pet.description
+      cell.cityLabel.text = pet.city?.title
+      if let dateCreate = pet.dateCreate {
+        let date = petDateFormatter.string(from: dateCreate)
+        cell.dateCreateLabel.text = date
+      }
+      return cell
+    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,12 +152,8 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    print ("11111",lastSnapshot,isQueryRunning)
     guard let snapshot = lastSnapshot, !isQueryRunning else { return }
-    print ("2222")
-    print ("pets count = ",pets.count)
-    if pets.count > 4, indexPath.row == pets.count - 2 {
-      print ("33333")
+    if pets.count >= 7, indexPath.row == pets.count - 2 {
       isQueryRunning = true
       Task {
         do {

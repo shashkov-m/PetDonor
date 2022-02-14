@@ -13,11 +13,14 @@ class UserViewController:UIViewController {
   private let newPetSegue = "createNewPetSegue"
   private let signInSegueIdentifier = "signInSegue"
   private let signUpSegueIdentifier = "signUpSegue"
+  private let userPetDetailsSegue = "userPetDetailsSegue"
   private let userView = UserView ()
   private var pets = [Pet] ()
+  private var pet:Pet?
   private let db = Database.share
   private var user:User?
   private let maxPetsCount = 3
+  private var isQueryRunning = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -56,9 +59,9 @@ class UserViewController:UIViewController {
     }
     userView.frame = view.bounds
     tableViewConfigure()
+    refreshControlConfigure ()
     view.addSubview(userView)
     userView.createNewButton.addTarget(self, action: #selector(createNewButtonDidTapped), for: .touchUpInside)
-    let navigationItem = UINavigationItem ()
     let logOutButton = UIAction (title: "Выйти") { _ in
       let auth = Auth.auth()
       do {
@@ -69,19 +72,36 @@ class UserViewController:UIViewController {
     }
     let menu = UIMenu (title: "", options: .displayInline, children: [logOutButton])
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
-    navigationItem.rightBarButtonItem = moreItem
-    userView.navigationBar.setItems([navigationItem], animated: false)
+    self.navigationItem.setRightBarButtonItems([moreItem], animated: true)
   }
   
   private func authViewConfigure () {
     for view in view.subviews {
       view.removeFromSuperview()
     }
+    self.navigationItem.rightBarButtonItem = nil
     let authView = AuthView ()
     authView.frame = view.bounds
     view.addSubview(authView)
     authView.signInButton.addTarget(self, action: #selector(signInButtonDidTapped), for: .touchUpInside)
     authView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTapped), for: .touchUpInside)
+  }
+  
+  @objc private func updatePetList () {
+    guard let user = user, let refreshControl = userView.tableView.refreshControl,
+          !isQueryRunning else { return }
+    isQueryRunning = true
+    Task {
+      do {
+        pets = try await db.getUserPets(for: user)
+        isQueryRunning = false
+      }
+      catch {
+        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel, handler: nil))
+      }
+      userView.tableView.reloadSections(IndexSet(integer:0), with: .fade)
+      refreshControl.endRefreshing()
+    }
   }
   
   @objc private func signInButtonDidTapped () {
@@ -99,16 +119,17 @@ class UserViewController:UIViewController {
       AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel))
     }
   }
-    
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let controller = segue.destination as? UINavigationController,
-          let VC = controller.viewControllers.first as? NewPostPetTableViewController,
-          let user = user
-    else {
-      return
+    if let controller = segue.destination as? UINavigationController,
+       let VC = controller.viewControllers.first as? NewPostPetTableViewController,
+       let user = user {
+      let newPet = Pet (isVisible: true, userID: user.uid)
+      VC.pet = newPet
     }
-    let pet = Pet (isVisible: true, userID: user.uid)
-    VC.pet = pet
+    else if let VC = segue.destination as? PetCardViewController, let pet = pet {
+      VC.pet = pet
+    }
   }
   
   @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
@@ -121,7 +142,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     userView.tableView.dataSource = self
     userView.tableView.delegate = self
     userView.tableView.separatorStyle = .none
-    userView.tableView.register(UINib (nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
+    userView.tableView.register(UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardImageTableViewCell.identifier)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,18 +152,32 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     return 1
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { fatalError ("TODO") }
+    let cell = tableView.dequeueReusableCell(withIdentifier: BoardImageTableViewCell.identifier, for: indexPath) as! BoardImageTableViewCell
     let pet = pets [indexPath.row]
-    cell.bloodTypeLabel.text = pet.bloodType
-    cell.rewardLabel.text = pet.reward
-    cell.postTypeLabel.text = pet.postType
-    cell.descriptionLabel.text = pet.description
+    cell.summaryLabel.text = pet.description
     cell.petTypeLabel.text = pet.petType?.rawValue
     cell.cityLabel.text = pet.city?.title
-    cell.petImageView.image = UIImage (named: "catPlaceholder")
+    if let dateCreate = pet.dateCreate {
+      let date = petDateFormatter.string(from: dateCreate)
+      cell.dateCreateLabel.text = date
+    }
+    let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
+    if let ref = pet.imageUrl, ref.count > 0 {
+      let reference = db.getImageReference(from: ref)
+      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+    } else {
+      cell.petImageView.image = placeholder
+    }
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pet = pets [indexPath.row]
     tableView.deselectRow(at: indexPath, animated: true)
+    performSegue(withIdentifier: userPetDetailsSegue, sender: self)
+  }
+  private func refreshControlConfigure () {
+    let refreshControl = UIRefreshControl ()
+    refreshControl.addTarget(self, action: #selector(updatePetList), for: .valueChanged)
+    userView.tableView.refreshControl = refreshControl
   }
 }
