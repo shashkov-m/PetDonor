@@ -21,7 +21,6 @@ class MainBoardViewController: UIViewController {
   private let toPetCardSegueIdentifier = "toPetCard"
   private let toFiltersListSegueIdentifier = "toFiltersList"
   private var pet:Pet?
-  private let dateFormatter = DateFormatter ()
   private var pets = [Pet] () {
     didSet {
       print ("Board pets array is up to date")
@@ -47,9 +46,6 @@ class MainBoardViewController: UIViewController {
     tableView.dataSource = self
     postTypeSegmentedControlConfigure ()
     refreshControlConfigure ()
-    dateFormatter.locale = Locale (identifier: "ru_RU")
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .none
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -83,10 +79,10 @@ class MainBoardViewController: UIViewController {
       do {
         let snapshot = try await db.getPetsWithFilter(filter: filter)
         pets = db.convertSnapshotToPet(snapshot: snapshot)
+        isQueryRunning = false
         lastSnapshot = snapshot.documents.last
       }
     }
-    isQueryRunning = false
   }
   
   @objc private func updatePetList () {
@@ -132,7 +128,7 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
       cell.summaryLabel.text = pet.description
       cell.cityLabel.text = pet.city?.title
       if let dateCreate = pet.dateCreate {
-        let date = dateFormatter.string(from: dateCreate)
+        let date = petDateFormatter.string(from: dateCreate)
         cell.dateCreateLabel.text = date
       }
       return cell
@@ -142,7 +138,7 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
       cell.summaryLabel.text = pet.description
       cell.cityLabel.text = pet.city?.title
       if let dateCreate = pet.dateCreate {
-        let date = dateFormatter.string(from: dateCreate)
+        let date = petDateFormatter.string(from: dateCreate)
         cell.dateCreateLabel.text = date
       }
       return cell

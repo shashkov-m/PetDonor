@@ -7,6 +7,12 @@
 
 import Foundation
 
+let petDateFormatter:DateFormatter = {
+  let formatter = DateFormatter ()
+  formatter.dateFormat = "dd.MM.yyyy"
+  return formatter
+} ()
+
 let catBloodTypes = [
   "Неизвестно",
   "A",

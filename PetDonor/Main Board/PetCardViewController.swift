@@ -11,7 +11,6 @@ import FirebaseStorageUI
 class PetCardViewController: UIViewController {
   var pet:Pet?
   let db = Database.share
-  let formatter = DateFormatter ()
   @IBOutlet weak var petTypeLabel: UILabel!
   @IBOutlet weak var bloodTypeLabel: UILabel!
   @IBOutlet weak var postTypeLabel: UILabel!
@@ -31,8 +30,7 @@ class PetCardViewController: UIViewController {
   private func viewConfigure () {
     guard let pet = pet else { return }
     if let dateCreate = pet.dateCreate {
-      formatter.dateFormat = "dd.MM.yyyy"
-      let date = formatter.string(from: dateCreate)
+      let date = petDateFormatter.string(from: dateCreate)
       dateCreateLabel.text = date
     }
     bloodTypeLabel.text = pet.bloodType

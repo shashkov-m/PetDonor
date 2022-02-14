@@ -16,7 +16,6 @@ class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var rewardTextField: UITextField!
   @IBOutlet weak var rewardSegmentedControl: UISegmentedControl!
   @IBOutlet weak var petImageView: UIImageView!
-  private lazy var formatter = DateFormatter ()
   private var petImage: UIImage? {
     didSet {
       petImageView.image = petImage
@@ -32,7 +31,6 @@ class NewPostPetDescriptionViewController: UIViewController {
     ageTextField.delegate = self
     toolBarConfiguration ()
     bloodTypeMenuConfigure ()
-    formatter.dateFormat = "dd.MM.yyyy"
     rewardSegmentedControl.addTarget(self, action: #selector(segmentedControlDidChange(_:)), for: .valueChanged)
     let tap = UITapGestureRecognizer (target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(tap)
@@ -70,7 +68,7 @@ class NewPostPetDescriptionViewController: UIViewController {
       }
     } ()
     pet.age = {
-      if let text = ageTextField.text, let birthDate = formatter.date(from: text), birthDate <= Date.now {
+      if let text = ageTextField.text, let birthDate = petDateFormatter.date(from: text), birthDate <= Date.now {
         return text
       } else {
         return "Не указано"
@@ -208,7 +206,7 @@ extension NewPostPetDescriptionViewController:UITextFieldDelegate {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       if textField == self.ageTextField, let string = textField.text, string.count > 0 {
-        guard let date = self.formatter.date(from: string), date <= Date.now else {
+        guard let date = petDateFormatter.date(from: string), date <= Date.now else {
           self.ageTextField.textColor = .red
           shakeAnimation(view: self.ageTextField)
           return
