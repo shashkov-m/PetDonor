@@ -75,7 +75,7 @@ class UserViewController:UIViewController {
     let menu = UIMenu (title: "", options: .displayInline, children: [logOutButton])
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
     navigationItem.rightBarButtonItem = moreItem
-    userView.navigationBar.setItems([navigationItem], animated: false)
+    navigationController?.navigationBar.setItems([navigationItem], animated: false)
   }
   
   private func authViewConfigure () {

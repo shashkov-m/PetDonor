@@ -32,14 +32,6 @@ class UserView: UIView {
     return logOutButton
   } ()
   
-  lazy var navigationBar:UINavigationBar = {
-    let navigationBar = UINavigationBar ()
-    navigationBar.setBackgroundImage(UIImage (), for: .default)
-    navigationBar.shadowImage = UIImage ()
-    navigationBar.translatesAutoresizingMaskIntoConstraints = false
-    return navigationBar
-  } ()
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     viewConfigure()
@@ -54,17 +46,12 @@ class UserView: UIView {
   private func viewConfigure () {
     addSubview(tableView)
     addSubview(createNewButton)
-    addSubview(navigationBar)
     
   }
   
   private func constraintsConfigure () {
     NSLayoutConstraint.activate ([
-      navigationBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-      navigationBar.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-      navigationBar.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-      //navigationBar.heightAnchor.constraint(equalToConstant: 44),
-      tableView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+      tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
       tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
       tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
       tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),

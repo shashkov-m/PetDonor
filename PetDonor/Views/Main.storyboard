@@ -40,15 +40,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Объявления" image="square.and.pencil" catalog="system" id="5pG-d0-TmA"/>
+                    <navigationItem key="navigationItem" id="o7h-Rt-xXw"/>
                     <connections>
-                        <segue destination="CrI-Jg-gGI" kind="show" identifier="signUpSegue" id="CUa-Z7-8Gx"/>
+                        <segue destination="CrI-Jg-gGI" kind="presentation" identifier="signUpSegue" id="CUa-Z7-8Gx"/>
                         <segue destination="9OA-FB-hsy" kind="presentation" identifier="signInSegue" id="JCw-mI-RbJ"/>
                         <segue destination="fCF-DS-QMT" kind="presentation" identifier="createNewPetSegue" modalPresentationStyle="fullScreen" id="qgb-Xs-3CI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOX-1X-N9v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="-206"/>
+            <point key="canvasLocation" x="723" y="-206"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Y5D-jD-Lcu">
@@ -993,13 +994,30 @@
                     </tabBar>
                     <connections>
                         <segue destination="1d3-lg-jZJ" kind="relationship" relationship="viewControllers" id="Zok-FO-wyF"/>
-                        <segue destination="TDg-aa-DJa" kind="relationship" relationship="viewControllers" id="jO5-m8-7ej"/>
+                        <segue destination="JHF-Wz-XZG" kind="relationship" relationship="viewControllers" id="NCf-Z6-nOZ"/>
                         <segue destination="ZO5-EH-SOn" kind="relationship" relationship="viewControllers" id="EP2-zx-F5g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBx-gL-W9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-206"/>
+            <point key="canvasLocation" x="-612" y="-206"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="aoe-pX-ukG">
+            <objects>
+                <navigationController id="JHF-Wz-XZG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="NA5-kD-LMK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wy0-IJ-Cbd">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TDg-aa-DJa" kind="relationship" relationship="rootViewController" id="EvV-u9-KIZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGm-rS-uSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="-206"/>
         </scene>
     </scenes>
     <resources>
