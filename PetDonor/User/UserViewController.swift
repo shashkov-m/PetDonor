@@ -13,14 +13,19 @@ class UserViewController:UIViewController {
   private let newPetSegue = "createNewPetSegue"
   private let signInSegueIdentifier = "signInSegue"
   private let signUpSegueIdentifier = "signUpSegue"
+  private let userPetDetailsSegue = "userPetDetailsSegue"
   private let userView = UserView ()
   private var pets = [Pet] ()
   private let db = Database.share
   private var user:User?
   private let maxPetsCount = 3
+  private let dateFormatter = DateFormatter ()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    dateFormatter.locale = Locale (identifier: "ru_RU")
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -121,7 +126,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     userView.tableView.dataSource = self
     userView.tableView.delegate = self
     userView.tableView.separatorStyle = .none
-    userView.tableView.register(UINib (nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
+    userView.tableView.register(UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardImageTableViewCell.identifier)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,15 +136,22 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     return 1
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { fatalError ("TODO") }
+    let cell = tableView.dequeueReusableCell(withIdentifier: BoardImageTableViewCell.identifier, for: indexPath) as! BoardImageTableViewCell
     let pet = pets [indexPath.row]
-    cell.bloodTypeLabel.text = pet.bloodType
-    cell.rewardLabel.text = pet.reward
-    cell.postTypeLabel.text = pet.postType
-    cell.descriptionLabel.text = pet.description
+    cell.summaryLabel.text = pet.description
     cell.petTypeLabel.text = pet.petType?.rawValue
     cell.cityLabel.text = pet.city?.title
-    cell.petImageView.image = UIImage (named: "catPlaceholder")
+    if let dateCreate = pet.dateCreate {
+      let date = dateFormatter.string(from: dateCreate)
+      cell.dateCreateLabel.text = date
+    }
+    let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
+    if let ref = pet.imageUrl, ref.count > 0 {
+      let reference = db.getImageReference(from: ref)
+      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+    } else {
+      cell.petImageView.image = placeholder
+    }
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

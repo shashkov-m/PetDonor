@@ -59,7 +59,7 @@ class UserView: UIView {
   }
   
   private func constraintsConfigure () {
-    let constraints = [
+    NSLayoutConstraint.activate ([
       navigationBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
       navigationBar.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
       navigationBar.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
@@ -73,9 +73,6 @@ class UserView: UIView {
       createNewButton.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 30),
       createNewButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
       createNewButton.heightAnchor.constraint(equalToConstant: 50)
-    ]
-    constraints.forEach {constraint in
-      constraint.isActive = true
-    }
+    ])
   }
 }

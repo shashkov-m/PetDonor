@@ -64,7 +64,7 @@ class AuthView: UIView {
   }
   
   private func constraintsConfigure () {
-    let constraints = [
+    NSLayoutConstraint.activate ([
       stack.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                     constant: -40),
       stack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
@@ -75,9 +75,6 @@ class AuthView: UIView {
       backgroundImage.widthAnchor.constraint(equalToConstant: 100),
       backgroundImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
       backgroundImage.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-    ]
-    constraints.forEach() { constraint in
-      constraint.isActive = true
-    }
+    ])
   }
 }
