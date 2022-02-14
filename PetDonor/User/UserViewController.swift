@@ -72,7 +72,7 @@ class UserViewController:UIViewController {
     }
     let menu = UIMenu (title: "", options: .displayInline, children: [logOutButton])
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
-    self.navigationItem.setRightBarButtonItems([moreItem], animated: true)
+    self.navigationItem.setRightBarButton(moreItem, animated: true)
   }
   
   private func authViewConfigure () {
@@ -129,6 +129,7 @@ class UserViewController:UIViewController {
     }
     else if let VC = segue.destination as? PetCardViewController, let pet = pet {
       VC.pet = pet
+      VC.isFullPermissions = true
     }
   }
   
