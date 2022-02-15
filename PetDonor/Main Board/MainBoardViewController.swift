@@ -123,7 +123,7 @@ extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: BoardImageTableViewCell.identifier, for: indexPath) as! BoardImageTableViewCell
       let reference = db.getImageReference(from: ref)
       let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
-      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.progressiveLoad, .retryFailed])
       cell.petTypeLabel.text = pet.petType?.rawValue
       cell.summaryLabel.text = pet.description
       cell.cityLabel.text = pet.city?.title

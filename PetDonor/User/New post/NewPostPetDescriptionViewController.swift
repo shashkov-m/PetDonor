@@ -24,6 +24,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   
   var pet:Pet?
   let db = Database.share
+  var isEditingMode = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,6 +37,9 @@ class NewPostPetDescriptionViewController: UIViewController {
     view.addGestureRecognizer(tap)
     scrollView.keyboardDismissMode = .interactive
     petImageConfigure (petType: pet?.petType)
+    if isEditingMode == true {
+      petEditModeConfigure()
+    }
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -105,17 +109,32 @@ class NewPostPetDescriptionViewController: UIViewController {
     petContactsTextView.inputAccessoryView = toolbar
   }
   
-  private func bloodTypeMenuConfigure () {
+  private func bloodTypeMenuConfigure (editMode:Bool = false) {
     var actions = [UIAction] ()
     let bloodTypes = pet?.petType == .cat ? catBloodTypes : dogBloodTypes
     for i in bloodTypes {
       let action = UIAction (title: i, handler: { (_) in })
+      if editMode == true, action.title == pet?.bloodType {
+        action.state = .on
+      }
       actions.append(action)
       let menu = UIMenu (title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
       petBloodTypeMenu.showsMenuAsPrimaryAction = true
       petBloodTypeMenu.changesSelectionAsPrimaryAction = true
       petBloodTypeMenu.menu = menu
     }
+  }
+  
+  private func petEditModeConfigure () {
+    guard let pet = pet else { return }
+    if let ref = pet.imageUrl {
+      let reference = db.getImageReference(from: ref)
+      petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: nil, options: [.progressiveLoad, .retryFailed])
+    }
+    ageTextField.text = pet.age
+    petDescriptionTextView.text = pet.description
+    petContactsTextView.text = pet.contactInfo
+    bloodTypeMenuConfigure(editMode: true)
   }
   
   private func petImageConfigure (petType:PetType?) {

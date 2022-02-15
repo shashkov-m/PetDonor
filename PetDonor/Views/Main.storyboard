@@ -572,6 +572,7 @@
                         <outlet property="petTypeLabel" destination="yX4-xO-OpZ" id="yfG-gg-vai"/>
                         <outlet property="postTypeLabel" destination="GAE-xn-s9N" id="yir-H2-o82"/>
                         <outlet property="rewardLabel" destination="dNg-UO-Vbv" id="Tz6-QK-EVP"/>
+                        <segue destination="rTN-sq-c85" kind="show" identifier="toEditPetDataSegue" id="rYj-bA-kGC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CY-E2-LjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -773,7 +774,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtB-NF-8x1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="931"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="882"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-fk-79X">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="996"/>
@@ -1016,6 +1017,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="rYj-bA-kGC"/>
         <segue reference="zDH-vO-76Q"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -97,6 +97,33 @@ final class Database {
     return convertSnapshotToPet(snapshot: result)
   }
   
+  func deletePet (pet:Pet) {
+    guard let firebaseDocID = pet.firebaseDocID else { return }
+    queue.async { [weak self] in
+      guard let self = self else { return }
+      self.petCollection.document(firebaseDocID).delete()
+      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let dateCreate = pet.dateCreate {
+        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(dateCreate).jpg"
+        let storageRef = self.storage.reference(withPath: "\(imagePath)")
+        storageRef.delete (completion: nil)
+      }
+    }
+  }
+  
+  func updatePetData (pet:Pet) {
+    
+  }
+  
+  func updatePetDateCreate (pet:Pet) {
+    queue.async { [weak self] in
+      guard let self = self, let petDate = pet.dateCreate, let firebaseDocID = pet.firebaseDocID else { return }
+      let now = Date ()
+      if now.timeIntervalSince1970 - petDate.timeIntervalSince1970 >= 14_400 {
+        self.petCollection.document(firebaseDocID).setData([PetKeys.dateCreate.rawValue : now], merge: true)
+      }
+    }
+  }
+  
   func convertSnapshotToPet (snapshot:QuerySnapshot) -> [Pet] {
     var array = [Pet] ()
     for document in snapshot.documents {
@@ -155,17 +182,5 @@ final class Database {
   func getImageReference (from string:String) -> StorageReference {
     let storageRef = storage.reference()
     return storageRef.child(string)
-  }
-  func deletePet (pet:Pet) {
-    guard let firebaseDocID = pet.firebaseDocID else { return }
-    queue.async { [weak self] in
-      guard let self = self else { return }
-      self.petCollection.document(firebaseDocID).delete()
-      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let dateCreate = pet.dateCreate {
-        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(dateCreate).jpg"
-        let storageRef = self.storage.reference(withPath: "\(imagePath)")
-        storageRef.delete (completion: nil)
-      }
-    }
   }
 }

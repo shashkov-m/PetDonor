@@ -12,6 +12,7 @@ class PetCardViewController: UIViewController {
   var pet:Pet?
   let db = Database.share
   var isFullPermissions = false
+  private let toEditPetDataSegue = "toEditPetDataSegue"
   @IBOutlet weak var petTypeLabel: UILabel!
   @IBOutlet weak var bloodTypeLabel: UILabel!
   @IBOutlet weak var postTypeLabel: UILabel!
@@ -46,7 +47,7 @@ class PetCardViewController: UIViewController {
     if let ref = pet.imageUrl {
       let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
       let reference = db.getImageReference(from: ref)
-      petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.progressiveLoad, .retryFailed])
     }
   }
   
@@ -61,17 +62,27 @@ class PetCardViewController: UIViewController {
     
     if isFullPermissions == true {
       guard let pet = pet else { return }
-      let updateDateCreate = UIAction (title: "Обновить дату публикации", image: UIImage (systemName: "arrow.counterclockwise")) { _ in
-        
+      let updateDateCreate = UIAction (title: "Обновить дату публикации", image: UIImage (systemName: "arrow.counterclockwise")) { [weak self] _ in
+        guard let self = self else { return }
+        var pet = pet
+        let now = Date ()
+        self.db.updatePetDateCreate (pet: pet)
+        pet.dateCreate = now
+        self.dateCreateLabel.text = petDateFormatter.string(from: now)
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse, .curveEaseInOut]) {
+          self.dateCreateLabel.alpha = 0.1
+        } completion: { _ in
+          self.dateCreateLabel.alpha = 1
+        }
       }
       let changePetData = UIAction (title: "Редактировать", image: UIImage (systemName: "square.and.pencil" )) { _ in
-        
+        self.performSegue(withIdentifier: self.toEditPetDataSegue, sender: self)
       }
       let deletePet = UIAction (title: "Удалить публикацию", image: UIImage (systemName: "trash")) { action in
         let deleteAction = UIAlertAction (title: "Удалить", style: .destructive) { [weak self] _ in
           guard let self = self else { return }
           self.db.deletePet(pet: pet)
-          self.dismiss(animated: true, completion: nil)
+          self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction (title: "Отмена", style: .cancel, handler: nil)
         AlertBuilder.build(presentOn: self, title: "Подтвердите удаление", message: "Публикация будет удалена. Вы сможете создать ее повторно при необходимости", preferredStyle: .alert, actions: [deleteAction, cancelAction])
@@ -81,5 +92,11 @@ class PetCardViewController: UIViewController {
     
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
     self.navigationItem.setRightBarButton(moreItem, animated: true)
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let VC = segue.destination as? NewPostPetDescriptionViewController {
+      VC.pet = pet
+      VC.isEditingMode = true
+    }
   }
 }
