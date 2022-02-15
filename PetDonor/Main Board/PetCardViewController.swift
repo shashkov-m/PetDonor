@@ -49,7 +49,8 @@ class PetCardViewController: UIViewController {
       petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
     }
   }
-    
+  
+  //MARK: Navigation menu configure
   private func navigationBarConfigure (isFullPermissions:Bool) {
     let shareAction = UIAction (title: "Поделиться", image: UIImage (systemName: "square.and.arrow.up")) { _ in
       let text:[Any] = [self.pet?.petType?.rawValue, self.pet?.postType, self.pet?.city?.title, self.pet?.contactInfo]
@@ -57,7 +58,9 @@ class PetCardViewController: UIViewController {
       self.present (ac, animated: true, completion: nil )
     }
     var menu = UIMenu (title: "", options: .displayInline, children: [shareAction])
+    
     if isFullPermissions == true {
+      guard let pet = pet else { return }
       let updateDateCreate = UIAction (title: "Обновить дату публикации", image: UIImage (systemName: "arrow.counterclockwise")) { _ in
         
       }
@@ -65,12 +68,18 @@ class PetCardViewController: UIViewController {
         
       }
       let deletePet = UIAction (title: "Удалить публикацию", image: UIImage (systemName: "trash")) { action in
-        
+        let deleteAction = UIAlertAction (title: "Удалить", style: .destructive) { [weak self] _ in
+          guard let self = self else { return }
+          self.db.deletePet(pet: pet)
+          self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction (title: "Отмена", style: .cancel, handler: nil)
+        AlertBuilder.build(presentOn: self, title: "Подтвердите удаление", message: "Публикация будет удалена. Вы сможете создать ее повторно при необходимости", preferredStyle: .alert, actions: [deleteAction, cancelAction])
       }
       menu = menu.replacingChildren([shareAction, updateDateCreate, changePetData, deletePet])
     }
+    
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
     self.navigationItem.setRightBarButton(moreItem, animated: true)
-    print (isFullPermissions)
   }
 }

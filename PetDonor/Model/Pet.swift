@@ -20,4 +20,5 @@ struct Pet {
   var reward:String?
   var age:String?
   var imageUrl:String?
+  var firebaseDocID:String?
   }

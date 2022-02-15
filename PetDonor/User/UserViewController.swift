@@ -51,7 +51,7 @@ class UserViewController:UIViewController {
         userView.tableView.reloadData()
       } catch let error {
         AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription,
-                           preferredStyle: .alert,action: UIAlertAction (title: "OK", style: .cancel))
+                           preferredStyle: .alert,actions: [UIAlertAction (title: "OK", style: .cancel)])
       }
     }
     for view in view.subviews {
@@ -97,7 +97,7 @@ class UserViewController:UIViewController {
         isQueryRunning = false
       }
       catch {
-        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel, handler: nil))
+        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, actions: [UIAlertAction (title: "OK", style: .cancel, handler: nil)])
       }
       userView.tableView.reloadSections(IndexSet(integer:0), with: .fade)
       refreshControl.endRefreshing()
@@ -116,7 +116,7 @@ class UserViewController:UIViewController {
     if pets.count < maxPetsCount {
       performSegue(withIdentifier: newPetSegue, sender: self)
     } else {
-      AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel))
+      AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, actions: [UIAlertAction (title: "OK", style: .cancel)])
     }
   }
   

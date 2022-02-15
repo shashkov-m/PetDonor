@@ -14,7 +14,7 @@ final class Database {
   private let db = Firestore.firestore()
   private let storage = Storage.storage()
   private let user = Auth.auth().currentUser
-  private let queue = DispatchQueue (label: "FirestoreAddDocumentQueue", qos: .utility, attributes: .concurrent )
+  private let queue = DispatchQueue (label: "FirestoreDocumentQueue", qos: .utility, attributes: .concurrent )
   let petCollection:CollectionReference
   let petVisibleOnlyQuery:Query
   private let storageImagesPath = "petImages"
@@ -40,6 +40,7 @@ final class Database {
       }
     }
     queue.async () {
+      let firebaseID = ref.document().documentID
       let petObject:[String : Any] = [
         PetKeys.petType.rawValue : pet.petType?.rawValue ?? "",
         PetKeys.bloodType.rawValue : pet.bloodType ?? "",
@@ -53,9 +54,10 @@ final class Database {
         PetKeys.userID.rawValue : pet.userID,
         PetKeys.reward.rawValue : pet.reward ?? "",
         PetKeys.imageUrl.rawValue : pet.imageUrl ?? "",
-        PetKeys.age.rawValue : pet.age ?? ""
+        PetKeys.age.rawValue : pet.age ?? "",
+        PetKeys.firebaseDocID.rawValue : firebaseID
       ]
-      ref.document().setData (petObject) { error in
+      ref.document(firebaseID).setData (petObject) { error in
         if let error = error {
           completion (.failure(error))
         } else {
@@ -64,12 +66,6 @@ final class Database {
       }
     }
   }
-  
-  //  @available (iOS 15, *)
-  //  func getPetList () async throws -> QuerySnapshot {
-  //    let result = try await petLimittedQuery.getDocuments()
-  //    return result
-  //  }
   
   @available (iOS 15, *)
   func getNextPetsPart (from snapshot:QueryDocumentSnapshot, filterOrNil: [String:Any]?) async throws -> QuerySnapshot {
@@ -117,7 +113,8 @@ final class Database {
          let userID = doc[PetKeys.userID.rawValue] as? String,
          let reward = doc[PetKeys.reward.rawValue] as? String,
          let imageUrl = doc [PetKeys.imageUrl.rawValue] as? String,
-         let birthDate = doc [PetKeys.age.rawValue] as? String
+         let birthDate = doc [PetKeys.age.rawValue] as? String,
+         let firebaseDocID = doc [PetKeys.firebaseDocID.rawValue] as? String
       {
         let city = City (id: cityID, title: cityTitle)
         let date = dateCreate.dateValue()
@@ -127,7 +124,7 @@ final class Database {
           let components = calendar.dateComponents([.year, .month], from: tmpAge, to: Date ())
           age = ruDatePlural(year: components.year, month: components.month)
         }
-        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward, age: age, imageUrl: imageUrl)
+        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward, age: age, imageUrl: imageUrl, firebaseDocID: firebaseDocID)
         array.append(pet)
       }
     }
@@ -158,5 +155,17 @@ final class Database {
   func getImageReference (from string:String) -> StorageReference {
     let storageRef = storage.reference()
     return storageRef.child(string)
+  }
+  func deletePet (pet:Pet) {
+    guard let firebaseDocID = pet.firebaseDocID else { return }
+    queue.async { [weak self] in
+      guard let self = self else { return }
+      self.petCollection.document(firebaseDocID).delete()
+      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let dateCreate = pet.dateCreate {
+        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(dateCreate).jpg"
+        let storageRef = self.storage.reference(withPath: "\(imagePath)")
+        storageRef.delete (completion: nil)
+      }
+    }
   }
 }

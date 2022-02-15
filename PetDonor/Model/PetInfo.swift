@@ -54,4 +54,5 @@ enum PetKeys:String {
   case reward
   case imageUrl
   case age
+  case firebaseDocID
 }
