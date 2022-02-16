@@ -46,6 +46,9 @@ class MainBoardViewController: UIViewController {
     tableView.dataSource = self
     postTypeSegmentedControlConfigure ()
     refreshControlConfigure ()
+    let (right, left) = swipeGesturesConfigure (target: self, rightAction: #selector(rightSwipeAction(_:)), leftAction: #selector(leftSwipeAction(_:)))
+    tableView.addGestureRecognizer(right)
+    tableView.addGestureRecognizer(left)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -94,8 +97,7 @@ class MainBoardViewController: UIViewController {
   @IBAction func filterViewButtonAction(_ sender: Any) {
     performSegue(withIdentifier: toFiltersListSegueIdentifier, sender: self)
   }
-  
-  
+    
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == toPetCardSegueIdentifier, let destinationVC = segue.destination as? PetCardViewController, let pet = pet {
       destinationVC.pet = pet
@@ -105,6 +107,33 @@ class MainBoardViewController: UIViewController {
     }
   }
   
+  private func swipeGesturesConfigure (target:Any?, rightAction:Selector?,leftAction:Selector?) -> (rightGesture : UISwipeGestureRecognizer,leftGesture :  UISwipeGestureRecognizer) {
+    let rightSwipe = UISwipeGestureRecognizer (target: target, action: rightAction)
+    rightSwipe.numberOfTouchesRequired = 1
+    rightSwipe.direction = .right
+    let leftSwipe = UISwipeGestureRecognizer (target: target, action: leftAction)
+    leftSwipe.numberOfTouchesRequired = 1
+    leftSwipe.direction = .left
+    return (rightSwipe, leftSwipe)
+  }
+  
+  @objc private func rightSwipeAction (_ gesture:UISwipeGestureRecognizer) {
+    guard postTypeSegmentedControl.selectedSegmentIndex != 0 else { return }
+    postTypeSegmentedControl.selectedSegmentIndex = 0
+    let action = postTypeSegmentedControl.actionForSegment(at: 0)
+    if let action = action {
+      postTypeSegmentedControl.sendAction(action)
+    }
+  }
+  
+  @objc private func leftSwipeAction (_ gesture:UISwipeGestureRecognizer) {
+    guard postTypeSegmentedControl.selectedSegmentIndex != 1 else { return }
+    postTypeSegmentedControl.selectedSegmentIndex = 1
+    let action = postTypeSegmentedControl.actionForSegment(at: 1)
+    if let action = action {
+      postTypeSegmentedControl.sendAction(action)
+    }
+  }
 }
 //MARK: UITableViewDelegate
 extension MainBoardViewController: UITableViewDelegate, UITableViewDataSource {
