@@ -31,8 +31,11 @@ final class Database {
   func addPet (pet:Pet, image:UIImage?, completion: @escaping (Result <Pet,Error>) -> ()) {
     let ref = petCollection
     var pet = pet
+    //FIXME: одна и так же картинка будет перезаписываться и сжиматься.
+    //Нужно добавить проверку что это новая картинка
+    //метадата?
     if let image = image, let data = image.jpegData(compressionQuality: 0.4) {
-      let imagePath = "\(storageImagesPath)/\(pet.userID)/\(pet.dateCreate ?? Date.now).jpg"
+      let imagePath = "\(storageImagesPath)/\(pet.userID)/\(pet.date ?? Date.now).jpg"
       let storageRef = storage.reference(withPath: "\(imagePath)")
       pet.imageUrl = imagePath
       queue.async () {
@@ -40,7 +43,7 @@ final class Database {
       }
     }
     queue.async () {
-      let firebaseID = ref.document().documentID
+      let firebaseID = pet.firebaseDocID == nil ? ref.document().documentID : pet.firebaseDocID!
       let petObject:[String : Any] = [
         PetKeys.petType.rawValue : pet.petType?.rawValue ?? "",
         PetKeys.bloodType.rawValue : pet.bloodType ?? "",
@@ -54,8 +57,9 @@ final class Database {
         PetKeys.userID.rawValue : pet.userID,
         PetKeys.reward.rawValue : pet.reward ?? "",
         PetKeys.imageUrl.rawValue : pet.imageUrl ?? "",
-        PetKeys.age.rawValue : pet.age ?? "",
-        PetKeys.firebaseDocID.rawValue : firebaseID
+        PetKeys.birthDate.rawValue : pet.birthDate ?? "",
+        PetKeys.firebaseDocID.rawValue : firebaseID,
+        PetKeys.date.rawValue : pet.date ?? Date.now
       ]
       ref.document(firebaseID).setData (petObject) { error in
         if let error = error {
@@ -102,8 +106,8 @@ final class Database {
     queue.async { [weak self] in
       guard let self = self else { return }
       self.petCollection.document(firebaseDocID).delete()
-      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let dateCreate = pet.dateCreate {
-        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(dateCreate).jpg"
+      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let date = pet.date {
+        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(date).jpg"
         let storageRef = self.storage.reference(withPath: "\(imagePath)")
         storageRef.delete (completion: nil)
       }
@@ -135,23 +139,25 @@ final class Database {
          let contactInfo = doc[PetKeys.contactInfo.rawValue] as? String,
          let cityID = doc[PetKeys.cityID.rawValue] as? Int,
          let cityTitle = doc[PetKeys.city.rawValue] as? String,
-         let dateCreate = doc[PetKeys.dateCreate.rawValue] as? Timestamp,
+         let firebaseDateCreate = doc[PetKeys.dateCreate.rawValue] as? Timestamp,
          let isVisible = doc[PetKeys.isVisible.rawValue] as? Bool,
          let userID = doc[PetKeys.userID.rawValue] as? String,
          let reward = doc[PetKeys.reward.rawValue] as? String,
          let imageUrl = doc [PetKeys.imageUrl.rawValue] as? String,
-         let birthDate = doc [PetKeys.age.rawValue] as? String,
-         let firebaseDocID = doc [PetKeys.firebaseDocID.rawValue] as? String
+         let birthDate = doc [PetKeys.birthDate.rawValue] as? String,
+         let firebaseDocID = doc [PetKeys.firebaseDocID.rawValue] as? String,
+         let firebaseDate = doc [PetKeys.date.rawValue] as? Timestamp
       {
         let city = City (id: cityID, title: cityTitle)
-        let date = dateCreate.dateValue()
+        let dateCreate = firebaseDateCreate.dateValue()
+        let date = firebaseDate.dateValue()
         var age = birthDate
         let calendar = Calendar.current
         if let tmpAge = petDateFormatter.date(from: birthDate) {
           let components = calendar.dateComponents([.year, .month], from: tmpAge, to: Date ())
           age = ruDatePlural(year: components.year, month: components.month)
         }
-        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: date, reward: reward, age: age, imageUrl: imageUrl, firebaseDocID: firebaseDocID)
+        let pet = Pet (city: city, description: description, contactInfo: contactInfo, bloodType: bloodType, postType: postType, petType: PetType.init(rawValue: petType), isVisible: isVisible, userID: userID, dateCreate: dateCreate, date: date, reward: reward, age: age, imageUrl: imageUrl, firebaseDocID: firebaseDocID,birthDate: birthDate)
         array.append(pet)
       }
     }

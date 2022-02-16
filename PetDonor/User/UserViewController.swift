@@ -165,7 +165,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
     if let ref = pet.imageUrl, ref.count > 0 {
       let reference = db.getImageReference(from: ref)
-      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.progressiveLoad, .retryFailed])
+      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.progressiveLoad, .retryFailed, .refreshCached])
     } else {
       cell.petImageView.image = placeholder
     }
