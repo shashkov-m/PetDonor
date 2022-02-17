@@ -17,7 +17,7 @@ class UserViewController:UIViewController {
   private let userView = UserView ()
   private var pets = [Pet] ()
   private var pet:Pet?
-  private let db = Database.share
+  private let db = Database ()
   private var user:User?
   private let maxPetsCount = 3
   private var isQueryRunning = false
@@ -165,7 +165,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
     if let ref = pet.imageUrl, ref.count > 0 {
       let reference = db.getImageReference(from: ref)
-      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.progressiveLoad, .retryFailed, .refreshCached])
+      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.refreshCached])
     } else {
       cell.petImageView.image = placeholder
     }

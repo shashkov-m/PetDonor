@@ -23,7 +23,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   }
   
   var pet:Pet?
-  let db = Database.share
+  let db = Database ()
   var isEditingMode = false
   
   override func viewDidLoad() {

@@ -62,4 +62,7 @@ class UserView: UIView {
       createNewButton.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
+  deinit {
+    print ("UserView has been deallocated")
+  }
 }

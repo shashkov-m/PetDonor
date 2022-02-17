@@ -4,13 +4,10 @@
 //
 //  Created by Max Shashkov on 03.01.2022.
 //
-
-import Foundation
 import Firebase
 import UIKit
 
-final class Database {
-  static let share = Database ()
+struct Database {
   private let db = Firestore.firestore()
   private let storage = Storage.storage()
   private let user = Auth.auth().currentUser
@@ -20,14 +17,11 @@ final class Database {
   private let storageImagesPath = "petImages"
   var limit = 10
   
-  private init () {
+  init () {
     petCollection = db.collection("pets")
     petVisibleOnlyQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true)
   }
-  enum Errors:Error {
-    case imageUploadError
-  }
-  
+
   func addPet (pet:Pet, image:UIImage?, completion: @escaping (Result <Pet,Error>) -> ()) {
     let ref = petCollection
     var pet = pet
@@ -103,9 +97,8 @@ final class Database {
   
   func deletePet (pet:Pet) {
     guard let firebaseDocID = pet.firebaseDocID else { return }
-    queue.async { [weak self] in
-      guard let self = self else { return }
-      self.petCollection.document(firebaseDocID).delete()
+    queue.async {
+      petCollection.document(firebaseDocID).delete()
       if let imageUrl = pet.imageUrl, imageUrl.count > 0, let date = pet.date {
         let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(date).jpg"
         let storageRef = self.storage.reference(withPath: "\(imagePath)")
@@ -114,16 +107,12 @@ final class Database {
     }
   }
   
-  func updatePetData (pet:Pet) {
-    
-  }
-  
   func updatePetDateCreate (pet:Pet) {
-    queue.async { [weak self] in
-      guard let self = self, let petDate = pet.dateCreate, let firebaseDocID = pet.firebaseDocID else { return }
+    queue.async {
+      guard let petDate = pet.dateCreate, let firebaseDocID = pet.firebaseDocID else { return }
       let now = Date ()
       if now.timeIntervalSince1970 - petDate.timeIntervalSince1970 >= 14_400 {
-        self.petCollection.document(firebaseDocID).setData([PetKeys.dateCreate.rawValue : now], merge: true)
+        petCollection.document(firebaseDocID).setData([PetKeys.dateCreate.rawValue : now], merge: true)
       }
     }
   }
