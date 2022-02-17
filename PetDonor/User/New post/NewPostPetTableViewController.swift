@@ -9,7 +9,6 @@ import UIKit
 
 class NewPostPetTableViewController: UITableViewController {
   var pet:Pet?
-//  let petType = ["Кошка","Собака"]
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.separatorStyle = .none

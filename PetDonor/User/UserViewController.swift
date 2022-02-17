@@ -17,7 +17,7 @@ class UserViewController:UIViewController {
   private let userView = UserView ()
   private var pets = [Pet] ()
   private var pet:Pet?
-  private let db = Database.share
+  private let db = Database ()
   private var user:User?
   private let maxPetsCount = 3
   private var isQueryRunning = false
@@ -51,7 +51,7 @@ class UserViewController:UIViewController {
         userView.tableView.reloadData()
       } catch let error {
         AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription,
-                           preferredStyle: .alert,action: UIAlertAction (title: "OK", style: .cancel))
+                           preferredStyle: .alert,actions: [UIAlertAction (title: "OK", style: .cancel)])
       }
     }
     for view in view.subviews {
@@ -97,7 +97,7 @@ class UserViewController:UIViewController {
         isQueryRunning = false
       }
       catch {
-        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel, handler: nil))
+        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, actions: [UIAlertAction (title: "OK", style: .cancel, handler: nil)])
       }
       userView.tableView.reloadSections(IndexSet(integer:0), with: .fade)
       refreshControl.endRefreshing()
@@ -116,7 +116,7 @@ class UserViewController:UIViewController {
     if pets.count < maxPetsCount {
       performSegue(withIdentifier: newPetSegue, sender: self)
     } else {
-      AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, action: UIAlertAction (title: "OK", style: .cancel))
+      AlertBuilder.build(presentOn: self, title: "Ошибка", message: "Невозможно создать больше \(maxPetsCount) объявлений", preferredStyle: .alert, actions: [UIAlertAction (title: "OK", style: .cancel)])
     }
   }
   
@@ -165,7 +165,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
     if let ref = pet.imageUrl, ref.count > 0 {
       let reference = db.getImageReference(from: ref)
-      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.refreshCached])
     } else {
       cell.petImageView.image = placeholder
     }

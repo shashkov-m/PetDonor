@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 protocol FiltersViewControllerDelegate:AnyObject {
   func updateSelectedCity (city:String)
@@ -21,7 +20,7 @@ class FiltersViewController: UIViewController {
   let bloodTypeSection = 2
   weak var delegate:MainBoardViewControllerDelegate?
   @IBOutlet weak var tableView: UITableView!
-
+  
   private let toCityPickerSegueIdentifier = "toCityFilterPicker"
   var filter = [String:Any] () {
     didSet {

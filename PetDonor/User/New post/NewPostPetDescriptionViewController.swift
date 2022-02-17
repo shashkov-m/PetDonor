@@ -23,7 +23,8 @@ class NewPostPetDescriptionViewController: UIViewController {
   }
   
   var pet:Pet?
-  let db = Database.share
+  let db = Database ()
+  var isEditingMode = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,6 +37,9 @@ class NewPostPetDescriptionViewController: UIViewController {
     view.addGestureRecognizer(tap)
     scrollView.keyboardDismissMode = .interactive
     petImageConfigure (petType: pet?.petType)
+    if isEditingMode == true {
+      petEditModeConfigure()
+    }
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -56,10 +60,13 @@ class NewPostPetDescriptionViewController: UIViewController {
     pet.contactInfo = contactsInfo
     pet.bloodType = bloodType
     pet.dateCreate = now
+    if pet.date == nil {
+      pet.date = now
+    }
     pet.reward = {
       if let currentSum = rewardTextField.text, currentSum.count > 0, Int (currentSum) != nil {
         return currentSum
-      } else if rewardSegmentedControl.selectedSegmentIndex > 0 {
+      } else if rewardSegmentedControl.selectedSegmentIndex >= 0 {
         let index = rewardSegmentedControl.selectedSegmentIndex
         let string = rewardSegmentedControl.titleForSegment(at: index)
         return string
@@ -67,14 +74,15 @@ class NewPostPetDescriptionViewController: UIViewController {
         return "Не указано"
       }
     } ()
-    pet.age = {
+    pet.birthDate = {
       if let text = ageTextField.text, let birthDate = petDateFormatter.date(from: text), birthDate <= Date.now {
         return text
       } else {
         return "Не указано"
       }
     } ()
-    db.addPet(pet: pet, image: petImage) { result in
+    db.addPet(pet: pet, image: petImage) { [weak self] result in
+      guard let self = self else { return }
       switch result {
       case .failure(let error):
         let alert = UIAlertController (title: "", message: error.localizedDescription, preferredStyle: .alert)
@@ -87,7 +95,11 @@ class NewPostPetDescriptionViewController: UIViewController {
         alert.addAction(retryAction)
         self.present(alert, animated: true, completion: nil)
       case .success(_):
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        if self.isEditingMode == true {
+          self.navigationController?.popToRootViewController(animated: true)
+        } else {
+          self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
       }
     }
   }
@@ -105,16 +117,43 @@ class NewPostPetDescriptionViewController: UIViewController {
     petContactsTextView.inputAccessoryView = toolbar
   }
   
-  private func bloodTypeMenuConfigure () {
+  private func bloodTypeMenuConfigure (editMode:Bool = false) {
     var actions = [UIAction] ()
     let bloodTypes = pet?.petType == .cat ? catBloodTypes : dogBloodTypes
     for i in bloodTypes {
       let action = UIAction (title: i, handler: { (_) in })
+      if editMode == true, action.title == pet?.bloodType {
+        action.state = .on
+      }
       actions.append(action)
       let menu = UIMenu (title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
       petBloodTypeMenu.showsMenuAsPrimaryAction = true
       petBloodTypeMenu.changesSelectionAsPrimaryAction = true
       petBloodTypeMenu.menu = menu
+    }
+  }
+  
+  private func petEditModeConfigure () {
+    guard let pet = pet else { return }
+    if let ref = pet.imageUrl {
+      let reference = db.getImageReference(from: ref)
+      petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: nil, options: [.progressiveLoad, .retryFailed])
+    }
+    ageTextField.text = pet.birthDate
+    petDescriptionTextView.text = pet.description
+    petContactsTextView.text = pet.contactInfo
+    bloodTypeMenuConfigure(editMode: true)
+    if petSegmentedControll.titleForSegment(at: 1) == pet.postType {
+      petSegmentedControll.selectedSegmentIndex = 1
+    } else {
+      petSegmentedControll.selectedSegmentIndex = 0
+    }
+    if rewardSegmentedControl.titleForSegment(at: 0) == pet.reward {
+      rewardSegmentedControl.selectedSegmentIndex = 0
+    } else if rewardSegmentedControl.titleForSegment(at: 1) == pet.reward {
+      rewardSegmentedControl.selectedSegmentIndex = 1
+    } else {
+      rewardTextField.text = pet.reward
     }
   }
   

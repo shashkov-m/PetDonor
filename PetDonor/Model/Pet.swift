@@ -17,7 +17,10 @@ struct Pet {
   var isVisible:Bool
   let userID:String
   var dateCreate:Date?
+  var date:Date?
   var reward:String?
   var age:String?
   var imageUrl:String?
+  var firebaseDocID:String?
+  var birthDate:String?
   }

@@ -8,7 +8,6 @@
 import UIKit
 
 class AuthView: UIView {
-  
   lazy var signInButton:UIButton = {
     let signInButton = UIButton ()
     var signInButtonConfiguration = UIButton.Configuration.filled ()

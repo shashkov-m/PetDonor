@@ -49,9 +49,11 @@ enum PetKeys:String {
   case cityID
   case city
   case dateCreate
+  case date
   case isVisible
   case userID
   case reward
   case imageUrl
-  case age
+  case birthDate
+  case firebaseDocID
 }
