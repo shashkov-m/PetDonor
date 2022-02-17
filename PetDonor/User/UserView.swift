@@ -44,6 +44,7 @@ class UserView: UIView {
   }
   
   private func viewConfigure () {
+    backgroundColor = .systemBackground
     addSubview(tableView)
     addSubview(createNewButton)
     
@@ -61,8 +62,5 @@ class UserView: UIView {
       createNewButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
       createNewButton.heightAnchor.constraint(equalToConstant: 50)
     ])
-  }
-  deinit {
-    print ("UserView has been deallocated")
   }
 }
