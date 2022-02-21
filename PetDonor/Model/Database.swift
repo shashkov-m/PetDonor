@@ -25,9 +25,6 @@ struct Database {
   func addPet (pet:Pet, image:UIImage?, completion: @escaping (Result <Pet,Error>) -> ()) {
     let ref = petCollection
     var pet = pet
-    //FIXME: одна и так же картинка будет перезаписываться и сжиматься.
-    //Нужно добавить проверку что это новая картинка
-    //метадата?
     if let image = image, let data = image.jpegData(compressionQuality: 0.4) {
       let imagePath = "\(storageImagesPath)/\(pet.userID)/\(pet.date ?? Date.now).jpg"
       let storageRef = storage.reference(withPath: "\(imagePath)")

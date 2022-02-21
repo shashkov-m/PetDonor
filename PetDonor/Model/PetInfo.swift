@@ -21,13 +21,8 @@ let catBloodTypes = [
 ]
 let dogBloodTypes = [
   "Неизвестно",
-  "DEA 1.1",
-  "DEA 1.2",
-  "DEA 3",
-  "DEA 4",
-  "DEA 5",
-  "DEA 6",
-  "DEA 7"
+  "DEA 1+",
+  "DEA 1-"
 ]
 
 enum PostType:String {

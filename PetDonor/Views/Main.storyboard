@@ -8,27 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Инфо-->
-        <scene sceneID="dO8-i7-Kuq">
-            <objects>
-                <viewController id="ZO5-EH-SOn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VIJ-mL-TRT">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="2Zx-C1-MkU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Инфо" image="doc" catalog="system" selectedImage="doc" id="eAj-4l-Fc2">
-                        <color key="badgeColor" systemColor="labelColor"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="r2O-FP-D7b">
-                        <barButtonItem key="rightBarButtonItem" title="Опубликовать" style="plain" id="OvK-9x-AdU"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Am1-Rh-6eq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1271" y="579"/>
-        </scene>
         <!--Мои публикации-->
         <scene sceneID="wse-35-5Dw">
             <objects>
@@ -991,12 +970,61 @@
                     <connections>
                         <segue destination="1d3-lg-jZJ" kind="relationship" relationship="viewControllers" id="Zok-FO-wyF"/>
                         <segue destination="JHF-Wz-XZG" kind="relationship" relationship="viewControllers" id="NCf-Z6-nOZ"/>
-                        <segue destination="ZO5-EH-SOn" kind="relationship" relationship="viewControllers" id="EP2-zx-F5g"/>
+                        <segue destination="X88-Jb-O7J" kind="relationship" relationship="viewControllers" id="dIk-cP-9iE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBx-gL-W9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1552" y="-928"/>
+        </scene>
+        <!--Частые вопросы-->
+        <scene sceneID="Pv0-DF-GvT">
+            <objects>
+                <tableViewController id="5Qm-7X-a8e" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="e55-JL-oid">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uaL-H3-MIh">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uaL-H3-MIh" id="vmD-tb-zGi">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5Qm-7X-a8e" id="ckV-Fq-Vp3"/>
+                            <outlet property="delegate" destination="5Qm-7X-a8e" id="aSb-DE-qHm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Частые вопросы" largeTitleDisplayMode="always" id="Jnk-v6-Dn6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8m-wU-05h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1552" y="562"/>
+        </scene>
+        <!--Инфо-->
+        <scene sceneID="6ZD-zV-u5d">
+            <objects>
+                <navigationController id="X88-Jb-O7J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Инфо" image="doc" catalog="system" id="phh-SB-vww"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Z0L-7I-TGB">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7KQ-0F-8Rt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="5Qm-7X-a8e" kind="relationship" relationship="rootViewController" id="s5S-jr-dWg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avn-Th-zr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1552" y="-136"/>
         </scene>
         <!--Item-->
         <scene sceneID="aoe-pX-ukG">
