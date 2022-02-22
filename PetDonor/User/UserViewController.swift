@@ -14,7 +14,6 @@ class UserViewController:UIViewController {
   private let signInSegueIdentifier = "signInSegue"
   private let signUpSegueIdentifier = "signUpSegue"
   private let userPetDetailsSegue = "userPetDetailsSegue"
-  private let userView = UserView ()
   private var pets = [Pet] ()
   private var pet:Pet?
   private let db = Database ()
@@ -31,7 +30,9 @@ class UserViewController:UIViewController {
     handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, currentUser) in
       guard let self = self else {return}
       if let currentUser = currentUser {
-        self.userViewConfigure(user: currentUser)
+        print ("will appear has been called")
+        self.userViewConfigure()
+        self.getUserPets(user: currentUser)
         self.user = currentUser
       } else {
         self.authViewConfigure()
@@ -44,24 +45,26 @@ class UserViewController:UIViewController {
     Auth.auth().removeStateDidChangeListener(handle!)
   }
   
-  private func userViewConfigure (user: User) {
+  private func getUserPets (user:User) {
+    guard let view = view as? UserView else { return }
     Task {
       do {
         pets = try await db.getUserPets(for: user)
-        userView.tableView.reloadData()
+        view.tableView.reloadSections(IndexSet(integer:0), with: .fade)
       } catch let error {
-        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription,
-                           preferredStyle: .alert,actions: [UIAlertAction (title: "OK", style: .cancel)])
+        AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert,actions: [UIAlertAction (title: "OK", style: .cancel)])
       }
     }
-    for view in view.subviews {
-      view.removeFromSuperview()
-    }
-    userView.frame = view.bounds
+  }
+  
+  private func userViewConfigure () {
+    if view is UserView { return }
+    view = UserView ()
     tableViewConfigure()
     refreshControlConfigure ()
-    view.addSubview(userView)
-    userView.createNewButton.addTarget(self, action: #selector(createNewButtonDidTapped), for: .touchUpInside)
+    if let view = view as? UserView {
+      view.createNewButton.addTarget(self, action: #selector(createNewButtonDidTapped), for: .touchUpInside)
+    }
     let logOutButton = UIAction (title: "Выйти") { _ in
       let auth = Auth.auth()
       do {
@@ -76,19 +79,17 @@ class UserViewController:UIViewController {
   }
   
   private func authViewConfigure () {
-    for view in view.subviews {
-      view.removeFromSuperview()
-    }
-    self.navigationItem.rightBarButtonItem = nil
-    let authView = AuthView ()
-    authView.frame = view.bounds
-    view.addSubview(authView)
-    authView.signInButton.addTarget(self, action: #selector(signInButtonDidTapped), for: .touchUpInside)
-    authView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTapped), for: .touchUpInside)
+    if view is AuthView { return }
+    view = AuthView ()
+    guard let view = view as? AuthView else { return }
+    navigationItem.rightBarButtonItem = nil
+    view.frame = view.bounds
+    view.signInButton.addTarget(self, action: #selector(signInButtonDidTapped), for: .touchUpInside)
+    view.signUpButton.addTarget(self, action: #selector(signUpButtonDidTapped), for: .touchUpInside)
   }
   
   @objc private func updatePetList () {
-    guard let user = user, let refreshControl = userView.tableView.refreshControl,
+    guard let user = user, let view = view as? UserView, let refreshControl = view.tableView.refreshControl,
           !isQueryRunning else { return }
     isQueryRunning = true
     Task {
@@ -99,7 +100,7 @@ class UserViewController:UIViewController {
       catch {
         AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert, actions: [UIAlertAction (title: "OK", style: .cancel, handler: nil)])
       }
-      userView.tableView.reloadSections(IndexSet(integer:0), with: .fade)
+      view.tableView.reloadSections(IndexSet(integer:0), with: .fade)
       refreshControl.endRefreshing()
     }
   }
@@ -140,10 +141,11 @@ class UserViewController:UIViewController {
 //MARK: UITableViewDelegate
 extension UserViewController:UITableViewDataSource, UITableViewDelegate {
   private func tableViewConfigure () {
-    userView.tableView.dataSource = self
-    userView.tableView.delegate = self
-    userView.tableView.separatorStyle = .none
-    userView.tableView.register(UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardImageTableViewCell.identifier)
+    guard let view = view as? UserView else { return }
+    view.tableView.dataSource = self
+    view.tableView.delegate = self
+    view.tableView.separatorStyle = .none
+    view.tableView.register(UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardImageTableViewCell.identifier)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,7 +167,7 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     let placeholder = pet.petType == .cat ? UIImage (named: "catPlaceholder") : UIImage (named: "dogPlaceholder")
     if let ref = pet.imageUrl, ref.count > 0 {
       let reference = db.getImageReference(from: ref)
-      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.refreshCached])
+      cell.petImageView.sd_setImage(with: reference, maxImageSize: 10_000_000, placeholderImage: placeholder, options: [.refreshCached, .retryFailed])
     } else {
       cell.petImageView.image = placeholder
     }
@@ -177,8 +179,9 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     performSegue(withIdentifier: userPetDetailsSegue, sender: self)
   }
   private func refreshControlConfigure () {
+    guard let view = view as? UserView else { return }
     let refreshControl = UIRefreshControl ()
     refreshControl.addTarget(self, action: #selector(updatePetList), for: .valueChanged)
-    userView.tableView.refreshControl = refreshControl
+    view.tableView.refreshControl = refreshControl
   }
 }

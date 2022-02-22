@@ -8,27 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Инфо-->
-        <scene sceneID="dO8-i7-Kuq">
-            <objects>
-                <viewController id="ZO5-EH-SOn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VIJ-mL-TRT">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="2Zx-C1-MkU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Инфо" image="doc" catalog="system" selectedImage="doc" id="eAj-4l-Fc2">
-                        <color key="badgeColor" systemColor="labelColor"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="r2O-FP-D7b">
-                        <barButtonItem key="rightBarButtonItem" title="Опубликовать" style="plain" id="OvK-9x-AdU"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Am1-Rh-6eq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1271" y="579"/>
-        </scene>
         <!--Мои публикации-->
         <scene sceneID="wse-35-5Dw">
             <objects>
@@ -774,7 +753,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtB-NF-8x1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="882"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="931"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-fk-79X">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="996"/>
@@ -991,12 +970,71 @@
                     <connections>
                         <segue destination="1d3-lg-jZJ" kind="relationship" relationship="viewControllers" id="Zok-FO-wyF"/>
                         <segue destination="JHF-Wz-XZG" kind="relationship" relationship="viewControllers" id="NCf-Z6-nOZ"/>
-                        <segue destination="ZO5-EH-SOn" kind="relationship" relationship="viewControllers" id="EP2-zx-F5g"/>
+                        <segue destination="X88-Jb-O7J" kind="relationship" relationship="viewControllers" id="dIk-cP-9iE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBx-gL-W9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1552" y="-928"/>
+        </scene>
+        <!--Инфо-->
+        <scene sceneID="6ZD-zV-u5d">
+            <objects>
+                <navigationController id="X88-Jb-O7J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Инфо" image="doc" catalog="system" id="phh-SB-vww"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z0L-7I-TGB">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7KQ-0F-8Rt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Z9M-XP-QWf" kind="relationship" relationship="rootViewController" id="ede-bX-6o3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avn-Th-zr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1552" y="-136"/>
+        </scene>
+        <!--Частые вопросы-->
+        <scene sceneID="IHC-ga-guW">
+            <objects>
+                <viewController id="Z9M-XP-QWf" customClass="FAQViewController" customModule="PetDonor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OR7-ms-mNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZZn-MH-nCa">
+                                <rect key="frame" x="0.0" y="139" width="390" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJd-en-cve">
+                                <rect key="frame" x="10" y="98" width="67" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ymx-uB-5ah"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sJd-en-cve" firstAttribute="top" secondItem="Ymx-uB-5ah" secondAttribute="top" constant="10" id="27s-P7-PjY"/>
+                            <constraint firstItem="Ymx-uB-5ah" firstAttribute="bottom" secondItem="ZZn-MH-nCa" secondAttribute="bottom" id="Ycb-tt-4gk"/>
+                            <constraint firstItem="ZZn-MH-nCa" firstAttribute="top" secondItem="sJd-en-cve" secondAttribute="bottom" constant="10" id="kFD-bc-FoX"/>
+                            <constraint firstItem="ZZn-MH-nCa" firstAttribute="leading" secondItem="Ymx-uB-5ah" secondAttribute="leading" id="rpT-Ff-wCS"/>
+                            <constraint firstItem="sJd-en-cve" firstAttribute="leading" secondItem="Ymx-uB-5ah" secondAttribute="leading" constant="10" id="tXO-xd-byy"/>
+                            <constraint firstItem="Ymx-uB-5ah" firstAttribute="trailing" secondItem="ZZn-MH-nCa" secondAttribute="trailing" id="uFb-WD-Bii"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Частые вопросы" id="t1C-Ce-lDb"/>
+                    <connections>
+                        <outlet property="postTypeButton" destination="sJd-en-cve" id="IHq-BY-4gL"/>
+                        <outlet property="tableView" destination="ZZn-MH-nCa" id="l3v-34-ZSZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H1a-lf-BNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1552.3076923076922" y="541.70616113744074"/>
         </scene>
         <!--Item-->
         <scene sceneID="aoe-pX-ukG">
@@ -1017,7 +1055,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rYj-bA-kGC"/>
+        <segue reference="fO6-aQ-smR"/>
         <segue reference="zDH-vO-76Q"/>
     </inferredMetricsTieBreakers>
     <resources>

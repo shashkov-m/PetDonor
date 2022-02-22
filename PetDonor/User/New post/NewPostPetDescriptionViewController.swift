@@ -78,7 +78,7 @@ class NewPostPetDescriptionViewController: UIViewController {
       if let text = ageTextField.text, let birthDate = petDateFormatter.date(from: text), birthDate <= Date.now {
         return text
       } else {
-        return "Не указано"
+        return "Не указан"
       }
     } ()
     db.addPet(pet: pet, image: petImage) { [weak self] result in

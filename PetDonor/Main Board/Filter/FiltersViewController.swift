@@ -13,7 +13,7 @@ protocol FiltersViewControllerDelegate:AnyObject {
 
 class FiltersViewController: UIViewController {
   let catBloodTypes = ["A","B","AB"]
-  let dogBloodTypes = ["DEA 1.1","DEA 1.2","DEA 3","DEA 4","DEA 5","DEA 6","DEA 7"]
+  let dogBloodTypes = ["DEA 1+","DEA 1-"]
   var bloodTypesArray = ["Сначала уточните вид животного"]
   let citySection = 0
   let petTypeSection = 1
