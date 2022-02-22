@@ -15,6 +15,7 @@
 		500C4B84279F2ADC0011D4FA /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */; };
 		502799992792E3D50052FB99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502799982792E3D50052FB99 /* Animations.swift */; };
 		503096A827C3CB9A0015688F /* FAQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503096A727C3CB9A0015688F /* FAQ.plist */; };
+		503096AB27C4DB2B0015688F /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AA27C4DB2B0015688F /* FAQViewController.swift */; };
 		504C05A627B57CE800B271FD /* BoardImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */; };
 		504C05A727B57CE800B271FD /* BoardImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */; };
 		5054B8022771F47400929B51 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054B8012771F47400929B51 /* UserViewController.swift */; };
@@ -77,6 +78,7 @@
 		500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		502799982792E3D50052FB99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		503096A727C3CB9A0015688F /* FAQ.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FAQ.plist; sourceTree = "<group>"; };
+		503096AA27C4DB2B0015688F /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardImageTableViewCell.swift; sourceTree = "<group>"; };
 		504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardImageTableViewCell.xib; sourceTree = "<group>"; };
 		5054B8012771F47400929B51 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -142,13 +144,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50077378278DF968000A6FD1 /* FilterView */ = {
+		50077378278DF968000A6FD1 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
 				D237CD472763C0A600022511 /* FiltersViewController.swift */,
 				507D3A1E27AAB23700039A15 /* FilterCityPickerTableViewController.swift */,
 			);
-			path = FilterView;
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		500B7B5E277D145100F4736B /* Auth */ = {
@@ -170,6 +172,14 @@
 				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
 			);
 			path = Customization;
+			sourceTree = "<group>";
+		};
+		503096A927C4DB020015688F /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				503096AA27C4DB2B0015688F /* FAQViewController.swift */,
+			);
+			path = FAQ;
 			sourceTree = "<group>";
 		};
 		5054B8002771F46900929B51 /* User */ = {
@@ -218,13 +228,14 @@
 		D237CCEA2754E3FB00022511 /* PetDonor */ = {
 			isa = PBXGroup;
 			children = (
-				5027999A2795DDCA0052FB99 /* Customization */,
-				5054B8002771F46900929B51 /* User */,
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
+				5027999A2795DDCA0052FB99 /* Customization */,
+				5054B8002771F46900929B51 /* User */,
 				D237CD33275F9E0800022511 /* Model */,
 				D237CD26275784FF00022511 /* Views */,
 				D237CD25275784E500022511 /* Main Board */,
+				503096A927C4DB020015688F /* FAQ */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
 				503096A727C3CB9A0015688F /* FAQ.plist */,
@@ -259,7 +270,7 @@
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
 				504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */,
 				504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */,
-				50077378278DF968000A6FD1 /* FilterView */,
+				50077378278DF968000A6FD1 /* Filter */,
 			);
 			path = "Main Board";
 			sourceTree = "<group>";
@@ -452,6 +463,7 @@
 				5054B80627722FCD00929B51 /* SignUpViewController.swift in Sources */,
 				504C05A627B57CE800B271FD /* BoardImageTableViewCell.swift in Sources */,
 				D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */,
+				503096AB27C4DB2B0015688F /* FAQViewController.swift in Sources */,
 				50AE0BE62770A9B5002060EE /* Pet.swift in Sources */,
 				500C4B84279F2ADC0011D4FA /* AlertBuilder.swift in Sources */,
 				5054B8022771F47400929B51 /* UserViewController.swift in Sources */,
