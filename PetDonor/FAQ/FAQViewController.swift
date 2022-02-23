@@ -27,6 +27,7 @@ class FAQViewController: UIViewController {
         displayedInfoValues = recipientInfoValues
       }
       tableView.reloadSections(IndexSet (integer: 0), with: .fade)
+      tableView.allowsMultipleSelection = true
     }
   }
   
@@ -89,7 +90,7 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: FAQTableViewCell.identifier, for: indexPath) as! FAQTableViewCell
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: FAQTableViewCell.identifier, for: indexPath) as? FAQTableViewCell else { return UITableViewCell ()}
     let question = displayedInfoKeys [indexPath.row]
     let answer = displayedInfoValues [indexPath.row]
     cell.questionLabel.text = question
@@ -98,7 +99,13 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    UIView.animate(withDuration: 0.3) {
+      self.tableView.performBatchUpdates(nil)
+    }
   }
-  
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    UIView.animate(withDuration: 0.3) {
+      self.tableView.performBatchUpdates(nil)
+    }
+  }
 }

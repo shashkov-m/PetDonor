@@ -18,6 +18,7 @@
 		503096AB27C4DB2B0015688F /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AA27C4DB2B0015688F /* FAQViewController.swift */; };
 		503096AE27C53AF50015688F /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AC27C53AF50015688F /* FAQTableViewCell.swift */; };
 		503096AF27C53AF50015688F /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 503096AD27C53AF50015688F /* FAQTableViewCell.xib */; };
+		503096B127C6BFF40015688F /* FAQAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096B027C6BFF40015688F /* FAQAccessoryView.swift */; };
 		504C05A627B57CE800B271FD /* BoardImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */; };
 		504C05A727B57CE800B271FD /* BoardImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */; };
 		5054B8022771F47400929B51 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054B8012771F47400929B51 /* UserViewController.swift */; };
@@ -83,6 +84,7 @@
 		503096AA27C4DB2B0015688F /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		503096AC27C53AF50015688F /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
 		503096AD27C53AF50015688F /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
+		503096B027C6BFF40015688F /* FAQAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQAccessoryView.swift; sourceTree = "<group>"; };
 		504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardImageTableViewCell.swift; sourceTree = "<group>"; };
 		504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardImageTableViewCell.xib; sourceTree = "<group>"; };
 		5054B8012771F47400929B51 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				503096AA27C4DB2B0015688F /* FAQViewController.swift */,
 				503096AC27C53AF50015688F /* FAQTableViewCell.swift */,
+				503096B027C6BFF40015688F /* FAQAccessoryView.swift */,
 				503096AD27C53AF50015688F /* FAQTableViewCell.xib */,
 			);
 			path = FAQ;
@@ -477,6 +480,7 @@
 				5054B8022771F47400929B51 /* UserViewController.swift in Sources */,
 				50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */,
 				507D3A1F27AAB23700039A15 /* FilterCityPickerTableViewController.swift in Sources */,
+				503096B127C6BFF40015688F /* FAQAccessoryView.swift in Sources */,
 				50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */,
 				5054B80827722FF200929B51 /* PasswordRestoreViewController.swift in Sources */,
 				502799992792E3D50052FB99 /* Animations.swift in Sources */,
