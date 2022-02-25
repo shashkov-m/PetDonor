@@ -76,6 +76,10 @@ class UserViewController:UIViewController {
     let menu = UIMenu (title: "", options: .displayInline, children: [logOutButton])
     let moreItem = UIBarButtonItem (title: nil, image: UIImage (systemName: "ellipsis"), primaryAction: nil, menu: menu)
     self.navigationItem.setRightBarButton(moreItem, animated: true)
+    let testVIew = EmptyScreenView ()
+    testVIew.frame = view.bounds
+    view.addSubview(testVIew)
+   // testVIew.translatesAutoresizingMaskIntoConstraints = false
   }
   
   private func authViewConfigure () {
