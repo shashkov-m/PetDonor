@@ -14,7 +14,12 @@ class UserViewController:UIViewController {
   private let signInSegueIdentifier = "signInSegue"
   private let signUpSegueIdentifier = "signUpSegue"
   private let userPetDetailsSegue = "userPetDetailsSegue"
-  private var pets = [Pet] ()
+  private var pets = [Pet] () {
+    didSet {
+      guard let view = view as? UserView else { return }
+      view.tableView.reloadData()
+    }
+  }
   private var pet:Pet?
   private let db = Database ()
   private var user:User?
@@ -30,7 +35,6 @@ class UserViewController:UIViewController {
     handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, currentUser) in
       guard let self = self else {return}
       if let currentUser = currentUser {
-        print ("will appear has been called")
         self.userViewConfigure()
         self.getUserPets(user: currentUser)
         self.user = currentUser
@@ -46,11 +50,9 @@ class UserViewController:UIViewController {
   }
   
   private func getUserPets (user:User) {
-    guard let view = view as? UserView else { return }
     Task {
       do {
         pets = try await db.getUserPets(for: user)
-        view.tableView.reloadSections(IndexSet(integer:0), with: .fade)
       } catch let error {
         AlertBuilder.build(presentOn: self, title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert,actions: [UIAlertAction (title: "OK", style: .cancel)])
       }
@@ -146,15 +148,25 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     view.tableView.delegate = self
     view.tableView.separatorStyle = .none
     view.tableView.register(UINib (nibName: BoardImageTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BoardImageTableViewCell.identifier)
+    view.tableView.register(EmptyScreenTableViewCell.self, forCellReuseIdentifier: "EmptyScreenTableViewCell")
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return pets.count
+    let count = pets.count
+    if count == 0 {
+      return 1
+    } else {
+      return count
+    }
   }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard pets.count > 0 else {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyScreenTableViewCell", for: indexPath)
+      return cell
+    }
     let cell = tableView.dequeueReusableCell(withIdentifier: BoardImageTableViewCell.identifier, for: indexPath) as! BoardImageTableViewCell
     let pet = pets [indexPath.row]
     cell.summaryLabel.text = pet.description
@@ -174,9 +186,11 @@ extension UserViewController:UITableViewDataSource, UITableViewDelegate {
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    pet = pets [indexPath.row]
-    tableView.deselectRow(at: indexPath, animated: true)
-    performSegue(withIdentifier: userPetDetailsSegue, sender: self)
+    if pets.count > 0 {
+      pet = pets [indexPath.row]
+      tableView.deselectRow(at: indexPath, animated: true)
+      performSegue(withIdentifier: userPetDetailsSegue, sender: self)
+    }
   }
   private func refreshControlConfigure () {
     guard let view = view as? UserView else { return }

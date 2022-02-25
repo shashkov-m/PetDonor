@@ -6,8 +6,7 @@
 //
 import Foundation
 
-struct Pet {  
-  
+struct Pet {
   var city:City?
   var description:String?
   var contactInfo:String?
@@ -23,4 +22,4 @@ struct Pet {
   var imageUrl:String?
   var firebaseDocID:String?
   var birthDate:String?
-  }
+}
