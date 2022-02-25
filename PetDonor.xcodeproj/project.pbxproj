@@ -16,6 +16,10 @@
 		502799992792E3D50052FB99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502799982792E3D50052FB99 /* Animations.swift */; };
 		503096A827C3CB9A0015688F /* FAQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503096A727C3CB9A0015688F /* FAQ.plist */; };
 		503096AB27C4DB2B0015688F /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AA27C4DB2B0015688F /* FAQViewController.swift */; };
+		503096AE27C53AF50015688F /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AC27C53AF50015688F /* FAQTableViewCell.swift */; };
+		503096AF27C53AF50015688F /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 503096AD27C53AF50015688F /* FAQTableViewCell.xib */; };
+		503096B327C8C6770015688F /* EmptyScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */; };
+		503096B627C8E8D40015688F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 503096B527C8E8D40015688F /* SDWebImage */; };
 		504C05A627B57CE800B271FD /* BoardImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */; };
 		504C05A727B57CE800B271FD /* BoardImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */; };
 		5054B8022771F47400929B51 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054B8012771F47400929B51 /* UserViewController.swift */; };
@@ -36,7 +40,6 @@
 		50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */; };
 		50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */; };
 		50BE8E65276CD76E0099DBC7 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E64276CD76E0099DBC7 /* City.swift */; };
-		50CC60332775D20900DF1B87 /* CollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */; };
 		50FCA6FA2783266300ED6107 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCA6F92783266300ED6107 /* Database.swift */; };
 		D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */; };
 		D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEB2754E3FB00022511 /* AppDelegate.swift */; };
@@ -79,6 +82,9 @@
 		502799982792E3D50052FB99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		503096A727C3CB9A0015688F /* FAQ.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FAQ.plist; sourceTree = "<group>"; };
 		503096AA27C4DB2B0015688F /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		503096AC27C53AF50015688F /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
+		503096AD27C53AF50015688F /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
+		503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreenTableViewCell.swift; sourceTree = "<group>"; };
 		504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardImageTableViewCell.swift; sourceTree = "<group>"; };
 		504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardImageTableViewCell.xib; sourceTree = "<group>"; };
 		5054B8012771F47400929B51 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +98,6 @@
 		50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRequestManager.swift; sourceTree = "<group>"; };
 		50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerViewController.swift; sourceTree = "<group>"; };
 		50BE8E64276CD76E0099DBC7 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionFlowLayout.swift; sourceTree = "<group>"; };
 		50FCA6F92783266300ED6107 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPetTableViewController.swift; sourceTree = "<group>"; };
 		D237CCE82754E3FB00022511 /* PetDonor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetDonor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +126,7 @@
 				5063A2F227988E7A00EC65C0 /* FirebaseAnalytics in Frameworks */,
 				5063A2F627988E7A00EC65C0 /* FirebaseFirestore in Frameworks */,
 				5063A2F427988E7A00EC65C0 /* FirebaseAuth in Frameworks */,
+				503096B627C8E8D40015688F /* SDWebImage in Frameworks */,
 				5063A2F827988E7A00EC65C0 /* FirebaseStorage in Frameworks */,
 				500A2E0827B128D3005C45A3 /* FirebaseStorageUI in Frameworks */,
 				5063A2FB279890C000EC65C0 /* IQKeyboardManagerSwift in Frameworks */,
@@ -168,8 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				502799982792E3D50052FB99 /* Animations.swift */,
-				50CC60322775D20900DF1B87 /* CollectionFlowLayout.swift */,
-				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
 			);
 			path = Customization;
 			sourceTree = "<group>";
@@ -178,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				503096AA27C4DB2B0015688F /* FAQViewController.swift */,
+				503096AC27C53AF50015688F /* FAQTableViewCell.swift */,
+				503096AD27C53AF50015688F /* FAQTableViewCell.xib */,
 			);
 			path = FAQ;
 			sourceTree = "<group>";
@@ -280,6 +286,8 @@
 			children = (
 				D237CD422763775600022511 /* Main.storyboard */,
 				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
+				503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */,
+				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +327,7 @@
 				5063A2F727988E7A00EC65C0 /* FirebaseStorage */,
 				5063A2FA279890C000EC65C0 /* IQKeyboardManagerSwift */,
 				500A2E0727B128D3005C45A3 /* FirebaseStorageUI */,
+				503096B527C8E8D40015688F /* SDWebImage */,
 			);
 			productName = PetDonor;
 			productReference = D237CCE82754E3FB00022511 /* PetDonor.app */;
@@ -396,6 +405,7 @@
 				5063A2F027988E7A00EC65C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5063A2F9279890C000EC65C0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
+				503096B427C8E8D40015688F /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = D237CCE92754E3FB00022511 /* Products */;
 			projectDirPath = "";
@@ -413,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503096AF27C53AF50015688F /* FAQTableViewCell.xib in Resources */,
 				D237CCF82754E3FC00022511 /* LaunchScreen.storyboard in Resources */,
 				5067D867276B989300BDFD32 /* GoogleService-Info.plist in Resources */,
 				D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */,
@@ -448,6 +459,7 @@
 			files = (
 				5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */,
 				D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */,
+				503096B327C8C6770015688F /* EmptyScreenTableViewCell.swift in Sources */,
 				D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */,
 				D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */,
 				500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */,
@@ -456,7 +468,7 @@
 				500B7B60277D16F300F4736B /* UserView.swift in Sources */,
 				50BE8E65276CD76E0099DBC7 /* City.swift in Sources */,
 				500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */,
-				50CC60332775D20900DF1B87 /* CollectionFlowLayout.swift in Sources */,
+				503096AE27C53AF50015688F /* FAQTableViewCell.swift in Sources */,
 				50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */,
 				50FCA6FA2783266300ED6107 /* Database.swift in Sources */,
 				5054B80427722FC300929B51 /* SignInViewController.swift in Sources */,
@@ -837,6 +849,14 @@
 				kind = branch;
 			};
 		};
+		503096B427C8E8D40015688F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5063A2F027988E7A00EC65C0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -860,6 +880,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebaseStorageUI;
+		};
+		503096B527C8E8D40015688F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 503096B427C8E8D40015688F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		5063A2F127988E7A00EC65C0 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
