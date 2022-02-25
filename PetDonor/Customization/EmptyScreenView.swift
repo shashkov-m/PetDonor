@@ -12,24 +12,27 @@ final class EmptyScreenView: UIView {
   let messageLabel = UILabel ()
   
   func configure () {
-    let url = URL (string: "https://firebasestorage.googleapis.com/v0/b/petdonor-46ca2.appspot.com/o/gifs%2FemptyScreenImage.gif?alt=media&token=85575e9a-19b0-46b3-8da8-72f8bde1e345")
-    imageView.sd_setImage(with: url, completed: nil)
-    messageLabel.text = "Публикаций не найдено"
-    self.backgroundColor = .white
+    guard let asset = NSDataAsset (name: "emptyScreenImage") else { return }
+    let data = asset.data
+    let image = SDAnimatedImage (data: data)
+    imageView.image = image
     imageView.translatesAutoresizingMaskIntoConstraints = false
     messageLabel.translatesAutoresizingMaskIntoConstraints = false
+    messageLabel.font = .systemFont(ofSize: 20.0)
+    messageLabel.text = "Публикаций не найдено"
+    self.backgroundColor = .clear
     self.addSubview(imageView)
     self.addSubview(messageLabel)
     
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint (equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
       imageView.heightAnchor.constraint(equalToConstant: 300),
-      imageView.widthAnchor.constraint(equalToConstant: 300),
-      imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+      imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
       messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-      messageLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+      messageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
       messageLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: 20),
-      messageLabel.trailingAnchor.constraint(greaterThanOrEqualTo: self.trailingAnchor, constant: -20)
+      messageLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: 20)
     ])
   }
   override init(frame: CGRect) {
