@@ -23,7 +23,6 @@ class MainBoardViewController: UIViewController {
   private var pet:Pet?
   private var pets = [Pet] () {
     didSet {
-      print ("Board pets array is up to date")
       guard tableView.window != nil else { return }
       tableView.reloadSections(IndexSet (integer: 0), with: .fade)
     }
