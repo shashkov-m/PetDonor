@@ -52,16 +52,15 @@ class PetCardViewController: UIViewController {
   
   //MARK: Navigation menu configure
   private func navigationBarConfigure (isFullPermissions:Bool) {
-    let shareAction = UIAction (title: "Поделиться", image: UIImage (systemName: "square.and.arrow.up")) {[weak self] _ in
+    let shareAction = UIAction (title: "Поделиться", image: UIImage (systemName: "square.and.arrow.up")) { [weak self] _ in
       guard let self = self else { return }
       let text:[Any] = ["""
                         \(self.pet?.petType?.rawValue ?? ""), \(self.pet?.postType ?? ""), \(self.pet?.city?.title ?? "")
                         \(self.pet?.contactInfo ?? "")
                         """]
       let ac = UIActivityViewController (activityItems: text, applicationActivities: nil)
-      DispatchQueue.main.async {
-        self.present (ac, animated: true, completion: nil )
-      }
+      ac.popoverPresentationController?.sourceView = self.view
+      self.present (ac, animated: true, completion: nil )
     }
     var menu = UIMenu (title: "", options: .displayInline, children: [shareAction])
     
