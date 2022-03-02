@@ -153,7 +153,7 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       }
       return cell
     } else {
-      fatalError("TODO")
+      return UITableViewCell()
     }
   }
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
