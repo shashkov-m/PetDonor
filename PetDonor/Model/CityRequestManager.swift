@@ -29,7 +29,7 @@ struct CityRequestManager {
       urlComponents.queryItems?.append(URLQueryItem(name: "q", value: query))
     }
     guard let url = urlComponents.url else { throw NetworkErrors.urlCreationError }
-    let (data, responce) = try await URLSession.shared.data(from: url)
+    let (data, _) = try await URLSession.shared.data(from: url)
     let decoder = JSONDecoder()
     let cityResponse = try decoder.decode(CityResponse.self, from: data)
     guard let response = cityResponse.response, let result = response.items
