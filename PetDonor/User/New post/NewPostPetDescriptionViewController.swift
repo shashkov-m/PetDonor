@@ -84,7 +84,6 @@ class NewPostPetDescriptionViewController: UIViewController {
       case .failure(let error):
         let alert = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
         let retryAction = UIAlertAction(title: "Повторить", style: .default) { _ in
-          print("retry printed")
           self.sendDataButton(self)
         }
         let exitAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)

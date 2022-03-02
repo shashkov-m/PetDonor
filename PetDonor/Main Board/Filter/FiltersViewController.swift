@@ -152,8 +152,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
       }
       return cell
-    } else {
-      fatalError("TODO")
     }
   }
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
