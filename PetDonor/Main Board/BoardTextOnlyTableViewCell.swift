@@ -14,19 +14,18 @@ class BoardTextOnlyTableViewCell: UITableViewCell {
   @IBOutlet weak var summaryLabel: UILabel!
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     configure()
   }
   private func configure () {
     let font = "HelveticaNeue-Light"
-    summaryLabel.font = UIFont (name: font, size: 24)
+    summaryLabel.font = UIFont(name: font, size: 24)
     summaryLabel.numberOfLines = 4
     cityLabel.numberOfLines = 2
     stackView.arrangedSubviews.forEach { view in
       guard let label = view as? UILabel else { return }
-      label.font = UIFont (name: font, size: 14)
+      label.font = UIFont(name: font, size: 14)
       label.alpha = 0.7
       label.tintColor = .gray
     }
