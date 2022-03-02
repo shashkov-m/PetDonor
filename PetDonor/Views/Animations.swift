@@ -5,7 +5,6 @@
 //  Created by Max Shashkov on 15.01.2022.
 //
 
-import Foundation
 import UIKit
 
 func shakeAnimation (view: UIView) {

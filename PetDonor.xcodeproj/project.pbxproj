@@ -170,14 +170,6 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		5027999A2795DDCA0052FB99 /* Customization */ = {
-			isa = PBXGroup;
-			children = (
-				502799982792E3D50052FB99 /* Animations.swift */,
-			);
-			path = Customization;
-			sourceTree = "<group>";
-		};
 		503096A927C4DB020015688F /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,13 +185,11 @@
 			children = (
 				5054B8012771F47400929B51 /* UserViewController.swift */,
 				500B7B5F277D16F300F4736B /* UserView.swift */,
-				D2195EED2769F14B0082E63D /* New post */,
-				500B7B5E277D145100F4736B /* Auth */,
 			);
 			path = User;
 			sourceTree = "<group>";
 		};
-		D2195EED2769F14B0082E63D /* New post */ = {
+		D2195EED2769F14B0082E63D /* New Post */ = {
 			isa = PBXGroup;
 			children = (
 				D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */,
@@ -207,7 +197,7 @@
 				50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */,
 			);
 			indentWidth = 2;
-			path = "New post";
+			path = "New Post";
 			sourceTree = "<group>";
 			usesTabs = 0;
 		};
@@ -236,11 +226,13 @@
 			children = (
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
-				5027999A2795DDCA0052FB99 /* Customization */,
 				5054B8002771F46900929B51 /* User */,
+				D2195EED2769F14B0082E63D /* New Post */,
+				500B7B5E277D145100F4736B /* Auth */,
 				D237CD33275F9E0800022511 /* Model */,
 				D237CD26275784FF00022511 /* Views */,
 				D237CD25275784E500022511 /* Main Board */,
+				50077378278DF968000A6FD1 /* Filter */,
 				503096A927C4DB020015688F /* FAQ */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
@@ -276,7 +268,6 @@
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
 				504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */,
 				504C05A527B57CE800B271FD /* BoardImageTableViewCell.xib */,
-				50077378278DF968000A6FD1 /* Filter */,
 			);
 			path = "Main Board";
 			sourceTree = "<group>";
@@ -288,6 +279,7 @@
 				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
 				503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */,
 				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
+				502799982792E3D50052FB99 /* Animations.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
