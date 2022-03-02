@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct CityResponse:Decodable {
-  var response:Response?
+struct CityResponse: Decodable {
+  var response: Response?
 }
 
-struct Response:Decodable {
-  var count:Int?
-  var items:[City]?
+struct Response: Decodable {
+  var count: Int?
+  var items: [City]?
 }
 
-struct City:Decodable {
-  var id:Int?
-  var title:String?
-  //var area:String?
-  var region:String?
-  //var important:Int?
+struct City: Decodable {
+  var id: Int?
+  var title: String?
+  var region: String?
+  // var area: String?
+  // var important: Int?
 }

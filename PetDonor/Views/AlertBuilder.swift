@@ -8,8 +8,12 @@
 import UIKit
 
 struct AlertBuilder {
-  static func build (presentOn viewController:UIViewController, title:String?, message:String?, preferredStyle:UIAlertController.Style, actions:[UIAlertAction?]) {
-    let alert = UIAlertController (title: title, message: message, preferredStyle: preferredStyle)
+  static func build(presentOn viewController: UIViewController,
+                    title: String?,
+                    message: String?,
+                    preferredStyle: UIAlertController.Style,
+                    actions: [UIAlertAction?]) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
     if actions.count > 0 {
       actions.forEach { action in
         guard let action = action else { return }

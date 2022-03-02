@@ -8,23 +8,20 @@
 import UIKit
 import SDWebImage
 final class EmptyScreenTableViewCell: UITableViewCell {
-  let placeholderImageView = SDAnimatedImageView ()
-  let messageLabel = UILabel ()
-  
+  let placeholderImageView = SDAnimatedImageView()
+  let messageLabel = UILabel()
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     configure()
   }
-  
   required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-  
   func configure () {
-    guard let asset = NSDataAsset (name: "emptyScreenImage") else { return }
+    guard let asset = NSDataAsset(name: "emptyScreenImage") else { return }
     let data = asset.data
-    let image = SDAnimatedImage (data: data)
-    let stack = UIStackView (arrangedSubviews: [placeholderImageView, messageLabel])
+    let image = SDAnimatedImage(data: data)
+    let stack = UIStackView(arrangedSubviews: [placeholderImageView, messageLabel])
     stack.alignment = .center
     stack.distribution = .fill
     stack.axis = .vertical
@@ -37,7 +34,6 @@ final class EmptyScreenTableViewCell: UITableViewCell {
     contentView.backgroundColor = .clear
     contentView.addSubview(stack)
     self.selectionStyle = .none
-    
     NSLayoutConstraint.activate([
       stack.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
       stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -46,5 +42,4 @@ final class EmptyScreenTableViewCell: UITableViewCell {
       placeholderImageView.heightAnchor.constraint(equalToConstant: 300)
     ])
   }
-  
 }

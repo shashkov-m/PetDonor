@@ -7,11 +7,11 @@
 
 import Foundation
 
-let petDateFormatter:DateFormatter = {
-  let formatter = DateFormatter ()
+let petDateFormatter: DateFormatter = {
+  let formatter = DateFormatter()
   formatter.dateFormat = "dd.MM.yyyy"
   return formatter
-} ()
+}()
 
 let catBloodTypes = [
   "Неизвестно",
@@ -25,17 +25,17 @@ let dogBloodTypes = [
   "DEA 1-"
 ]
 
-enum PostType:String {
+enum PostType: String {
   case recipient = "Реципиент"
   case donor = "Донор"
 }
 
-enum PetType:String,CaseIterable {
+enum PetType: String, CaseIterable {
   case cat = "Кошка"
   case dog = "Собака"
 }
 
-enum PetKeys:String {
+enum PetKeys: String {
   case petType
   case bloodType
   case postType
