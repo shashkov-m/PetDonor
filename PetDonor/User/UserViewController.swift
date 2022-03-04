@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorageUI
 
 class UserViewController: UIViewController {
   private var handle: AuthStateDidChangeListenerHandle?
@@ -180,8 +181,11 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
     }
     let placeholder = pet.petType == .cat ? UIImage(named: "catPlaceholder") : UIImage(named: "dogPlaceholder")
     if let ref = pet.imageUrl, ref.count > 0 {
-      let reference = database.getImageReference(from: ref)
-      cell.petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      let storageUrl = URL(string: "gs://\(database.storageReference)/\(ref)")
+      cell.petImageView.sd_setImage(with: storageUrl,
+                                    placeholderImage: placeholder,
+                                    options: [.refreshCached, .retryFailed],
+                                    context: [.imageLoader: StorageImageLoader.shared])
     } else {
       cell.petImageView.image = placeholder
     }

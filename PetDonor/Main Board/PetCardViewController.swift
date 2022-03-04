@@ -44,8 +44,11 @@ class PetCardViewController: UIViewController {
     ageLabel.text = pet.age
     if let ref = pet.imageUrl {
       let placeholder = pet.petType == .cat ? UIImage(named: "catPlaceholder"): UIImage(named: "dogPlaceholder")
-      let reference = database.getImageReference(from: ref)
-      petImageView.sd_setImage(with: reference, placeholderImage: placeholder)
+      let storageUrl = URL(string: "gs://\(database.storageReference)/\(ref)")
+      petImageView.sd_setImage(with: storageUrl,
+                               placeholderImage: placeholder,
+                               options: .refreshCached,
+                               context: [.imageLoader: StorageImageLoader.shared])
     }
   }
   // MARK: Navigation menu configure
