@@ -52,6 +52,9 @@ class MainBoardViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     reloadPetList(filter: filter)
+    if tableView.refreshControl?.isRefreshing == true {
+      tableView.refreshControl?.endRefreshing()
+    }
   }
   private func refreshControlConfigure() {
     let refreshControl = UIRefreshControl()

@@ -72,7 +72,12 @@ class NewPostPetDescriptionViewController: UIViewController {
       }
     }()
     pet.birthDate = {
-      if let text = ageTextField.text, let birthDate = petDateFormatter.date(from: text), birthDate <= Date.now {
+      let unixThirtyYears: Double = 946707780
+      let thirtyYearsBeforeToday = now.timeIntervalSince1970 - unixThirtyYears
+      if let text = ageTextField.text,
+         let birthDate = petDateFormatter.date(from: text),
+         birthDate <= Date.now,
+         birthDate.timeIntervalSince1970 > thirtyYearsBeforeToday {
         return text
       } else {
         return "Не указан"
@@ -239,7 +244,12 @@ extension NewPostPetDescriptionViewController: UITextFieldDelegate {
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
       if textField == self.ageTextField, let string = textField.text, string.count > 0 {
-        guard let date = petDateFormatter.date(from: string), date <= Date.now else {
+        let now = Date.now
+        let unixThirtyYears: Double = 946707780
+        let thirtyYearsBeforeToday = now.timeIntervalSince1970 - unixThirtyYears
+        guard let date = petDateFormatter.date(from: string),
+              date <= now, date.timeIntervalSince1970 > thirtyYearsBeforeToday
+        else {
           self.ageTextField.textColor = .red
           shakeAnimation(view: self.ageTextField)
           return
