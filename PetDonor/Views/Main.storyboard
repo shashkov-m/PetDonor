@@ -305,7 +305,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Доска" id="IFP-vh-fzt">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" style="plain" id="7ve-Fi-Pcf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="7ve-Fi-Pcf">
                             <connections>
                                 <action selector="filterViewButtonAction:" destination="kee-1b-Ghg" id="kWg-3M-IaT"/>
                             </connections>
@@ -599,7 +599,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MXg-mv-BBf">
-                        <barButtonItem key="rightBarButtonItem" title="Сбросить" style="plain" id="Ndx-f2-9Bk">
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" id="Ndx-f2-9Bk">
                             <connections>
                                 <action selector="resetFilter:" destination="42l-sE-egf" id="sbG-dO-a3B"/>
                             </connections>
@@ -1056,7 +1056,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fO6-aQ-smR"/>
-        <segue reference="zDH-vO-76Q"/>
+        <segue reference="aOL-HF-eJD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
