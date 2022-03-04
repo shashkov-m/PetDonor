@@ -6,6 +6,7 @@
 //
 import UIKit
 import PhotosUI
+
 class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var petDescriptionTextView: UITextView!

@@ -16,16 +16,20 @@ struct Database {
   let petVisibleOnlyQuery: Query
   private let storageImagesPath = "petImages"
   var limit = 10
+  let storageReference: String
   init () {
     petCollection = firestore.collection("pets")
     petVisibleOnlyQuery = petCollection.whereField(PetKeys.isVisible.rawValue, isEqualTo: true)
+    storageReference = storage.reference().bucket
   }
 
   func addPet(pet: Pet, image: UIImage?, completion: @escaping (Result <Pet, Error>) -> Void) {
     let ref = petCollection
     var pet = pet
     if let image = image, let data = image.jpegData(compressionQuality: 0.4) {
-      let imagePath = "\(storageImagesPath)/\(pet.userID)/\(pet.date ?? Date.now).jpg"
+      let timeInterval = pet.date?.timeIntervalSinceReferenceDate ?? Date().timeIntervalSinceReferenceDate
+      let imgName = Int(timeInterval)
+      let imagePath = "\(storageImagesPath)/\(pet.userID)/\(imgName).jpg"
       let storageRef = storage.reference(withPath: "\(imagePath)")
       pet.imageUrl = imagePath
       queue.async {
@@ -99,9 +103,8 @@ struct Database {
     guard let firebaseDocID = pet.firebaseDocID else { return }
     queue.async {
       petCollection.document(firebaseDocID).delete()
-      if let imageUrl = pet.imageUrl, imageUrl.count > 0, let date = pet.date {
-        let imagePath = "\(self.storageImagesPath)/\(pet.userID)/\(date).jpg"
-        let storageRef = self.storage.reference(withPath: "\(imagePath)")
+      if let imageUrl = pet.imageUrl, imageUrl.count > 0 {
+        let storageRef = self.storage.reference(withPath: "\(imageUrl)")
         storageRef.delete(completion: nil)
       }
     }
