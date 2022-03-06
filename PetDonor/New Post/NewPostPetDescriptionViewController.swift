@@ -6,6 +6,7 @@
 //
 import UIKit
 import PhotosUI
+import CropViewController
 
 class NewPostPetDescriptionViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
@@ -184,7 +185,7 @@ class NewPostPetDescriptionViewController: UIViewController {
   }
 }
 
-extension NewPostPetDescriptionViewController: PHPickerViewControllerDelegate {
+extension NewPostPetDescriptionViewController: PHPickerViewControllerDelegate, CropViewControllerDelegate {
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
     dismiss(animated: true)
     if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
@@ -198,11 +199,27 @@ extension NewPostPetDescriptionViewController: PHPickerViewControllerDelegate {
             self.present(alert, animated: true)
           } else {
             guard let image = image as? UIImage else { return }
-            self.petImage = image
+            self.presentCropViewController(image: image)
           }
         }
       }
     }
+  }
+  private func presentCropViewController(image: UIImage) {
+    let cropViewController = CropViewController(image: image)
+    cropViewController.delegate = self
+    cropViewController.aspectRatioPickerButtonHidden = true
+    present(cropViewController, animated: true, completion: nil)
+  }
+  func cropViewController(_ cropViewController: CropViewController,
+                          didCropToImage image: UIImage,
+                          withRect cropRect: CGRect,
+                          angle: Int) {
+    dismiss(animated: true, completion: nil)
+    petImage = image
+  }
+  func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+    dismiss(animated: true, completion: nil)
   }
 }
 

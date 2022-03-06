@@ -171,6 +171,15 @@
           "revision": "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
           "version": "1.18.0"
         }
+      },
+      {
+        "package": "TOCropViewController",
+        "repositoryURL": "https://github.com/TimOliver/TOCropViewController",
+        "state": {
+          "branch": "main",
+          "revision": "961db9455e58b519ca51a0f09642753aa6c10743",
+          "version": null
+        }
       }
     ]
   },
