@@ -334,10 +334,10 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIb-hc-ld8">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="653.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="660"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q0e-xZ-LGR">
-                                                <rect key="frame" x="0.0" y="10" width="390" height="633.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="10" width="390" height="640"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bm5-sS-G9B">
                                                         <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
@@ -492,21 +492,22 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj6-jo-KrC">
-                                                        <rect key="frame" x="0.0" y="583.66666666666663" width="390" height="50"/>
+                                                        <rect key="frame" x="0.0" y="583.66666666666663" width="390" height="56.333333333333371"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контакты" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iJ-14-FVf">
-                                                                <rect key="frame" x="20" y="10" width="350" height="30"/>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Контакты" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s5m-Oy-y0N">
+                                                                <rect key="frame" x="20" y="10" width="350" height="36.333333333333336"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="3iJ-14-FVf" firstAttribute="leading" secondItem="Jj6-jo-KrC" secondAttribute="leading" constant="20" id="3sF-Go-09H"/>
-                                                            <constraint firstAttribute="trailing" secondItem="3iJ-14-FVf" secondAttribute="trailing" constant="20" id="9fJ-ed-gjH"/>
-                                                            <constraint firstItem="3iJ-14-FVf" firstAttribute="top" secondItem="Jj6-jo-KrC" secondAttribute="top" constant="10" id="N9I-vR-eBs"/>
-                                                            <constraint firstAttribute="bottom" secondItem="3iJ-14-FVf" secondAttribute="bottom" constant="10" id="hOt-Tk-KrJ"/>
+                                                            <constraint firstItem="s5m-Oy-y0N" firstAttribute="leading" secondItem="Jj6-jo-KrC" secondAttribute="leading" constant="20" id="6if-eR-6Rp"/>
+                                                            <constraint firstAttribute="trailing" secondItem="s5m-Oy-y0N" secondAttribute="trailing" constant="20" id="Hhc-7L-D0B"/>
+                                                            <constraint firstItem="s5m-Oy-y0N" firstAttribute="top" secondItem="Jj6-jo-KrC" secondAttribute="top" constant="10" id="XxT-KM-hxN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="s5m-Oy-y0N" secondAttribute="bottom" constant="10" id="m1B-Sz-S96"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -544,7 +545,7 @@
                         <outlet property="ageLabel" destination="dz0-8V-w48" id="1cL-HO-YOc"/>
                         <outlet property="bloodTypeLabel" destination="qz0-HP-Swn" id="JYc-jv-Hdy"/>
                         <outlet property="cityLabel" destination="K26-mD-8oc" id="ghf-8A-LHD"/>
-                        <outlet property="contactInfoLabel" destination="3iJ-14-FVf" id="uXy-Jg-iW6"/>
+                        <outlet property="contactInfoTextView" destination="s5m-Oy-y0N" id="Ed5-xC-4nu"/>
                         <outlet property="dateCreateLabel" destination="JYL-Zj-8m8" id="AfY-rO-5Sx"/>
                         <outlet property="descriptionLabel" destination="oLV-sP-Qaw" id="8Zo-eo-dHB"/>
                         <outlet property="petImageView" destination="GII-vP-lBb" id="EMf-CO-Viv"/>
@@ -556,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CY-E2-LjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2522" y="-613"/>
+            <point key="canvasLocation" x="2521.5384615384614" y="-613.50710900473928"/>
         </scene>
         <!--Filters View Controller-->
         <scene sceneID="9qj-UD-7Xg">
@@ -753,7 +754,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtB-NF-8x1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="931"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="882"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-fk-79X">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="996"/>
@@ -1055,7 +1056,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fO6-aQ-smR"/>
+        <segue reference="rYj-bA-kGC"/>
         <segue reference="aOL-HF-eJD"/>
     </inferredMetricsTieBreakers>
     <resources>

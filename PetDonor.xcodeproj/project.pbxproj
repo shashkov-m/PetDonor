@@ -40,6 +40,8 @@
 		50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */; };
 		50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E62276CD2760099DBC7 /* CityPickerViewController.swift */; };
 		50BE8E65276CD76E0099DBC7 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE8E64276CD76E0099DBC7 /* City.swift */; };
+		50E3EAAE27D4A81500E71E28 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 50E3EAAD27D4A81500E71E28 /* CropViewController */; };
+		50E3EAB027D4A81500E71E28 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 50E3EAAF27D4A81500E71E28 /* TOCropViewController */; };
 		50FCA6FA2783266300ED6107 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCA6F92783266300ED6107 /* Database.swift */; };
 		D2195EEF2769F1690082E63D /* NewPostPetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2195EEE2769F1690082E63D /* NewPostPetTableViewController.swift */; };
 		D237CCEC2754E3FB00022511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCEB2754E3FB00022511 /* AppDelegate.swift */; };
@@ -124,10 +126,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5063A2F227988E7A00EC65C0 /* FirebaseAnalytics in Frameworks */,
+				50E3EAB027D4A81500E71E28 /* TOCropViewController in Frameworks */,
 				5063A2F627988E7A00EC65C0 /* FirebaseFirestore in Frameworks */,
 				5063A2F427988E7A00EC65C0 /* FirebaseAuth in Frameworks */,
 				503096B627C8E8D40015688F /* SDWebImage in Frameworks */,
 				5063A2F827988E7A00EC65C0 /* FirebaseStorage in Frameworks */,
+				50E3EAAE27D4A81500E71E28 /* CropViewController in Frameworks */,
 				500A2E0827B128D3005C45A3 /* FirebaseStorageUI in Frameworks */,
 				5063A2FB279890C000EC65C0 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -321,6 +325,8 @@
 				5063A2FA279890C000EC65C0 /* IQKeyboardManagerSwift */,
 				500A2E0727B128D3005C45A3 /* FirebaseStorageUI */,
 				503096B527C8E8D40015688F /* SDWebImage */,
+				50E3EAAD27D4A81500E71E28 /* CropViewController */,
+				50E3EAAF27D4A81500E71E28 /* TOCropViewController */,
 			);
 			productName = PetDonor;
 			productReference = D237CCE82754E3FB00022511 /* PetDonor.app */;
@@ -399,6 +405,7 @@
 				5063A2F9279890C000EC65C0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				500A2E0627B128D2005C45A3 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
 				503096B427C8E8D40015688F /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				50E3EAAC27D4A81500E71E28 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = D237CCE92754E3FB00022511 /* Products */;
 			projectDirPath = "";
@@ -666,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6J7BMHDBAB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetDonor/Info.plist;
@@ -695,7 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6J7BMHDBAB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetDonor/Info.plist;
@@ -888,6 +895,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		50E3EAAC27D4A81500E71E28 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -925,6 +940,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5063A2F9279890C000EC65C0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		50E3EAAD27D4A81500E71E28 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50E3EAAC27D4A81500E71E28 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		50E3EAAF27D4A81500E71E28 /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50E3EAAC27D4A81500E71E28 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

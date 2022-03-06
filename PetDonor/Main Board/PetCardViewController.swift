@@ -19,7 +19,7 @@ class PetCardViewController: UIViewController {
   @IBOutlet weak var petImageView: UIImageView!
   @IBOutlet weak var cityLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var contactInfoLabel: UILabel!
+  @IBOutlet weak var contactInfoTextView: UITextView!
   @IBOutlet weak var dateCreateLabel: UILabel!
   @IBOutlet weak var rewardLabel: UILabel!
   @IBOutlet weak var ageLabel: UILabel!
@@ -39,7 +39,7 @@ class PetCardViewController: UIViewController {
     postTypeLabel.text = pet.postType
     cityLabel.text = pet.city?.title
     descriptionLabel.text = pet.description
-    contactInfoLabel.text = pet.contactInfo
+    contactInfoTextView.text = pet.contactInfo
     rewardLabel.text = pet.reward
     ageLabel.text = pet.age
     if let ref = pet.imageUrl {
