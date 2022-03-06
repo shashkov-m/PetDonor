@@ -72,7 +72,11 @@ class UserViewController: UIViewController {
       do {
         try auth.signOut()
       } catch let error {
-        print(error)
+        AlertBuilder.build(presentOn: self,
+                           title: "Ошибка",
+                           message: error.localizedDescription,
+                           preferredStyle: .alert,
+                           actions: [UIAlertAction(title: "OK", style: .cancel)])
       }
     }
     let menu = UIMenu(title: "", options: .displayInline, children: [logOutButton])
