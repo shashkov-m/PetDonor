@@ -21,8 +21,6 @@ class CityPickerViewController: UIViewController {
       do {
         cities = try await request.getCities(query: nil)
         tableView.reloadData()
-      } catch {
-        print(error.localizedDescription)
       }
     }
   }
