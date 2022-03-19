@@ -9,7 +9,7 @@ import Foundation
 
 struct CityRequestManager {
   var urlComponentsDefault = URLComponents()
-  private let accessToken = "b5c5ccd9cdbbe8c7ad1290643e3994808f9b2fd283fb5718d33319c5e98db2d27479b25385caab2f7334c"
+  private let accessToken = Keys.VKaccessToken
   init () {
     urlComponentsDefault.scheme = "https"
     urlComponentsDefault.host = "api.vk.com"

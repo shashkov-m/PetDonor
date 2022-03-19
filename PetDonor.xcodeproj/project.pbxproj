@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50066D2727E65E7600BF77D2 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066D2627E65E7600BF77D2 /* Keys.swift */; };
 		5007737A278DFAA5000A6FD1 /* PetCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50077379278DFAA5000A6FD1 /* PetCardViewController.swift */; };
 		500A2E0827B128D3005C45A3 /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = 500A2E0727B128D3005C45A3 /* FirebaseStorageUI */; };
 		500B7B5B277B6C5300F4736B /* PetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5A277B6C5300F4736B /* PetInfo.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50066D2627E65E7600BF77D2 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		50077379278DFAA5000A6FD1 /* PetCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardViewController.swift; sourceTree = "<group>"; };
 		500B7B5A277B6C5300F4736B /* PetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfo.swift; sourceTree = "<group>"; };
 		500B7B5C277D0A4A00F4736B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				50AE0BE52770A9B5002060EE /* Pet.swift */,
 				500B7B5A277B6C5300F4736B /* PetInfo.swift */,
 				50FCA6F92783266300ED6107 /* Database.swift */,
+				50066D2627E65E7600BF77D2 /* Keys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				50BE8E61276CCC160099DBC7 /* CityRequestManager.swift in Sources */,
 				507D3A1F27AAB23700039A15 /* FilterCityPickerTableViewController.swift in Sources */,
 				50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */,
+				50066D2727E65E7600BF77D2 /* Keys.swift in Sources */,
 				5054B80827722FF200929B51 /* PasswordRestoreViewController.swift in Sources */,
 				502799992792E3D50052FB99 /* Animations.swift in Sources */,
 			);
