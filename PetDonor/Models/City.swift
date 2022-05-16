@@ -20,6 +20,4 @@ struct City: Decodable {
   var id: Int?
   var title: String?
   var region: String?
-  // var area: String?
-  // var important: Int?
 }

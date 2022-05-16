@@ -175,7 +175,7 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
     else {
       return UITableViewCell()
     }
-    let pet = pets [indexPath.row]
+    let pet = pets[indexPath.row]
     cell.summaryLabel.text = pet.description
     cell.petTypeLabel.text = pet.petType?.rawValue
     cell.cityLabel.text = pet.city?.title
@@ -197,7 +197,7 @@ extension UserViewController: UITableViewDataSource, UITableViewDelegate {
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if pets.count > 0 {
-      pet = pets [indexPath.row]
+      pet = pets[indexPath.row]
       tableView.deselectRow(at: indexPath, animated: true)
       performSegue(withIdentifier: userPetDetailsSegue, sender: self)
     }

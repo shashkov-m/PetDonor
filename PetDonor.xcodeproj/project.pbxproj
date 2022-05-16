@@ -14,7 +14,7 @@
 		500B7B5D277D0A4A00F4736B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5C277D0A4A00F4736B /* AuthView.swift */; };
 		500B7B60277D16F300F4736B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500B7B5F277D16F300F4736B /* UserView.swift */; };
 		500C4B84279F2ADC0011D4FA /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */; };
-		502799992792E3D50052FB99 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502799982792E3D50052FB99 /* Animations.swift */; };
+		502799992792E3D50052FB99 /* UIView+ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502799982792E3D50052FB99 /* UIView+ShakeAnimation.swift */; };
 		503096A827C3CB9A0015688F /* FAQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503096A727C3CB9A0015688F /* FAQ.plist */; };
 		503096AB27C4DB2B0015688F /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AA27C4DB2B0015688F /* FAQViewController.swift */; };
 		503096AE27C53AF50015688F /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503096AC27C53AF50015688F /* FAQTableViewCell.swift */; };
@@ -33,8 +33,6 @@
 		5063A2F827988E7A00EC65C0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5063A2F727988E7A00EC65C0 /* FirebaseStorage */; };
 		5063A2FB279890C000EC65C0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5063A2FA279890C000EC65C0 /* IQKeyboardManagerSwift */; };
 		5067D867276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
-		5067D868276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
-		5067D869276B989300BDFD32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5067D866276B989300BDFD32 /* GoogleService-Info.plist */; };
 		507D3A1F27AAB23700039A15 /* FilterCityPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D3A1E27AAB23700039A15 /* FilterCityPickerTableViewController.swift */; };
 		50AE0BE22770A44C002060EE /* NewPostPetDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE12770A44C002060EE /* NewPostPetDescriptionViewController.swift */; };
 		50AE0BE62770A9B5002060EE /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE0BE52770A9B5002060EE /* Pet.swift */; };
@@ -49,32 +47,12 @@
 		D237CCEE2754E3FB00022511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CCED2754E3FB00022511 /* SceneDelegate.swift */; };
 		D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237CCF42754E3FC00022511 /* Assets.xcassets */; };
 		D237CCF82754E3FC00022511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */; };
-		D237CD032754E3FC00022511 /* PetDonorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD022754E3FC00022511 /* PetDonorTests.swift */; };
-		D237CD0D2754E3FD00022511 /* PetDonorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD0C2754E3FD00022511 /* PetDonorUITests.swift */; };
-		D237CD0F2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */; };
 		D237CD2F275A02DE00022511 /* BoardTextOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */; };
 		D237CD30275A02DE00022511 /* BoardTextOnlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */; };
 		D237CD432763775600022511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237CD422763775600022511 /* Main.storyboard */; };
 		D237CD462763907400022511 /* MainBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD452763907400022511 /* MainBoardViewController.swift */; };
 		D237CD482763C0A600022511 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237CD472763C0A600022511 /* FiltersViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D237CCFF2754E3FC00022511 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237CCE02754E3FB00022511 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D237CCE72754E3FB00022511;
-			remoteInfo = PetDonor;
-		};
-		D237CD092754E3FD00022511 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237CCE02754E3FB00022511 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D237CCE72754E3FB00022511;
-			remoteInfo = PetDonor;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		50066D2627E65E7600BF77D2 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -83,7 +61,7 @@
 		500B7B5C277D0A4A00F4736B /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		500B7B5F277D16F300F4736B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
-		502799982792E3D50052FB99 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		502799982792E3D50052FB99 /* UIView+ShakeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ShakeAnimation.swift"; sourceTree = "<group>"; };
 		503096A727C3CB9A0015688F /* FAQ.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FAQ.plist; sourceTree = "<group>"; };
 		503096AA27C4DB2B0015688F /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		503096AC27C53AF50015688F /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,11 +88,6 @@
 		D237CCF42754E3FC00022511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D237CCF72754E3FC00022511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D237CCF92754E3FC00022511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D237CCFE2754E3FC00022511 /* PetDonorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetDonorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D237CD022754E3FC00022511 /* PetDonorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorTests.swift; sourceTree = "<group>"; };
-		D237CD082754E3FD00022511 /* PetDonorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetDonorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D237CD0C2754E3FD00022511 /* PetDonorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorUITests.swift; sourceTree = "<group>"; };
-		D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDonorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTextOnlyTableViewCell.swift; sourceTree = "<group>"; };
 		D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardTextOnlyTableViewCell.xib; sourceTree = "<group>"; };
 		D237CD422763775600022511 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -139,20 +112,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D237CCFB2754E3FC00022511 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D237CD052754E3FD00022511 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -168,7 +127,6 @@
 		500B7B5E277D145100F4736B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				500B7B5C277D0A4A00F4736B /* AuthView.swift */,
 				5054B80327722FC300929B51 /* SignInViewController.swift */,
 				5054B80527722FCD00929B51 /* SignUpViewController.swift */,
 				5054B80727722FF200929B51 /* PasswordRestoreViewController.swift */,
@@ -179,7 +137,6 @@
 		503096A927C4DB020015688F /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
-				503096AA27C4DB2B0015688F /* FAQViewController.swift */,
 				503096AC27C53AF50015688F /* FAQTableViewCell.swift */,
 				503096AD27C53AF50015688F /* FAQTableViewCell.xib */,
 			);
@@ -189,10 +146,73 @@
 		5054B8002771F46900929B51 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				5054B8012771F47400929B51 /* UserViewController.swift */,
+				503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */,
 				500B7B5F277D16F300F4736B /* UserView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		50ADBEE12832834E0047A226 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50ADBEE7283285000047A226 /* Main Board */,
+				50ADBEE6283284AA0047A226 /* FAQ */,
+				50077378278DF968000A6FD1 /* Filter */,
+				500B7B5E277D145100F4736B /* Auth */,
+				D2195EED2769F14B0082E63D /* New Post */,
+				50ADBEE32832836E0047A226 /* User */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		50ADBEE2283283560047A226 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
+				50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		50ADBEE32832836E0047A226 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5054B8012771F47400929B51 /* UserViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		50ADBEE4283283A10047A226 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				500B7B5C277D0A4A00F4736B /* AuthView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		50ADBEE52832846C0047A226 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				502799982792E3D50052FB99 /* UIView+ShakeAnimation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		50ADBEE6283284AA0047A226 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				503096AA27C4DB2B0015688F /* FAQViewController.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		50ADBEE7283285000047A226 /* Main Board */ = {
+			isa = PBXGroup;
+			children = (
+				D237CD452763907400022511 /* MainBoardViewController.swift */,
+				50077379278DFAA5000A6FD1 /* PetCardViewController.swift */,
+			);
+			path = "Main Board";
 			sourceTree = "<group>";
 		};
 		D2195EED2769F14B0082E63D /* New Post */ = {
@@ -211,8 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				D237CCEA2754E3FB00022511 /* PetDonor */,
-				D237CD012754E3FC00022511 /* PetDonorTests */,
-				D237CD0B2754E3FD00022511 /* PetDonorUITests */,
 				D237CCE92754E3FB00022511 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -221,8 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				D237CCE82754E3FB00022511 /* PetDonor.app */,
-				D237CCFE2754E3FC00022511 /* PetDonorTests.xctest */,
-				D237CD082754E3FD00022511 /* PetDonorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,16 +246,13 @@
 		D237CCEA2754E3FB00022511 /* PetDonor */ = {
 			isa = PBXGroup;
 			children = (
+				D237CD33275F9E0800022511 /* Models */,
+				D237CD26275784FF00022511 /* Views */,
+				50ADBEE12832834E0047A226 /* Controllers */,
+				50ADBEE52832846C0047A226 /* Extensions */,
+				50ADBEE2283283560047A226 /* Services */,
 				D237CCEB2754E3FB00022511 /* AppDelegate.swift */,
 				D237CCED2754E3FB00022511 /* SceneDelegate.swift */,
-				5054B8002771F46900929B51 /* User */,
-				D2195EED2769F14B0082E63D /* New Post */,
-				500B7B5E277D145100F4736B /* Auth */,
-				D237CD33275F9E0800022511 /* Model */,
-				D237CD26275784FF00022511 /* Views */,
-				D237CD25275784E500022511 /* Main Board */,
-				50077378278DF968000A6FD1 /* Filter */,
-				503096A927C4DB020015688F /* FAQ */,
 				D237CCF42754E3FC00022511 /* Assets.xcassets */,
 				D237CCF92754E3FC00022511 /* Info.plist */,
 				503096A727C3CB9A0015688F /* FAQ.plist */,
@@ -248,28 +261,9 @@
 			path = PetDonor;
 			sourceTree = "<group>";
 		};
-		D237CD012754E3FC00022511 /* PetDonorTests */ = {
-			isa = PBXGroup;
-			children = (
-				D237CD022754E3FC00022511 /* PetDonorTests.swift */,
-			);
-			path = PetDonorTests;
-			sourceTree = "<group>";
-		};
-		D237CD0B2754E3FD00022511 /* PetDonorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D237CD0C2754E3FD00022511 /* PetDonorUITests.swift */,
-				D237CD0E2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift */,
-			);
-			path = PetDonorUITests;
-			sourceTree = "<group>";
-		};
 		D237CD25275784E500022511 /* Main Board */ = {
 			isa = PBXGroup;
 			children = (
-				D237CD452763907400022511 /* MainBoardViewController.swift */,
-				50077379278DFAA5000A6FD1 /* PetCardViewController.swift */,
 				D237CD2D275A02DE00022511 /* BoardTextOnlyTableViewCell.swift */,
 				D237CD2E275A02DE00022511 /* BoardTextOnlyTableViewCell.xib */,
 				504C05A427B57CE800B271FD /* BoardImageTableViewCell.swift */,
@@ -281,26 +275,26 @@
 		D237CD26275784FF00022511 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D237CD25275784E500022511 /* Main Board */,
+				503096A927C4DB020015688F /* FAQ */,
+				50ADBEE4283283A10047A226 /* Auth */,
+				5054B8002771F46900929B51 /* User */,
 				D237CD422763775600022511 /* Main.storyboard */,
 				D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */,
-				503096B227C8C6770015688F /* EmptyScreenTableViewCell.swift */,
-				500C4B83279F2ADC0011D4FA /* AlertBuilder.swift */,
-				502799982792E3D50052FB99 /* Animations.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D237CD33275F9E0800022511 /* Model */ = {
+		D237CD33275F9E0800022511 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				50BE8E60276CCC160099DBC7 /* CityRequestManager.swift */,
+				50FCA6F92783266300ED6107 /* Database.swift */,
 				50BE8E64276CD76E0099DBC7 /* City.swift */,
 				50AE0BE52770A9B5002060EE /* Pet.swift */,
 				500B7B5A277B6C5300F4736B /* PetInfo.swift */,
-				50FCA6F92783266300ED6107 /* Database.swift */,
 				50066D2627E65E7600BF77D2 /* Keys.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,42 +329,6 @@
 			productReference = D237CCE82754E3FB00022511 /* PetDonor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D237CCFD2754E3FC00022511 /* PetDonorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D237CD152754E3FD00022511 /* Build configuration list for PBXNativeTarget "PetDonorTests" */;
-			buildPhases = (
-				D237CCFA2754E3FC00022511 /* Sources */,
-				D237CCFB2754E3FC00022511 /* Frameworks */,
-				D237CCFC2754E3FC00022511 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D237CD002754E3FC00022511 /* PBXTargetDependency */,
-			);
-			name = PetDonorTests;
-			productName = PetDonorTests;
-			productReference = D237CCFE2754E3FC00022511 /* PetDonorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D237CD072754E3FD00022511 /* PetDonorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D237CD182754E3FD00022511 /* Build configuration list for PBXNativeTarget "PetDonorUITests" */;
-			buildPhases = (
-				D237CD042754E3FD00022511 /* Sources */,
-				D237CD052754E3FD00022511 /* Frameworks */,
-				D237CD062754E3FD00022511 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D237CD0A2754E3FD00022511 /* PBXTargetDependency */,
-			);
-			name = PetDonorUITests;
-			productName = PetDonorUITests;
-			productReference = D237CD082754E3FD00022511 /* PetDonorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -383,14 +341,6 @@
 				TargetAttributes = {
 					D237CCE72754E3FB00022511 = {
 						CreatedOnToolsVersion = 13.0;
-					};
-					D237CCFD2754E3FC00022511 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = D237CCE72754E3FB00022511;
-					};
-					D237CD072754E3FD00022511 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = D237CCE72754E3FB00022511;
 					};
 				};
 			};
@@ -415,8 +365,6 @@
 			projectRoot = "";
 			targets = (
 				D237CCE72754E3FB00022511 /* PetDonor */,
-				D237CCFD2754E3FC00022511 /* PetDonorTests */,
-				D237CD072754E3FD00022511 /* PetDonorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -434,22 +382,6 @@
 				503096A827C3CB9A0015688F /* FAQ.plist in Resources */,
 				D237CCF52754E3FC00022511 /* Assets.xcassets in Resources */,
 				504C05A727B57CE800B271FD /* BoardImageTableViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D237CCFC2754E3FC00022511 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5067D868276B989300BDFD32 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D237CD062754E3FD00022511 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5067D869276B989300BDFD32 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,41 +439,11 @@
 				50BE8E63276CD2760099DBC7 /* CityPickerViewController.swift in Sources */,
 				50066D2727E65E7600BF77D2 /* Keys.swift in Sources */,
 				5054B80827722FF200929B51 /* PasswordRestoreViewController.swift in Sources */,
-				502799992792E3D50052FB99 /* Animations.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D237CCFA2754E3FC00022511 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D237CD032754E3FC00022511 /* PetDonorTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D237CD042754E3FD00022511 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D237CD0F2754E3FD00022511 /* PetDonorUITestsLaunchTests.swift in Sources */,
-				D237CD0D2754E3FD00022511 /* PetDonorUITests.swift in Sources */,
+				502799992792E3D50052FB99 /* UIView+ShakeAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D237CD002754E3FC00022511 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D237CCE72754E3FB00022511 /* PetDonor */;
-			targetProxy = D237CCFF2754E3FC00022511 /* PBXContainerItemProxy */;
-		};
-		D237CD0A2754E3FD00022511 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D237CCE72754E3FB00022511 /* PetDonor */;
-			targetProxy = D237CD092754E3FD00022511 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D237CCF62754E3FC00022511 /* LaunchScreen.storyboard */ = {
@@ -677,7 +579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 6J7BMHDBAB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetDonor/Info.plist;
@@ -691,7 +593,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.petdonor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -706,7 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 6J7BMHDBAB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetDonor/Info.plist;
@@ -720,108 +622,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.petdonor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		D237CD162754E3FD00022511 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6J7BMHDBAB;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shashkov.PetDonorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetDonor.app/PetDonor";
-			};
-			name = Debug;
-		};
-		D237CD172754E3FD00022511 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6J7BMHDBAB;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shashkov.PetDonorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PetDonor.app/PetDonor";
-			};
-			name = Release;
-		};
-		D237CD192754E3FD00022511 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6J7BMHDBAB;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shashkov.PetDonorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PetDonor;
-			};
-			name = Debug;
-		};
-		D237CD1A2754E3FD00022511 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6J7BMHDBAB;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shashkov.PetDonorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PetDonor;
 			};
 			name = Release;
 		};
@@ -842,24 +648,6 @@
 			buildConfigurations = (
 				D237CD132754E3FD00022511 /* Debug */,
 				D237CD142754E3FD00022511 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D237CD152754E3FD00022511 /* Build configuration list for PBXNativeTarget "PetDonorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D237CD162754E3FD00022511 /* Debug */,
-				D237CD172754E3FD00022511 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D237CD182754E3FD00022511 /* Build configuration list for PBXNativeTarget "PetDonorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D237CD192754E3FD00022511 /* Debug */,
-				D237CD1A2754E3FD00022511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

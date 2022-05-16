@@ -269,7 +269,7 @@ extension NewPostPetDescriptionViewController: UITextFieldDelegate {
               date <= now, date.timeIntervalSince1970 > thirtyYearsBeforeToday
         else {
           self.ageTextField.textColor = .red
-          shakeAnimation(view: self.ageTextField)
+          self.ageTextField.applyShakeAnimation()
           return
         }
       }

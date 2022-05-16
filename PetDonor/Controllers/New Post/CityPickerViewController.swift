@@ -1,18 +1,21 @@
 //
-//  FilterCityPickerTableViewController.swift
+//  CityPickerViewController.swift
 //  PetDonor
 //
-//  Created by Max Shashkov on 02.02.2022.
+//  Created by Max Shashkov on 17.12.2021.
 //
 
 import UIKit
 
-class FilterCityPickerTableViewController: UITableViewController {
-  weak var delegate: FiltersViewControllerDelegate?
+class CityPickerViewController: UIViewController {
+  var pet: Pet?
+  @IBOutlet weak var tableView: UITableView!
   let request = CityRequestManager()
   var cities = [City]()
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.dataSource = self
+    tableView.delegate = self
     searchBarConfigure()
     Task {
       do {
@@ -21,31 +24,37 @@ class FilterCityPickerTableViewController: UITableViewController {
       }
     }
   }
-  override func numberOfSections(in tableView: UITableView) -> Int {
+}
+
+extension CityPickerViewController: UITableViewDelegate, UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return cities.count
   }
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCityCell", for: indexPath)
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
     guard cities.count > 0 else { return cell}
     var configuration = cell.defaultContentConfiguration()
-    let city = cities [indexPath.row]
+    let city = cities[indexPath.row]
     configuration.text = city.title
     configuration.secondaryText = city.region
     configuration.secondaryTextProperties.color = .systemGray
     cell.contentConfiguration = configuration
     return cell
   }
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let city = cities [indexPath.row].title {
-      delegate?.updateSelectedCity(city: city)
-    }
-    navigationController?.popViewController(animated: true)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pet?.city = cities[indexPath.row]
+    tableView.deselectRow(at: indexPath, animated: true)
+    performSegue(withIdentifier: "toPetDescribe", sender: self)
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let refVC = segue.destination as? NewPostPetDescriptionViewController else { return }
+    refVC.pet = pet
   }
 }
-extension FilterCityPickerTableViewController: UISearchResultsUpdating {
+extension CityPickerViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     guard let text = searchController.searchBar.text else { return }
     Task {
@@ -53,7 +62,7 @@ extension FilterCityPickerTableViewController: UISearchResultsUpdating {
       tableView.reloadData()
     }
   }
-  private func searchBarConfigure() {
+  private func searchBarConfigure () {
     let searchController = UISearchController(searchResultsController: nil)
     searchController.searchResultsUpdater = self
     searchController.obscuresBackgroundDuringPresentation = false
